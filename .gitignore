@@ -1,0 +1,22 @@
+# IDE
+.vscode/
+qawno/
+
+# Logs
+logs/
+log.txt
+
+# Local configs
+config.json
+mysql.ini
+
+# Build outputs
+*.pdb
+
+# Runtime databases
+*.db
+*.sqlite
+
+# Temporary files
+Thumbs.db
+Desktop.ini
