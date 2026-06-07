@@ -1,0 +1,73 @@
+[05/06/2026 10:22:35] [ERROR] mysql_connect_file: handle error: invalid connection file specified (file: "mysql.ini")
+[05/06/2026 10:22:35] [ERROR] mysql_errno: invalid connection handle '0'
+[05/06/2026 10:22:42] [ERROR] mysql_connect_file: handle error: invalid connection file specified (file: "mysql.ini")
+[05/06/2026 10:22:42] [ERROR] mysql_errno: invalid connection handle '0'
+[05/06/2026 10:23:18] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 10:28:14] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_account_id` = 1": Unknown column 'char_level' in 'field list'
+[05/06/2026 11:09:00] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 11:13:35] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_account_id` = 1": Unknown column 'char_level' in 'field list'
+[05/06/2026 11:19:10] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 11:19:51] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_account_id` = 1": Unknown column 'char_level' in 'field list'
+[05/06/2026 11:24:25] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 11:25:42] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_account_id` = 1": Unknown column 'char_level' in 'field list'
+[05/06/2026 11:36:59] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 11:37:21] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_account_id` = 1": Unknown column 'char_level' in 'field list'
+[05/06/2026 12:35:54] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 12:36:09] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_account_id` = 1": Unknown column 'char_level' in 'field list'
+[05/06/2026 12:47:18] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 12:49:05] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_account_id` = 1": Unknown column 'char_level' in 'field list'
+[05/06/2026 12:57:08] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 12:57:30] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_ucp` = TreetMe": Unknown column 'char_level' in 'field list'
+[05/06/2026 12:58:55] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 12:59:22] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_ucp` = TreetMe": Unknown column 'char_level' in 'field list'
+[05/06/2026 12:59:50] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 13:00:22] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_ucp` = 'TreetMe'": Unknown column 'char_level' in 'field list'
+[05/06/2026 13:05:49] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 13:17:11] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 13:19:19] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 13:19:43] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_ucp` = 'TreetMe'": Unknown column 'char_level' in 'field list'
+[05/06/2026 13:27:33] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 13:28:15] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_ucp` = 'TreetMe'": Unknown column 'char_level' in 'field list'
+[05/06/2026 13:29:18] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 13:29:47] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_money`, `char_bank_money`, `char_level` FROM `player_characters` WHERE `char_ucp` = 'TreetMe'": Unknown column 'char_level' in 'field list'
+[05/06/2026 13:39:18] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 13:39:42] [ERROR] error #1054 while executing query "SELECT `char_name`, `char_level`, `char_money`, `char_bank_money` FROM `player_characters` WHERE `char_ucp` = 'TreetMe' LIMIT 3": Unknown column 'char_level' in 'field list'
+[05/06/2026 19:23:26] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 19:25:38] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 19:27:27] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 19:41:07] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 19:41:29] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 20:13:17] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 20:46:30] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 20:54:11] [WARNING] mysql_connect_file: no password specified
+[05/06/2026 20:58:26] [ERROR] mysql_format: destination size '512' is too small
+[05/06/2026 20:58:26] [ERROR] error #1065 while executing query "": Query was empty
+[06/06/2026 07:13:18] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 07:13:55] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 07:13:59] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[06/06/2026 07:14:03] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[06/06/2026 07:14:07] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[06/06/2026 07:14:11] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[06/06/2026 07:14:51] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 07:17:08] [ERROR] mysql_format: destination size '512' is too small
+[06/06/2026 07:17:08] [ERROR] error #1065 while executing query "": Query was empty
+[06/06/2026 10:40:24] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 10:42:52] [ERROR] mysql_format: destination size '512' is too small
+[06/06/2026 10:42:52] [ERROR] error #1065 while executing query "": Query was empty
+[06/06/2026 10:44:47] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 10:46:40] [ERROR] error #1064 while executing query "INSERT INTO `player_characters` (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, `char_pos_x`, `char_pos_y`, `char_pos_z`, `char_pos_a`, `char_health`, `char_armour`, `char_level`, `char_money`, `char_bank_money`, `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile` `char_hunger`, `char_thirst`, `char_stress`) VALUES (NULL, 1, 'TreetMe', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 1, 10000, 50000, 250, '07-05-1969', 192, 1, 68, 174, 1, 50.0, 50.0, 0.0)": You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`char_hunger`, `char_thirst`, `char_stress`) VALUES (NULL, 1, 'TreetMe', '', ...' at line 1
+[06/06/2026 10:54:57] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 10:55:49] [ERROR] error #1064 while executing query "INSERT INTO `player_characters` (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, `char_pos_x`, `char_pos_y`, `char_pos_z`, `char_pos_a`, `char_health`, `char_armour`, `char_level`, `char_money`, `char_bank_money`, `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile` `char_hunger`, `char_thirst`, `char_stress`) VALUES (NULL, 1, 'TreetMe', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 1, 10000, 50000, 250, '20-12-2000', 0, 1, 40, 170, 1, 50.0, 50.0, 0.0)": You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`char_hunger`, `char_thirst`, `char_stress`) VALUES (NULL, 1, 'TreetMe', '', ...' at line 1
+[06/06/2026 11:04:44] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 11:06:18] [ERROR] error #1064 while executing query "INSERT INTO `player_characters` (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, `char_pos_x`, `char_pos_y`, `char_pos_z`, `char_pos_a`, `char_health`, `char_armour`, `char_level`, `char_money`, `char_bank_money`, `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile` `char_hunger`, `char_thirst`, `char_stress`) VALUES (NULL, 1, 'TreetMe', 'Anies_Baswedan', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 1, 10000, 50000, 250, '07-05-1969', 192, 1, 69, 175, 1, 50.0, 50.0, 0.0)": You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`char_hunger`, `char_thirst`, `char_stress`) VALUES (NULL, 1, 'TreetMe', 'Ani...' at line 1
+[06/06/2026 11:19:57] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 11:22:13] [ERROR] error #1064 while executing query "INSERT INTO `player_characters` (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, `char_last_exit`, `char_pos_x`, `char_pos_y`, `char_pos_z`, `char_pos_a`, `char_health`, `char_armour`, `char_level`, `char_money`, `char_bank_money`, `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile` `char_hunger`, `char_thirst`, `char_stress`) VALUES (NULL, 1, 'TreetMe', 'Joko_Widodo', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0,0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 1, 10000, 50000, 250, '21-06-1961', 0, 1, 63, 168, 1, 50.0, 50.0, 0.0)": You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`char_hunger`, `char_thirst`, `char_stress`) VALUES (NULL, 1, 'TreetMe', 'Jok...' at line 1
+[06/06/2026 11:26:17] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 11:26:29] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 11:27:31] [ERROR] cache_get_value_name_int: field 'char_id' not found
+[06/06/2026 11:28:29] [ERROR] cache_get_value_name_int: field 'char_id' not found
+[06/06/2026 11:32:12] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 11:32:38] [ERROR] cache_get_value_name_int: field 'char_id' not found
+[06/06/2026 11:34:41] [WARNING] mysql_connect_file: no password specified
+[06/06/2026 11:35:17] [ERROR] cache_get_value_name_int: field 'char_id' not found
+[06/06/2026 11:40:30] [WARNING] mysql_connect_file: no password specified

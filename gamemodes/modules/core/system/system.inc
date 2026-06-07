@@ -1,0 +1,5 @@
+#include "modules/core/system/system_defines.inc"
+#include "modules/core/system/system_variables.inc"
+#include "modules/core/system/system_natives.inc"
+#include "modules/core/system/system_functions.inc"
+#include "modules/core/system/system_dialogs.inc"
