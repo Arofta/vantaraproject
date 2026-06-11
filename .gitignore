@@ -20,3 +20,5 @@ mysql.ini
 # Temporary files
 Thumbs.db
 Desktop.ini
+
+/discord-bot/
