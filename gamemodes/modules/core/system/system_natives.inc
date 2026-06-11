@@ -25,18 +25,24 @@ ShowSpawnSelection(playerid)
     {
         case 0:
         {
+            if(pData[playerid][pLastExit] > 0) 
+                return Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Los Santos International Airport\nOcean Docks\nLast Exit", "Select", "");
             Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Los Santos International Airport\nOcean Docks", "Select", "");
             return 1;
         }
         
         case 1:
         {
+            if(pData[playerid][pLastExit] > 0) 
+                return Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "San Fierro Airport\nEsplande North\nLast Exit", "Select", "");
             Dialog_Show(playerid, "SFSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "San Fierro Airport\nEsplande North", "Select", "");
             return 1;
         }
 
         case 2:
         {
+            if(pData[playerid][pLastExit] > 0) 
+                return Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Las Venturas Airport\nLinden Station\nLast Exit", "Select", "");
             Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Las Venturas Airport\nLinden Station", "Select", "");
             return 1;
         }
@@ -177,65 +183,90 @@ stock bool:IsValidDOB(const string[])
 
 stock SaveCharacterData(playerid)
 {
-    if(!PlayerData[playerid][pLoggedIn])
+    if(!pData[playerid][pLoggedIn] || pData[playerid][pID] < 1)
         return 0;
 
     static query[4096];
 
-    mysql_format(g_SQL, query, sizeof(query),
-        "UPDATE `player_characters` SET \
-        `char_ucp` = '%e', \
-        `char_name` = '%e', \
-        `char_last_online` = '%e', \
-        `char_last_exit` = %d, \
-        `char_pos_x` = %.4f, \
-        `char_pos_y` = %.4f, \
-        `char_pos_z` = %.4f, \
-        `char_pos_a` = %.4f, \
-        `char_health` = %.1f, \
-        `char_armour` = %.1f, \
-        `char_level` = %d, \
-        `char_money` = %d, \
-        `char_bank_money` = %d, \
-        `char_skin` = %d, \
-        `char_dob` = '%e', \
-        `char_origin` = %d, \
-        `char_gender` = %d, \
-        `char_weight` = %d, \
-        `char_height` = %d, \
-        `char_domicile` = %d, \
-        `char_hunger` = %.2f, \
-        `char_thirst` = %.2f, \
-        `char_stress` = %.2f \
-        WHERE `char_id` = %d",
-        PlayerData[playerid][pName],
-        PlayerData[playerid][pLastOnlineDate],
-        PlayerData[playerid][pLastExit],
-        PlayerData[playerid][pPosX],
-        PlayerData[playerid][pPosY],
-        PlayerData[playerid][pPosZ],
-        PlayerData[playerid][pPosA],
-        PlayerData[playerid][pHealth],
-        PlayerData[playerid][pArmour],
-        PlayerData[playerid][pLevel],
-        PlayerData[playerid][pMoney],
-        PlayerData[playerid][pBankMoney],
-        PlayerData[playerid][pSkin],
-        PlayerData[playerid][pDOB],
-        PlayerData[playerid][pOrigin],
-        PlayerData[playerid][pGender],
-        PlayerData[playerid][pWeight],
-        PlayerData[playerid][pHeight],
-        PlayerData[playerid][pDomicile],
-        PlayerData[playerid][pHunger],
-        PlayerData[playerid][pThirst],
-        PlayerData[playerid][pStress],
-        PlayerData[playerid][pID]
-    );
+    mysql_format(g_SQL, query, sizeof(query), "UPDATE `player_characters` SET ");
 
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_ucp` = '%e', ", query, pData[playerid][pUCP]);
+
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_name` = '%e', ", query, pData[playerid][pName]);
+
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_last_online` = CURRENT_TIMESTAMP, ", query);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_last_exit` = %d, ", query, gettime() + 3600);
+
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_x` = %.4f, ", query, pData[playerid][pPosX]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_y` = %.4f, ", query, pData[playerid][pPosY]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_z` = %.4f, ", query, pData[playerid][pPosZ]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_a` = %.4f, ", query, pData[playerid][pPosA]);
+
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_health` = %.2f, ", query, pData[playerid][pHealth]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_armour` = %.2f, ", query, pData[playerid][pArmour]);
+
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_admin_name` = '%e', ", query, pData[playerid][pAdminName]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_admin_level` = %d, ", query, pData[playerid][pAdminLevel]);
+
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_level` = %d, ", query, pData[playerid][pLevel]);
+    
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_money` = %d, ", query, pData[playerid][pMoney]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_bank_money` = %d, ", query, pData[playerid][pBankMoney]);
+        
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_skin` = %d, ", query, pData[playerid][pSkin]);
+
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_dob` = '%e', ", query, pData[playerid][pDOB]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_origin` = %d, ", query, pData[playerid][pOrigin]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_gender` = %d, ", query, pData[playerid][pGender]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_weight` = %d, ", query, pData[playerid][pWeight]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_height` = %d, ", query, pData[playerid][pHeight]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_domicile` = %d, ", query, pData[playerid][pDomicile]);
+    
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_hunger` = %.2f, ", query, pData[playerid][pHunger]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_thirst` = %.2f, ", query, pData[playerid][pThirst]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_stress` = %.2f ", query, pData[playerid][pStress]);
+
+    mysql_format(g_SQL, query, sizeof(query), "%sWHERE `char_id` = %d, ", query, pData[playerid][pID]);
     mysql_tquery(g_SQL, query);
-
     return 1;
 }
+
+stock ResetVariables(playerid)
+{
+    for(new i = 0; i < e_PlayerData; i++)
+    {
+        if(i < MAX_CHARACTERS)
+        {
+            PlayerChar[playerid][i][CharID] = 0;
+
+            PlayerChar[playerid][i][CharName][0] = EOS;
+
+            PlayerChar[playerid][i][CharMoney] = 0;
+            PlayerChar[playerid][i][CharBankMoney] = 0;
+            PlayerChar[playerid][i][CharLevel] = 0;
+        }
+
+        pData[playerid][i] = 0;
+    }
+
+    tempVerify[playerid] = -1;
+    tempRecovery[playerid] = -1;
+    tempLoginAttempts[playerid] = 3;
+
+    tempCharName[playerid][0] = EOS;
+    tempCharDOB[playerid][0] = EOS;
+
+    tempCharHeight[playerid] = 0;
+    tempCharWeight[playerid] = 0;
+
+    tempCharGender[playerid] = -1;
+    tempCharOrigin[playerid] = -1;
+    tempCharDomicile[playerid] = -1;
+
+    pData[playerid][pGender] = -1;
+    pData[playerid][pOrigin] = -1;
+    pData[playerid][pDomicile] = -1;
+
+    Aduty[playerid] = 0;
     return 1;
 }

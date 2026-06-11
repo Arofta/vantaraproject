@@ -1,9 +1,9 @@
-new tempVerify[MAX_PLAYERS];
-new tempRecovery[MAX_PLAYERS];
-new tempLoginAttempts[MAX_PLAYERS];
+new tempVerify[MAX_PLAYERS] = -1;
+new tempRecovery[MAX_PLAYERS] = -1;
+new tempLoginAttempts[MAX_PLAYERS] = 3;
 
 new tempCharName[MAX_PLAYERS][MAX_PLAYER_NAME];
-new tempCharDOB[MAX_PLAYERS][11]; // Assuming date format is "DD-MM-YYYY"
+new tempCharDOB[MAX_PLAYERS][11];
 new tempCharHeight[MAX_PLAYERS] = 0;
 new tempCharWeight[MAX_PLAYERS] = 0;
 new tempCharGender[MAX_PLAYERS] = -1;
@@ -25,6 +25,17 @@ new const GenderNames[][] = {
     "Tidak Diketahui",
     "Laki-Laki",
     "Perempuan"
+};
+
+new rand_MaleSkin[] = {
+    2, 3, 7, 20,
+    59, 147, 186, 
+    249
+};
+
+new rand_FemaleSkin[] = {
+    56, 93, 169,
+    193, 226, 233
 };
 
 new const CountryNames[][] = { // WAJIB BACA: Variabel ini tidak boleh dirubah, atau akan menyebabkan kesalahan pada origin player yang sudah daftar. (karena origin disimpan dalam bentuk index untuk meningkatkan performa)

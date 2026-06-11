@@ -74,6 +74,19 @@ function:LoadCharacterData(playerid)
             SetCameraBehindPlayer(playerid);
         }
 
+        for(new i = 0; i < MAX_CHARACTERS; i++)
+        {
+            if(isnull(PlayerChar[playerid][i][CharName][0]))
+                continue;
+            PlayerChar[playerid][i][CharID] = 0;
+
+            PlayerChar[playerid][i][CharName][0] = EOS;
+
+            PlayerChar[playerid][i][CharMoney] = 0;
+            PlayerChar[playerid][i][CharBankMoney] = 0;
+            PlayerChar[playerid][i][CharLevel] = 0;
+        }
+
         //new query[256];
         return 1;
     }

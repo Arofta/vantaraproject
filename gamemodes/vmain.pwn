@@ -77,6 +77,8 @@ enum e_PlayerData
 
 new pData[MAX_PLAYERS][e_PlayerData];
 
+new Aduty[MAX_PLAYERS];
+
 new MySQL:g_SQL;
 new g_MySQLRaceCheck[MAX_PLAYERS];
 
@@ -134,6 +136,8 @@ public OnPlayerConnect(playerid)
 public OnPlayerDisconnect(playerid, reason)
 {
     g_MySQLRaceCheck[playerid] ++;
+    SaveCharacterData(playerid);
+    ResetVariables(playerid);
     return 1;
 }
 

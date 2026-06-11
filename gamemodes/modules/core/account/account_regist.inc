@@ -63,6 +63,7 @@ function:OnCheckingPassword(playerid, bool:match)
 {
     if(match)
     {
+        pData[playerid][pLoggedIn] = true;
         new query[512];
         mysql_format(g_SQL, query, sizeof(query), "SELECT `char_id`, `char_name`, `char_level`, `char_money`, `char_bank_money` FROM `player_characters` WHERE `char_account_id` = %d LIMIT %d", pData[playerid][pAccountID], MAX_CHARACTERS);
         mysql_pquery(g_SQL, query, "LoadCharacter", "d", playerid);

@@ -180,24 +180,33 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
     }
 
     tempCharDomicile[playerid] = listitem;
+    new randSkin = 250;
+
+    switch(tempCharGender[playerid])
+    {
+        case 1:
+        {
+            randSkin = rand_MaleSkin[random(sizeof(rand_MaleSkin))];
+        }
+
+        case 2:
+        {
+            randSkin = rand_FemaleSkin[random(sizeof(rand_FemaleSkin))];
+        }
+    }
 
     new query[2048];
     mysql_format(g_SQL, query, sizeof(query),
         "INSERT INTO `player_characters` \
-        (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, `char_last_exit`, \
-        `char_pos_x`, `char_pos_y`, `char_pos_z`, `char_pos_a`, \
-        `char_health`, `char_armour`, `char_level`, `char_money`, `char_bank_money`, \
-        `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile`, \
-        `char_hunger`, `char_thirst`, `char_stress`) \
+        (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, \
+        `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile`) \
         VALUES \
-        (NULL, %d, '%e', '%e', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0,\
-        0.0, 0.0, 0.0, 0.0, \
-        100.0, 0.0, 1, 10000, 50000, \
-        250, '%e', %d, %d, %d, %d, %d, \
-        50.0, 50.0, 0.0)",
+        (NULL, %d, '%e', '%e', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, \
+        %d, '%e', %d, %d, %d, %d, %d)",
         pData[playerid][pAccountID],
         pData[playerid][pUCP],
         tempCharName[playerid],
+        randSkin,
         tempCharDOB[playerid],
         tempCharOrigin[playerid],
         tempCharGender[playerid],
@@ -244,7 +253,7 @@ Dialog:LSSpawn(playerid, response, listitem, inputtext[])
 
         case 2: // last exit
         {
-            if(pData[playerid][pLastExit] == 0)
+            if(pData[playerid][pLastExit] == 0 || pData[playerid][pLastExit] > gettime())
                 return ShowSpawnSelection(playerid);
 
             pData[playerid][pSpawned] = true;
@@ -297,7 +306,7 @@ Dialog:SFSpawn(playerid, response, listitem, inputtext[])
 
         case 2: // Last Exit
         {
-            if(pData[playerid][pLastExit] == 0)
+            if(pData[playerid][pLastExit] == 0 || pData[playerid][pLastExit] > gettime())
                 return ShowSpawnSelection(playerid);
 
             pData[playerid][pSpawned] = true;
@@ -322,8 +331,8 @@ Dialog:LVSpawn(playerid, response, listitem, inputtext[])
         return Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Las Venturas Airport\nLinden Station", "Select", "");
 
     new const Float:LvCoordSpawn[][] = {
-        {2840.3289, 1292.4557, 11.3906, 90.2542},
-        {1674.3302, 1447.8229, 10.7907, 268.8487}
+        {1674.3302, 1447.8229, 10.7907, 268.8487},
+        {2840.3289, 1292.4557, 11.3906, 90.2542}
     };
 
     switch(listitem)
@@ -350,7 +359,7 @@ Dialog:LVSpawn(playerid, response, listitem, inputtext[])
 
         case 2: // Last Exit
         {
-            if(pData[playerid][pLastExit] == 0)
+            if(pData[playerid][pLastExit] == 0 || pData[playerid][pLastExit] > gettime())
                 return ShowSpawnSelection(playerid);
             
             pData[playerid][pSpawned] = true;
