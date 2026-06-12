@@ -197,6 +197,8 @@ stock SaveCharacterData(playerid)
     mysql_format(g_SQL, query, sizeof(query), "%s`char_last_online` = CURRENT_TIMESTAMP, ", query);
     mysql_format(g_SQL, query, sizeof(query), "%s`char_last_exit` = %d, ", query, gettime() + 3600);
 
+    GetPlayerPos(playerid, pData[playerid][pPosX], pData[playerid][pPosY], pData[playerid][pPosZ]);
+    GetPlayerFacingAngle(playerid, pData[playerid][pPosA]);
     mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_x` = %.4f, ", query, pData[playerid][pPosX]);
     mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_y` = %.4f, ", query, pData[playerid][pPosY]);
     mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_z` = %.4f, ", query, pData[playerid][pPosZ]);
@@ -226,29 +228,14 @@ stock SaveCharacterData(playerid)
     mysql_format(g_SQL, query, sizeof(query), "%s`char_thirst` = %.2f, ", query, pData[playerid][pThirst]);
     mysql_format(g_SQL, query, sizeof(query), "%s`char_stress` = %.2f ", query, pData[playerid][pStress]);
 
-    mysql_format(g_SQL, query, sizeof(query), "%sWHERE `char_id` = %d, ", query, pData[playerid][pID]);
+    mysql_format(g_SQL, query, sizeof(query), "%sWHERE `char_id` = %d", query, pData[playerid][pID]);
     mysql_tquery(g_SQL, query);
     return 1;
 }
 
 stock ResetVariables(playerid)
 {
-    for(new i = 0; i < e_PlayerData; i++)
-    {
-        if(i < MAX_CHARACTERS)
-        {
-            PlayerChar[playerid][i][CharID] = 0;
-
-            PlayerChar[playerid][i][CharName][0] = EOS;
-
-            PlayerChar[playerid][i][CharMoney] = 0;
-            PlayerChar[playerid][i][CharBankMoney] = 0;
-            PlayerChar[playerid][i][CharLevel] = 0;
-        }
-
-        pData[playerid][i] = 0;
-    }
-
+    // Temporary Variables
     tempVerify[playerid] = -1;
     tempRecovery[playerid] = -1;
     tempLoginAttempts[playerid] = 3;
@@ -263,10 +250,66 @@ stock ResetVariables(playerid)
     tempCharOrigin[playerid] = -1;
     tempCharDomicile[playerid] = -1;
 
+    for(new i = 0; i < MAX_CHARACTERS; i++)
+    {
+        PlayerChar[playerid][i][CharID] = 0;
+        PlayerChar[playerid][i][CharName][0] = EOS;
+        PlayerChar[playerid][i][CharMoney] = 0;
+        PlayerChar[playerid][i][CharBankMoney] = 0;
+        PlayerChar[playerid][i][CharLevel] = 0;
+    }
+
+    // Session Variables
+    pData[playerid][pID] = 0;
+    pData[playerid][pAccountID] = 0;
+
+    pData[playerid][pSpawned] = false;
+    pData[playerid][pLoggedIn] = false;
+
+    pData[playerid][pRegisterDate][0] = EOS;
+    pData[playerid][pLastOnlineDate][0] = EOS;
+    pData[playerid][pLastExit] = 0;
+
+    pData[playerid][pName][0] = EOS;
+    pData[playerid][pUCP][0] = EOS;
+
+    pData[playerid][pAdminLevel] = 0;
+    pData[playerid][pAdminName][0] = EOS;
+
+    pData[playerid][pMoney] = 0;
+    pData[playerid][pBankMoney] = 0;
+
+    pData[playerid][pHealth] = 0.0;
+    pData[playerid][pArmour] = 0.0;
+
+    pData[playerid][pSkin] = 0;
+    
+    pData[playerid][pDOB][0] = EOS;
     pData[playerid][pGender] = -1;
+    pData[playerid][pHeight] = 0;
+    pData[playerid][pWeight] = 0;
     pData[playerid][pOrigin] = -1;
     pData[playerid][pDomicile] = -1;
 
-    Aduty[playerid] = 0;
+    pData[playerid][pPosX] = 0.0;
+    pData[playerid][pPosY] = 0.0;
+    pData[playerid][pPosZ] = 0.0;
+    pData[playerid][pPosA] = 0.0;
+
+    pData[playerid][pInterior] = 0;
+    pData[playerid][pVirtualWorld] = 0;
+
+    pData[playerid][pHunger] = 0.0;
+    pData[playerid][pThirst] = 0.0;
+    pData[playerid][pStress] = 0.0;
+
+    pData[playerid][pHungerTime] = 120;
+    pData[playerid][pThirstTime] = 90;
+    pData[playerid][pStressTime] = 150;
+
+    pData[playerid][pLevel] = 0;
+    pData[playerid][pDrunkLevel] = 0;
+
+    Aduty[playerid] = false;
     return 1;
 }

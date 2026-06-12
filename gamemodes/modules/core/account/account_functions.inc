@@ -44,16 +44,19 @@ function:LoadCharacterData(playerid)
         cache_get_value_name_float(0, "char_health", pData[playerid][pHealth]);
         cache_get_value_name_float(0, "char_armour", pData[playerid][pArmour]);
 
+        cache_get_value_name(0, "char_admin_name", pData[playerid][pAdminName]);
+        cache_get_value_name_int(0, "char_admin_level", pData[playerid][pAdminLevel]);
+
         //cache_get_value_name_int(0, "char_level", pData[playerid][pLevel]); // sudah dapet char level sejak awal select character
         cache_get_value_name_int(0, "char_money", pData[playerid][pMoney]); // sudah dapet money sejak awal select character, tapi untuk jaga jaga jadi di ambil lagi
         cache_get_value_name_int(0, "char_bank_money", pData[playerid][pBankMoney]); // sama kaya money
         cache_get_value_name_int(0, "char_skin", pData[playerid][pSkin]);
 
         cache_get_value_name(0, "char_dob", pData[playerid][pDOB]);
-        cache_get_value_name_int(0, "char_origin", pData[playerid][pID]);
-        cache_get_value_name_int(0, "char_gender", pData[playerid][pID]);
-        cache_get_value_name_int(0, "char_weight", pData[playerid][pID]);
-        cache_get_value_name_int(0, "char_height", pData[playerid][pID]);
+        cache_get_value_name_int(0, "char_origin", pData[playerid][pOrigin]);
+        cache_get_value_name_int(0, "char_gender", pData[playerid][pGender]);
+        cache_get_value_name_int(0, "char_weight", pData[playerid][pWeight]);
+        cache_get_value_name_int(0, "char_height", pData[playerid][pHeight]);
         cache_get_value_name_int(0, "char_domicile", pData[playerid][pDomicile]);
 
         cache_get_value_name_float(0, "char_hunger", pData[playerid][pHunger]);
@@ -76,12 +79,10 @@ function:LoadCharacterData(playerid)
 
         for(new i = 0; i < MAX_CHARACTERS; i++)
         {
-            if(isnull(PlayerChar[playerid][i][CharName][0]))
+            if(isnull(PlayerChar[playerid][i][CharName]))
                 continue;
             PlayerChar[playerid][i][CharID] = 0;
-
             PlayerChar[playerid][i][CharName][0] = EOS;
-
             PlayerChar[playerid][i][CharMoney] = 0;
             PlayerChar[playerid][i][CharBankMoney] = 0;
             PlayerChar[playerid][i][CharLevel] = 0;

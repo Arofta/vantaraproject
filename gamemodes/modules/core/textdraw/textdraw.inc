@@ -1,0 +1,1 @@
+#include "modules/core/textdraw/HBE/td_hbe.inc"

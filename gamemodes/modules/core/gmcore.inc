@@ -1,2 +1,4 @@
 #include "modules/core/system/system.inc"
 #include "modules/core/account/account.inc"
+#include "modules/core/player/player.inc"
+#include "modules/core/textdraw/textdraw.inc"

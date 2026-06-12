@@ -63,6 +63,9 @@ enum e_PlayerData
     pInterior,
     pVirtualWorld,
 
+    bool:pInjured,
+    pMedicTime,
+
     Float:pHunger,
     Float:pThirst,
     Float:pStress,
@@ -96,17 +99,19 @@ public OnGameModeInit()
     g_SQL = mysql_connect_file("mysql.ini"); // Connect to server Database using mysql.ini file for credentials. Alternative:
     if(mysql_errno(g_SQL) == 0)
     {
-        print("-----------------------------------------------\n");
-        print("Database connection is active and ready to use.\n");
-        print("-----------------------------------------------\n");
+        printf("-----------------------------------------------\n");
+        printf("Database connection is active and ready to use.\n");
+        printf("-----------------------------------------------\n");
     }
     else
     {
-        print("-----------------------------------------------\n");
-        print("Failed to connect to database. Check mysql.ini.\n");
-        print("-----------------------------------------------\n");
+        printf("-----------------------------------------------\n");
+        printf("Failed to connect to database. Check mysql.ini.\n");
+        printf("-----------------------------------------------\n");
         SendRconCommand("exit"); // Exit the server if database connection fails, since it's required for the gamemode to function properly.
     }
+
+    Create_HBETD();
 
     AddPlayerClass(299, 0.0, 0.0, 0.0, 300.0, WEAPON_FIST, 0, WEAPON_FIST, 0, WEAPON_FIST, 0);
     return 1;
@@ -124,18 +129,22 @@ public OnPlayerConnect(playerid)
     tempLoginAttempts[playerid] = 3;
     SetPlayerTeam(playerid, NO_TEAM);
     SendClientMessage(playerid, -1, "Welcome to Vantara Roleplay.");
+
+    Create_HBEPTD(playerid);
     
     GetPlayerName(playerid, pData[playerid][pUCP], MAX_PLAYER_NAME);
 
     TogglePlayerSpectating(playerid, true);
     AccountCheck(playerid);
-
     return 1;
 }
 
 public OnPlayerDisconnect(playerid, reason)
 {
     g_MySQLRaceCheck[playerid] ++;
+
+    Destroy_HBEPTD(playerid);
+
     SaveCharacterData(playerid);
     ResetVariables(playerid);
     return 1;

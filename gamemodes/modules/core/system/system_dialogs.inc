@@ -199,13 +199,14 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
     mysql_format(g_SQL, query, sizeof(query),
         "INSERT INTO `player_characters` \
         (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, \
-        `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile`) \
+        `char_admin_name`, `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile`) \
         VALUES \
         (NULL, %d, '%e', '%e', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, \
-        %d, '%e', %d, %d, %d, %d, %d)",
+        '%e', %d, '%e', %d, %d, %d, %d, %d)",
         pData[playerid][pAccountID],
         pData[playerid][pUCP],
         tempCharName[playerid],
+        pData[playerid][pUCP],
         randSkin,
         tempCharDOB[playerid],
         tempCharOrigin[playerid],
