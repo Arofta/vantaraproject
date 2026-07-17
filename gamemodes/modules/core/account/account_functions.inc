@@ -25,8 +25,8 @@ function:LoadCharacterData(playerid)
 {
     if(!cache_num_rows())
     {
-        Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, "Vantara Roleplay - Character not found", "Something went wrong, try later!", "Quit", "");
-        Kick(playerid);
+        Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Karakter tidak ditemukan", "Terjadi kesalahan, coba lagi nanti!", "Keluar", "");
+        KickEx(playerid);
         return 1;
     }
     else
@@ -59,9 +59,37 @@ function:LoadCharacterData(playerid)
         cache_get_value_name_int(0, "char_height", pData[playerid][pHeight]);
         cache_get_value_name_int(0, "char_domicile", pData[playerid][pDomicile]);
 
+        cache_get_value_name_int(0, "char_virtual_world", pData[playerid][pVirtualWorld]);
+        cache_get_value_name_int(0, "char_interior", pData[playerid][pInterior]);
+
+        cache_get_value_name_int(0, "char_job", pData[playerid][pJob]);
+
+        cache_get_value_name_int(0, "char_faction", pData[playerid][pFaction]);
+        cache_get_value_name_int(0, "char_faction_rank", pData[playerid][pFactionRank]);
+
+        cache_get_value_name_int(0, "char_family", pData[playerid][pFamily]);
+        cache_get_value_name_int(0, "char_family_rank", pData[playerid][pFamilyRank]);
+
+        cache_get_value_name_int(0, "char_injured", pData[playerid][pInjured]);
+        cache_get_value_name_int(0, "char_injury_time", pData[playerid][pInjuryTime]);
+
         cache_get_value_name_float(0, "char_hunger", pData[playerid][pHunger]);
         cache_get_value_name_float(0, "char_thirst", pData[playerid][pThirst]);
         cache_get_value_name_float(0, "char_stress", pData[playerid][pStress]);
+
+        cache_get_value_name_int(0, "char_playtime", pData[playerid][pPlaytime]);
+
+        cache_get_value_name_int(0, "char_vip", pData[playerid][pVIP]);
+        cache_get_value_name_int(0, "char_vip_expiry", pData[playerid][pVIPExpiry]);
+
+        cache_get_value_name_int(0, "char_guardian", pData[playerid][pGuardian]);
+        cache_get_value_name_int(0, "char_guardian_expiry", pData[playerid][pGuardianExpiry]);
+
+        cache_get_value_name_int(0, "char_server_master", pData[playerid][pSMaster]);
+
+        SetPlayerName(playerid, pData[playerid][pName]);
+        SetPlayerColor(playerid, 0xFFFFFFFF);
+        GivePlayerMoney(playerid, pData[playerid][pMoney]);
 
         if(gettime() > pData[playerid][pLastExit])
         {
@@ -75,6 +103,8 @@ function:LoadCharacterData(playerid)
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         for(new i = 0; i < MAX_CHARACTERS; i++)
@@ -103,8 +133,22 @@ function:OnCharacterCreated(playerid)
     tempCharOrigin[playerid] = -1;
     tempCharDomicile[playerid] = -1;
 
-    new query[512];
-    mysql_format(g_SQL, query, sizeof(query), "SELECT `char_id`, `char_name`, `char_level`, `char_money`, `char_bank_money` FROM `player_characters` WHERE `char_account_id` = %d LIMIT %d", pData[playerid][pAccountID], MAX_CHARACTERS);
-    mysql_pquery(g_SQL, query, "LoadCharacter", "d", playerid);
+    static query[512];
+    mysql_format(SQL, query, sizeof(query), "SELECT `char_id`, `char_name`, `char_level`, `char_money`, `char_bank_money` FROM `player_characters` WHERE `char_account_id` = %d LIMIT %d", pData[playerid][pAccountID], MAX_CHARACTERS);
+    mysql_pquery(SQL, query, "LoadCharacter", "d", playerid);
+    return 1;
+}
+
+function:PeriodCharacterSpawned(playerid)
+{
+    if(pData[playerid][pInjured])
+    {
+        Show_InjuryTD(playerid);
+    }
+    else
+    {
+        Show_HBETD(playerid);
+    }
+    
     return 1;
 }

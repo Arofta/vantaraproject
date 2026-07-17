@@ -1,64 +1,61 @@
-
-YCMD:myvar(playerid, params[], help)
+YCMD:pay(playerid, params[], help)
 {
-    if (help)
+    new targetid, moneyStr[44], Float:POS[3];
+
+    if(sscanf(params, "ds[44]", targetid, moneyStr))
+        return SendClientMessage(playerid, -1, "SYNTAX: /pay <playerid> <amount-of-money>");
+
+    if(targetid == playerid)
+        return SendClientMessage(playerid, -1, "ERROR: Kamu tidak dapat memberikan uang kepada diri sendiri.");
+    
+    if(!IsPlayerConnected(targetid) || !pData[targetid][pLoggedIn] || !pData[targetid][pSpawned])
+        return SendClientMessage(playerid, -1, "ERROR: Pemain dengan id tersebut tidak terkoneksi ke server atau belum spawn");
+
+    GetPlayerPos(playerid, POS[0], POS[1], POS[2]);
+    if(!IsPlayerInRangeOfPoint(playerid, 3.5, POS[0], POS[1], POS[2]))
+        return SendClientMessage(playerid, -1, "ERROR: Pemain tersebut berada terlalu jauh dengan karakter anda.");
+
+    if(!IsRupiahFormat(moneyStr))
+        return SendClientMessage(playerid, -1, "ERROR: Format Uang tidak valid, contoh format yang valid: {00FF00}1000 10,50 0,05 10.000");
+
+    new money = ReturnRupiahToInteger(moneyStr);
+
+    if(money < 1)  
+        return SendClientMessage(playerid, -1, "ERROR: Jumlah uang yang akan diberikan tidak valid, jumlah valid adalah 0.01 s/d 3000");
+
+    if(pData[playerid][pAdminLevel] > 0)
     {
-        SendClientMessage(playerid, -1, "Menampilkan semua data variabel player.");
-        return 1;
+        if(money > 5000000)
+            return SendClientMessage(playerid, -1, "ERROR: Admin tidak dapat memberikan uang dalam satu waktu melebihi batas yang sudah ditentukan server (50.000).");
+    }
+    else if(money > 300000)
+        return SendClientMessage(playerid, -1, "ERROR: Jumlah uang yang akan diberikan tidak valid, jumlah valid adalah 0.01 s/d 3000");
+
+    GivePlayerMoneyEx(playerid, -money);
+    GivePlayerMoneyEx(targetid, money);
+
+    foreach(new i : Player)
+    {
+        if(pData[i][pAdminLevel] > 0)
+            SendClientMessage(i, Y_YELLOW, "PAY: %s(%d) memberikan uang kepada %s(%d) sebanyak %d.", pData[playerid][pName], playerid, pData[targetid][pName], targetid, FormatRupiah(money));
     }
 
-    new str[1024];
+    SendClientMessage(targetid, -1, "INFO: Anda berhasil memberi uang sejumlah {00FF00}%s{FFFFFF} kepada %s(%d).", FormatRupiah(money), pData[targetid][pName], targetid);
+    SendClientMessage(targetid, -1, "INFO: %s(%d) telah memberi uang sejumlah {00FF00}%s{FFFFFF} kepada anda.", pData[playerid][pName], playerid, FormatRupiah(money));
+    return 1;
+}
 
-    format(str, sizeof(str),
-        "Player ID: %d\nAccount ID: %d\nSpawned: %d\nLoggedIn: %d\n\n\
-        Name: %s\nUCP: %s\nAdmin Level: %d\nAdmin Name: %s\n\n\
-        Money: %d\nBank Money: %d\nLevel: %d\nDrunk: %d\n\n\
-        Health: %.2f\nArmour: %.2f\n\n\
-        Skin: %d\nDOB: %s\nGender: %d\nHeight: %d\nWeight: %d\n\n\
-        Origin: %d\nDomicile: %d\n\n\
-        Pos: %.2f %.2f %.2f %.2f\nInterior: %d VW: %d\n\n\
-        Hunger: %.2f Thirst: %.2f Stress: %.2f\n",
-        pData[playerid][pID],
-        pData[playerid][pAccountID],
-        pData[playerid][pSpawned],
-        pData[playerid][pLoggedIn],
+YCMD:stats(playerid, params[], help)
+{
+    ShowPlayerStats(playerid, playerid);
+    return 1;
+}
 
-        pData[playerid][pName],
-        pData[playerid][pUCP],
-        pData[playerid][pAdminLevel],
-        pData[playerid][pAdminName],
-
-        pData[playerid][pMoney],
-        pData[playerid][pBankMoney],
-        pData[playerid][pLevel],
-        pData[playerid][pDrunkLevel],
-
-        pData[playerid][pHealth],
-        pData[playerid][pArmour],
-
-        pData[playerid][pSkin],
-        pData[playerid][pDOB],
-        pData[playerid][pGender],
-        pData[playerid][pHeight],
-        pData[playerid][pWeight],
-
-        pData[playerid][pOrigin],
-        pData[playerid][pDomicile],
-
-        pData[playerid][pPosX],
-        pData[playerid][pPosY],
-        pData[playerid][pPosZ],
-        pData[playerid][pPosA],
-
-        pData[playerid][pInterior],
-        pData[playerid][pVirtualWorld],
-
-        pData[playerid][pHunger],
-        pData[playerid][pThirst],
-        pData[playerid][pStress]
-    );
-
-    Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, "Vantara Roleplay - Self Variables", str, "Close", "");
-
+YCMD:i(playerid, params[], help)
+{
+    if(TDInfo[playerid][InvTDShown])
+        Hide_InvTD(playerid);
+    else
+        Show_InvTD(playerid);
     return 1;
 }

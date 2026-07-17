@@ -7,3 +7,8 @@ function:OnInsertCharacterName(playerid, const char_name[])
     Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Please enter your character's date of birth (DD-MM-YYYY)", "Input", "Back");
     return 1;
 }
+
+function:__KickDelay(playerid)
+{
+    return KickEx(playerid);
+}

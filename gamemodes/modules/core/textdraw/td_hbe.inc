@@ -193,7 +193,7 @@ Destroy_HBEPTD(playerid)
     for(new i = 0; i < 5; i++)
     {
         PlayerTextDrawDestroy(playerid, HBEPTD[playerid][i]);
-        HBEPTD[playerid][i] = PlayerText:INVALID_TEXT_DRAW;
+        HBEPTD[playerid][i] = PlayerText:INVALID_PLAYER_TEXT_DRAW;
     }
     return 1;
 }
@@ -207,6 +207,8 @@ stock Show_HBETD(playerid)
 
         TextDrawShowForPlayer(playerid, HBETD[i]);
     }
+
+    TDInfo[playerid][HBETDShown] = true;
     return 1;
 }
 
@@ -219,6 +221,8 @@ stock Hide_HBETD(playerid)
 
         TextDrawHideForPlayer(playerid, HBETD[i]);
     }
+
+    TDInfo[playerid][HBETDShown] = false;
     return 1;
 }
 

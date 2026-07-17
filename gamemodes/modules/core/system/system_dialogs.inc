@@ -2,7 +2,7 @@
 
 Dialog:CharacterList(playerid, response, listitem, inputtext[])
 {
-    if(!response) return Kick(playerid);
+    if(!response) return KickEx(playerid);
 
     if(listitem < 0 || listitem >= MAX_CHARACTERS)
     {
@@ -12,15 +12,15 @@ Dialog:CharacterList(playerid, response, listitem, inputtext[])
     }
 
     if(isnull(PlayerChar[playerid][listitem][CharName]))
-        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Enter a name for your new character.", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan nama karakter Anda.", "Input", "Kembali");
     
     strcopy(pData[playerid][pName], PlayerChar[playerid][listitem][CharName]);
     pData[playerid][pID] = PlayerChar[playerid][listitem][CharID];
     pData[playerid][pLevel] = PlayerChar[playerid][listitem][CharLevel];
 
     new query[256];
-    mysql_format(g_SQL, query, sizeof(query), "SELECT * FROM `player_characters` WHERE `char_id` = %d LIMIT 1", PlayerChar[playerid][listitem][CharID]);
-    mysql_pquery(g_SQL, query, "LoadCharacterData", "d", playerid);
+    mysql_format(SQL, query, sizeof(query), "SELECT * FROM `player_characters` WHERE `char_id` = %d LIMIT 1", PlayerChar[playerid][listitem][CharID]);
+    mysql_pquery(SQL, query, "LoadCharacterData", "d", playerid);
     return 1;
 }
 
@@ -34,14 +34,14 @@ Dialog:CreateCharName(playerid, response, listitem, inputtext[])
     }
 
     if(strlen(inputtext) < 3 || strlen(inputtext) > MAX_PLAYER_NAME)
-        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Character name must be between 3 and 24 characters long.\nExample: John_Doe, Michael_Lincoln\nPlease enter a valid name:", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Nama karakter harus memiliki setidaknya 3 sampai dengan 24 karakter.\nContoh: Ucok_Soelaiman, Herlambang_Kurniawan\nSilahkan masukkan nama karakter Anda:", "Input", "Kembali");
     
     if(!IsRoleplayName(inputtext))
-        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Invalid character name. Please use the format Firstname_Lastname.\nExample: John_Doe, Michael_Lincoln\nPlease enter a valid name:", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Nama karakter yang anda masukkan tidak valid. Silahkan gunakan format Firstname_Lastname.\nContoh: Ucok_Soelaiman, Herlambang_Kurniawan\nSilahkan masukkan nama karakter Anda:", "Input", "Kembali");
 
     new query[256];
-    mysql_format(g_SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_name` = '%e'", inputtext);
-    mysql_tquery(g_SQL, query, "OnInsertCharacterName", "ds", playerid, inputtext);
+    mysql_format(SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_name` = '%e'", inputtext);
+    mysql_pquery(SQL, query, "OnInsertCharacterName", "ds", playerid, inputtext);
     return 1;
 }
 
@@ -51,16 +51,16 @@ Dialog:CreateCharDOB(playerid, response, listitem, inputtext[])
     if(!response)
     {
         tempCharDOB[playerid][0] = EOS;
-        Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Enter a name for your new character.", "Input", "Back");
+        Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan nama karakter anda.", "Input", "Kembali");
         return 1;
     }
 
     if(IsNull(inputtext) || !IsValidDOB(inputtext))
-        return Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Invalid date format.\nPlease enter the date of birth in the format DD-MM-YYYY.\nExample: 03-08-2001", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Format tanggal lahir yang anda masukkan tidak valid.\nSilahkan masukkan tanggal lahir karakter Anda dengan format DD-MM-YYYY.\nContoh: 03-08-2001", "Input", "Kembali");
     
     strcopy(tempCharDOB[playerid], inputtext);
 
-    Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Please enter your character's weight (kg)", "Input", "Back");
+    Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan berat badan karakter Anda (kg)", "Input", "Kembali");
     return 1;
 }
 
@@ -69,21 +69,21 @@ Dialog:CreateCharWeight(playerid, response, listitem, inputtext[])
     if(!response)
     {
         tempCharWeight[playerid] = 0;
-        Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Please enter your character's date of birth (DD-MM-YYYY)", "Input", "Back");
+        Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan tanggan lahir karakter Anda (DD-MM-YYYY)", "Input", "Kembali");
         return 1;
     }
 
     if(!IsNumericEx(inputtext))
-        return Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Invalid weight. Please enter a numeric value in kilograms.", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Berat badan tidak valid. Berat badan hanya dapat diisi dengan angka dalam satuan kilogram.", "Input", "Kembali");
     
     new weight = strval(inputtext);
 
     if(weight < 40 || weight > 110)
-        return Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Invalid weight. Please enter a weight between 40 and 110 kilograms.", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Berat badan tidak valid. Berat badan minimal adalah 40 hingga 110 kilogram.", "Input", "Kembali");
     
     tempCharWeight[playerid] = weight;
 
-    Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Please enter your character's height (cm)", "Input", "Back");
+    Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan tinggi badan karakter Anda (cm)", "Input", "Kembali");
     return 1;
 }
 
@@ -122,6 +122,7 @@ Dialog:CreateCharGender(playerid, response, listitem, inputtext[])
     tempCharGender[playerid] = listitem + 1;
 
     static str[3528 + 1];
+    str[0] = EOS;
     for(new i = 0; i < sizeof(CountryNames); i++)
     {
         format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
@@ -163,6 +164,7 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
     {
         tempCharDomicile[playerid] = -1;
         static str[3528 + 1];
+        str[0] = EOS;
         for(new i = 0; i < sizeof(CountryNames); i++)
         {
             format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
@@ -195,8 +197,8 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
         }
     }
 
-    new query[2048];
-    mysql_format(g_SQL, query, sizeof(query),
+    static query[2048];
+    mysql_format(SQL, query, sizeof(query),
         "INSERT INTO `player_characters` \
         (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, \
         `char_admin_name`, `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile`) \
@@ -214,7 +216,7 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
         tempCharWeight[playerid],
         tempCharHeight[playerid],
         tempCharDomicile[playerid]);
-    mysql_tquery(g_SQL, query, "OnCharacterCreated", "d", playerid);
+    mysql_tquery(SQL, query, "OnCharacterCreated", "d", playerid);
     return 1;
 }
 
@@ -240,6 +242,8 @@ Dialog:LSSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         case 1: // ocean docks
@@ -250,6 +254,8 @@ Dialog:LSSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         case 2: // last exit
@@ -263,6 +269,8 @@ Dialog:LSSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         default:
@@ -293,6 +301,8 @@ Dialog:SFSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         case 1: // Esplande North
@@ -303,6 +313,8 @@ Dialog:SFSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         case 2: // Last Exit
@@ -316,6 +328,8 @@ Dialog:SFSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         default:
@@ -346,6 +360,8 @@ Dialog:LVSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         case 1: // Linden Station
@@ -356,6 +372,8 @@ Dialog:LVSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         case 2: // Last Exit
@@ -369,6 +387,8 @@ Dialog:LVSpawn(playerid, response, listitem, inputtext[])
             TogglePlayerSpectating(playerid, false);
             SpawnPlayer(playerid);
             SetCameraBehindPlayer(playerid);
+
+            CallLocalFunction("PeriodCharacterSpawned", "d", playerid);
         }
 
         default:

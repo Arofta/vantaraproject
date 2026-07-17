@@ -21,19 +21,99 @@ enum e_CharacterInfo
 
 new PlayerChar[MAX_PLAYERS][MAX_CHARACTERS][e_CharacterInfo];
 
+enum e_JailData
+{
+    bool:IsJailed,
+    JailTime,
+
+    JailIssuer[MAX_PLAYER_NAME],
+    JailReason[60],
+    JailFined
+};
+
+new OJailData[MAX_PLAYERS][e_JailData];
+
 new const GenderNames[][] = {
     "Tidak Diketahui",
     "Laki-Laki",
     "Perempuan"
 };
 
-new rand_MaleSkin[] = {
+enum e_JobList
+{
+    JOB_NONE,
+    JOB_MINER,
+};
+
+new const JobNames[][] = {
+    "Pengangguran",
+    "Penambang"
+};
+
+enum e_FactionList
+{
+    FACTION_NONE,
+    FACTION_POLICE,
+    FACTION_PARAMEDIC,
+    FACTION_GOVERNMENT,
+};
+
+new const FactionNames[][] = {
+    "N/A",
+    "Kepolisian",
+    "Paramedis",
+    "Pemerintah"
+};
+
+new const FacPoliceRankNames[][] = {
+    "N/A",
+
+    "BHARADA",
+    "BHARATU",
+    "BHARAKA",
+    "BRIPDA",
+    "BRIPTU",
+    "BRIGPOL",
+    "BRIPKA",
+    "AIPDA",
+    "AIPTU",
+    "IPDA",
+    "IPTU",
+    "AKP",
+    "KOMPOL",
+    "AKBP",
+    "KOMBESPOL",
+    "BRIGJENPOL",
+    "IRJENPOL"
+};
+
+new const AdminRankNames[][] = {
+    "N/A",
+    "Trial Admin",
+    "Admin Junior",
+    "Admin Senior",
+    "Head Admin",
+    "Management",
+    "Executive",
+    "Adipati"
+};
+
+new const VIPLevelNames[][] = {
+    "N/A",
+    "{CD7F32}Bronze"F_COLOR_WHITE"",
+    "{C0C0C0}Silver"F_COLOR_WHITE"",
+    "{FFD700}Gold"F_COLOR_WHITE"",
+    "{E5E4E2}Platinum"F_COLOR_WHITE"",
+    "{5A0F0F}Eternium"F_COLOR_WHITE""
+};
+
+new const rand_MaleSkin[] = {
     2, 3, 7, 20,
     59, 147, 186, 
     249
 };
 
-new rand_FemaleSkin[] = {
+new const rand_FemaleSkin[] = {
     56, 93, 169,
     193, 226, 233
 };
@@ -234,4 +314,30 @@ new const CountryNames[][] = { // WAJIB BACA: Variabel ini tidak boleh dirubah, 
     "Yemen",
     "Zambia",
     "Zimbabwe"
+};
+
+new const VehicleNames[][] =
+{
+	"Landstalker", "Bravura", "Buffalo", "Linerunner", "Pereniel", "Sentinel", "Dumper", "Firetruck", "Trashmaster", 
+	"Stretch", "Manana", "Infernus", "Voodoo", "Pony", "Mule", "Cheetah", "Ambulance", "Leviathan", "Moonbeam", 
+	"Esperanto", "Taxi", "Washington", "Bobcat", "Mr Whoopee", "BF Injection", "Hunter", "Premier", "Enforcer", 
+	"Securicar", "Banshee", "Predator", "Bus", "Rhino", "Barracks", "Hotknife", "Trailer", "Previon", "Coach", 
+	"Cabbie", "Stallion", "Rumpo", "RC Bandit", "Romero", "Packer", "Monster", "Admiral", "Squalo", "Seasparrow",
+	"Pizzaboy", "Tram", "Trailer", "Turismo", "Speeder", "Reefer", "Tropic", "Flatbed", "Yankee", "Caddy", "Solair", 
+	"Berkley's RC Van", "Skimmer", "PCJ-600", "Faggio", "Freeway", "RC Baron", "RC Raider", "Glendale", "Oceanic", 
+	"Sanchez", "Sparrow", "Patriot", "Quad", "Coastguard", "Dinghy", "Hermes", "Sabre", "Rustler", "ZR-350", "Walton", 
+	"Regina", "Comet", "BMX", "Burrito", "Camper", "Marquis", "Baggage", "Dozer", "Maverick", "News Chopper", "Rancher", 
+	"FBI Rancher", "Virgo", "Greenwood", "Jetmax", "Hotring", "Sandking", "Blista", "Police Maverick", 
+	"Boxville", "Benson", "Mesa", "RC Goblin", "Hotring-Racer", "Hotring-Racer", "Bloodring-Banger", "Rancher", 
+	"Super-GT", "Elegant", "Journey", "Bike", "Mountain Bike", "Beagle", "Cropdust", "Stunt", "Tanker", "RoadTrain", 
+	"Nebula", "Majestic", "Buccaneer", "Shamal", "Hydra", "FCR-900", "NRG-500", "HPV1000", "Cement Truck", "Tow Truck", 
+	"Fortune", "Cadrona", "FBI Truck", "Willard", "Forklift", "Tractor", "Combine", "Feltzer", "Remington", "Slamvan", 
+	"Blade", "Freight", "Streak", "Vortex", "Vincent", "Bullet", "Clover", "Sadler", "Firetruck", "Hustler", "Intruder", 
+	"Primo", "Cargobob", "Tampa", "Sunrise", "Merit", "Utility", "Nevada", "Yosemite", "Windsor", "Monster Truck A", "Monster Truck B", 
+	"Uranus", "Jester", "Sultan", "Stratum", "Elegy", "Raindance", "RC Tiger", "Flash", "Tahoma", "Savanna", "Bandito", 
+	"Freight", "Trailer", "Kart", "Mower", "Duneride", "Sweeper", "Broadway", "Tornado", "AT-400", "DFT-30", 
+	"Huntley", "Stafford", "BF-400", "Newsvan", "Tug", "Trailer", "Emperor", "Wayfarer", "Euros", "Hotdog", "Club", 
+	"Trailer", "Trailer", "Andromada", "Dodo", "RC Cam", "Launch", "LSPD Car", "SFPD Car", "LVPD Car", 
+	"Police Ranger", "Picador", "S.W.A.T. Van", "Alpha", "Phoenix", "Glendale", "Sadler", "Luggage Trailer", "Luggage Trailer", "Stair Trailer", 
+	"Boxville", "Farm Plow", "Utility Trailer"
 };
