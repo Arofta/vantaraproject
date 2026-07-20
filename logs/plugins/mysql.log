@@ -266,3 +266,12 @@
 [16/07/2026 13:32:39] [WARNING] mysql_connect_file: no password specified
 [16/07/2026 14:44:39] [WARNING] mysql_connect_file: no password specified
 [16/07/2026 14:51:23] [WARNING] mysql_connect_file: no password specified
+[17/07/2026 12:10:22] [WARNING] mysql_connect_file: no password specified
+[19/07/2026 02:12:09] [WARNING] mysql_connect_file: no password specified
+[19/07/2026 02:16:29] [WARNING] mysql_connect_file: no password specified
+[19/07/2026 02:29:10] [WARNING] mysql_connect_file: no password specified
+[19/07/2026 02:29:14] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[19/07/2026 02:29:19] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[19/07/2026 02:29:23] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[19/07/2026 02:29:27] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[19/07/2026 16:50:42] [WARNING] mysql_connect_file: no password specified

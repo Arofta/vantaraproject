@@ -1,14 +1,14 @@
 function:OnInsertCharacterName(playerid, const char_name[])
 {
     if(cache_num_rows() > 0)
-        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Character Name already exists. Please choose a different name.", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Nama karakter sudah digunakan pemain lain. Silahkan masukkan nama karakter Anda.", "Input", "Kembali");
 
     strcopy(tempCharName[playerid], char_name);
-    Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Please enter your character's date of birth (DD-MM-YYYY)", "Input", "Back");
+    Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan tanggal lahir karakter Anda (DD-MM-YYYY).", "Input", "Kembali");
     return 1;
 }
 
 function:__KickDelay(playerid)
 {
-    return KickEx(playerid);
+    return Kick(playerid);
 }

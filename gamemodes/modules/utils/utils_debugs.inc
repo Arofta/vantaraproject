@@ -1,135 +1,10 @@
-/*
-YCMD:ttd1(playerid, params[], help)
+new floodtest[MAX_PLAYERS];
+YCMD:ftest(playerid, params[], help)
 {
-    PlayerTextDrawShow(playerid, InvPage[playerid][0]);
-    return 1;
-}
-
-YCMD:ttd2(playerid, params[], help)
-{
-    PlayerTextDrawShow(playerid, InvPage[playerid][1]);
-    return 1;
-}
-
-YCMD:ttd3(playerid, params[], help)
-{
-    PlayerTextDrawShow(playerid, ContainerPage[playerid][0]);
-    return 1;
-}
-
-YCMD:ttd4(playerid, params[], help)
-{
-    PlayerTextDrawShow(playerid, ContainerPage[playerid][1]);
-    return 1;
-}
-
-YCMD:ttdc(playerid, params[], help)
-{
-    PlayerTextDrawHide(playerid, InvPage[playerid][0]);
-    PlayerTextDrawHide(playerid, InvPage[playerid][1]);
-    PlayerTextDrawHide(playerid, ContainerPage[playerid][0]);
-    PlayerTextDrawHide(playerid, ContainerPage[playerid][1]);
-    return 1;
-}
-
-YCMD:tests(playerid, params[], help)
-{
-    // Loop Textdraw HBE
-    for(new x = 0; x < 12; x++)
-    {
-        printf("HBETD[%d] ID: %d", x, HBETD[x]);
-    }
-    for(new x = 0; x < 5; x++)
-    {
-        printf("HBEPTD[%d] ID: %d", x, HBEPTD[playerid][x]);
-    }
-
-    // Loop Textdraw Dying & Injury
-    for(new x = 0; x < 19; x++)
-    {
-        printf("InjuryTD[%d] ID: %d", x, InjuryTD[x]);
-    }
-    printf("DyingTD[0] ID: %d", DyingTD[0]);
-    for(new x = 0; x < 3; x++)
-    {
-        printf("InjuryPTD[%d] ID: %d", x, InjuryPTD[playerid][x]);
-    }
-
-    // Loop Textdraw Inventory
-    for(new x = 0; x < 35; x++)
-    {
-        printf("BaseInvTD[%d] ID: %d", x, BaseInvTD[x]);
-    }
-    for(new x = 0; x < 20; x++)
-    {
-        printf("InvSlot[%d] ID: %d", x, InvSlot[x]);
-    }
-    for(new x = 0; x < 20; x++)
-    {
-        printf("ContainerSlot[%d] ID: %d", x, ContainerSlot[x]);
-    }
-    for(new x = 0; x < 5; x++)
-    {
-        printf("Button[%d] ID: %d", x, Button[x]);
-    }
-    for(new x = 0; x < 4; x++)
-    {
-        printf("ExtraButton[%d] ID: %d", x, ExtraButton[x]);
-    }
-    for(new x = 0; x < 2; x++)
-    {
-        printf("InvPage[%d] ID: %d", x, InvPage[playerid][x]);
-    }
-    for(new x = 0; x < 20; x++)
-    {
-        printf("InvPrevModel[%d] ID: %d", x, InvPrevModel[playerid][x]);
-    }
-    for(new x = 0; x < 20; x++)
-    {
-        printf("InvItemName[%d] ID: %d", x, InvItemName[playerid][x]);
-    }
-    for(new x = 0; x < 20; x++)
-    {
-        printf("InvItemAmount[%d] ID: %d", x, InvItemAmount[playerid][x]);
-    }
-    printf("InvPlayerName ID: %d", InvPlayerName[playerid]);
-    printf("InvWeightBar ID: %d", InvWeightBar[playerid]);
-    printf("InvWeightText ID: %d", InvWeightText[playerid]);
-    printf("InvPageText ID: %d", InvPageText[playerid]);
-    for(new x = 0; x < 2; x++)
-    {
-        printf("ContainerPage[%d] ID: %d", x, ContainerPage[playerid][x]);
-    }
-    for(new x = 0; x < 20; x++)
-    {
-        printf("ContainerPrevModel[%d] ID: %d", x, ContainerPrevModel[playerid][x]);
-    }
-    for(new x = 0; x < 20; x++)
-    {
-        printf("ContainerItemName[%d] ID: %d", x, ContainerItemName[playerid][x]);
-    }
-    for(new x = 0; x < 20; x++)
-    {
-        printf("ContainerItemAmount[%d] ID: %d", x, ContainerItemAmount[playerid][x]);
-    }
-    printf("ContainerTitle ID: %d", ContainerTitle[playerid]);
-    printf("ContainerWeightBar ID: %d", ContainerWeightBar[playerid]);
-    printf("ContainerWeightText ID: %d", ContainerWeightText[playerid]);
-    printf("ContainerPageText ID: %d", ContainerPageText[playerid]);
-    for(new x = 0; x < 3; x++)
-    {
-        printf("ContainerModeText[%d] ID: %d", x, ContainerModeText[playerid][x]);
-    }
-    printf("AmountTD ID: %d", AmountTD[playerid]);
-    return 1;
-}*/
-
-YCMD:tests(playerid, params[], help)
-{
-    for(new i; i < 20; i++)
-    {
-        debugmsg(playerid, sprintf("InvSlotID: %d", InvSlotTD[i]));
-    }
+    if(Flood_Check(floodtest[playerid], 1000)) 
+        return SendClientMessage(playerid, -1, "Jangan Spam");
+    
+    SendClientMessage(playerid, -1, "Oke, aman");
     return 1;
 }
 
@@ -213,7 +88,7 @@ YCMD:myvar(playerid, params[], help)
         pData[playerid][pStress]
     );
 
-    Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, "Vantara Roleplay - Self Variables", str, "Close", "");
+    Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Self Variables", str, "Close", "");
 
     return 1;
 }

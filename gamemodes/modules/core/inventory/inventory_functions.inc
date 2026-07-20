@@ -241,43 +241,32 @@ stock Inventory_Clear(playerid)
 
 stock Show_InvTD(playerid)
 {
-    for(new i; i < 6; i++) TextDrawShowForPlayer(playerid, InvBaseTD[i]);
-
-    for(new i; i < 5; i++) TextDrawShowForPlayer(playerid, InvButtonTD[i]);
-
-    for(new i; i < 4; i++) TextDrawShowForPlayer(playerid, InvTextTD[i]);
-
-    for(new i; i < 20; i++) TextDrawShowForPlayer(playerid, InvSlotTD[i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawShow(playerid, InvModelPTD[playerid][i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawShow(playerid, InvNamePTD[playerid][i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawShow(playerid, InvQuantityPTD[playerid][i]);
-
-    for(new i; i < 2; i++) PlayerTextDrawShow(playerid, InvPagePTD[playerid][i]);
-
+    for(new x = 0; x < 20; x++)
+    {
+        if(x < 2) PlayerTextDrawShow(playerid, InvPagePTD[playerid][x]);
+        if(x < 4) 
+        {
+            TextDrawShowForPlayer(playerid, InvTextTD[x]);
+            PlayerTextDrawShow(playerid, InvTextPTD[playerid][x]);
+        }
+        if(x < 5) TextDrawShowForPlayer(playerid, InvButtonTD[x]);
+        if(x < 6) TextDrawShowForPlayer(playerid, InvBaseTD[x]);
+        
+        PlayerTextDrawShow(playerid, InvSlotPTD[playerid][x]);
+        if(InvData[playerid][x][invExist])
+        {
+            PlayerTextDrawSetPreviewModel(playerid, InvModelPTD[playerid][x], Items[InvData[playerid][x][invItemID]][Model]);
+            PlayerTextDrawSetPreviewRot(playerid, InvModelPTD[playerid][x], Items[InvData[playerid][x][invItemID]][RotX], Items[InvData[playerid][x][invItemID]][RotY], Items[InvData[playerid][x][invItemID]][RotZ], Items[InvData[playerid][x][invItemID]][Zoom]);
+            PlayerTextDrawShow(playerid, InvModelPTD[playerid][x]);
+            
+            PlayerTextDrawSetString(playerid, InvNamePTD[playerid][x], "%s", Items[InvData[playerid][x][invItemID]][Name]);
+            PlayerTextDrawShow(playerid, InvNamePTD[playerid][x]);
+            
+            PlayerTextDrawSetString(playerid, InvQuantityPTD[playerid][x], "%dx", InvData[playerid][x][invQuantity]);
+            PlayerTextDrawShow(playerid, InvQuantityPTD[playerid][x]);
+        }
+    }
     PlayerTextDrawShow(playerid, InvWeightBarPTD[playerid]);
-
-    for(new i; i < 4; i++) PlayerTextDrawShow(playerid, InvTextPTD[playerid][i]);
-
-    // Container
-
-    for(new i; i < 5; i++) TextDrawShowForPlayer(playerid, ContainerBaseTD[i]);
-
-    for(new i; i < 20; i++) TextDrawShowForPlayer(playerid, ContainerSlotTD[i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawShow(playerid, ContainerItemModelPTD[playerid][i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawShow(playerid, ContainerItemNamePTD[playerid][i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawShow(playerid, ContainerItemQuantityPTD[playerid][i]);
-
-    for(new i; i < 2; i++) PlayerTextDrawShow(playerid, ContainerPagePTD[playerid][i]);
-
-    PlayerTextDrawShow(playerid, ContainerWeightBarPTD[playerid]);
-
-    for(new i; i < 3; i++) PlayerTextDrawShow(playerid, ContainerTextPTD[playerid][i]);
 
     TDInfo[playerid][InvTDShown] = true;
     CurrContainerPage[playerid] = 0;
@@ -290,43 +279,23 @@ stock Show_InvTD(playerid)
 
 stock Hide_InvTD(playerid)
 {
-    for(new i; i < 6; i++) TextDrawHideForPlayer(playerid, InvBaseTD[i]);
-
-    for(new i; i < 5; i++) TextDrawHideForPlayer(playerid, InvButtonTD[i]);
-
-    for(new i; i < 4; i++) TextDrawHideForPlayer(playerid, InvTextTD[i]);
-
-    for(new i; i < 20; i++) TextDrawHideForPlayer(playerid, InvSlotTD[i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawHide(playerid, InvModelPTD[playerid][i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawHide(playerid, InvNamePTD[playerid][i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawHide(playerid, InvQuantityPTD[playerid][i]);
-
-    for(new i; i < 2; i++) PlayerTextDrawHide(playerid, InvPagePTD[playerid][i]);
-
+    for(new x = 0; x < 20; x++)
+    {
+        if(x < 2) PlayerTextDrawHide(playerid, InvPagePTD[playerid][x]);
+        if(x < 4) 
+        {
+            TextDrawHideForPlayer(playerid, InvTextTD[x]);
+            PlayerTextDrawHide(playerid, InvTextPTD[playerid][x]);
+        }
+        if(x < 5) TextDrawHideForPlayer(playerid, InvButtonTD[x]);
+        if(x < 6) TextDrawHideForPlayer(playerid, InvBaseTD[x]);
+        
+        PlayerTextDrawHide(playerid, InvSlotPTD[playerid][x]);
+        PlayerTextDrawHide(playerid, InvModelPTD[playerid][x]);
+        PlayerTextDrawHide(playerid, InvNamePTD[playerid][x]);
+        PlayerTextDrawHide(playerid, InvQuantityPTD[playerid][x]);
+    }
     PlayerTextDrawHide(playerid, InvWeightBarPTD[playerid]);
-
-    for(new i; i < 4; i++) PlayerTextDrawHide(playerid, InvTextPTD[playerid][i]);
-
-    // Container
-
-    for(new i; i < 5; i++) TextDrawHideForPlayer(playerid, ContainerBaseTD[i]);
-
-    for(new i; i < 20; i++) TextDrawHideForPlayer(playerid, ContainerSlotTD[i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawHide(playerid, ContainerItemModelPTD[playerid][i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawHide(playerid, ContainerItemNamePTD[playerid][i]);
-
-    for(new i; i < 20; i++) PlayerTextDrawHide(playerid, ContainerItemQuantityPTD[playerid][i]);
-
-    for(new i; i < 2; i++) PlayerTextDrawHide(playerid, ContainerPagePTD[playerid][i]);
-
-    PlayerTextDrawHide(playerid, ContainerWeightBarPTD[playerid]);
-
-    for(new i; i < 3; i++) PlayerTextDrawHide(playerid, ContainerTextPTD[playerid][i]);
 
     TDInfo[playerid][InvTDShown] = false;
     CurrContainerPage[playerid] = 0;

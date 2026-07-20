@@ -255,71 +255,59 @@ hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 
 hook OnPlayerClickTextDraw(playerid, Text:clickedid)
 {
-    for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++)
+    return 1;
+}
+
+hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
+{
+    if(playertextid == InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE])
     {
-        if(clickedid == InvSlotTD[x])
+        PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x66000000);
+        PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE]);
+        SelectedSlot[playerid] = -1;
+        SelectedType[playerid] = -1;
+    }
+    else
+    {
+        for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++)
         {
-            if(CurrInvPage[playerid] == 0)
+            if(playertextid == InvSlotPTD[playerid][x])
             {
                 if(SelectedSlot[playerid] != -1)
                 {
                     if(SelectedType[playerid] == 0)
-                        PlayerTextDrawBackgroundColour(playerid, InvModelPTD[playerid][SelectedSlot[playerid]], 0);
-                    else if(SelectedType[playerid] == 1)
-                        PlayerTextDrawBackgroundColour(playerid, ContainerModelPTD[playerid][SelectedSlot[playerid]], 0);
+                    {
+                        PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x66000000);
+                        PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE]);
+                    }
+                    //else
+                        //PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x00000000);
                 }
 
-                SelectedSlot[playerid] = x;
+                SelectedSlot[playerid] = CurrInvPage[playerid] * MAX_SLOTS_PER_PAGE + x;
                 SelectedType[playerid] = 0;
-                PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][x], 0xFFD70033);
-            }
-            else if(CurrInvPage[playerid] == 1)
-            {
-                if(SelectedSlot[playerid] != -1)
-                {
-                    if(SelectedType[playerid] == 0)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                    else if(SelectedType[playerid] == 1)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                }
 
-                SelectedSlot[playerid] = x + 20;
-                SelectedType[playerid] = 0;
-                PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0xFFD70033);
+                PlayerTextDrawColour(playerid, InvSlotPTD[playerid][x], 0xFFD70033);
+                PlayerTextDrawShow(playerid, InvSlotPTD[playerid][x]);
+                break;
             }
-            break;
-        }
-        else if(clickedid == ContainerSlot[x])
-        {
-            if(CurrContainerPage[playerid] == 0)
-            {
-                if(SelectedSlot[playerid] != -1)
-                {
-                    if(SelectedType[playerid] == 0)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                    else if(SelectedType[playerid] == 1)
-                        PlayerTextDrawBackgroundColour(playerid, ContainerPrevModel[playerid][SelectedSlot[playerid]], 0);
-                }
-
-                SelectedSlot[playerid] = x;
-                SelectedType[playerid] = 1;
-                PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][x], 0xFFD70033);
-            }
-            else if(CurrContainerPage[playerid] == 1)
-            {
-                if(SelectedSlot[playerid] != -1)
-                {
-                    if(SelectedType[playerid] == 0)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                    else if(SelectedType[playerid] == 1)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                }
-
-                SelectedSlot[playerid] = x + 20;
-                SelectedType[playerid] = 1;
-                PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0xFFD70033);
-            }
-            break;
+//            else if(playertextid == ContainerSlotPTD[playerid][x])
+//            {
+//                if(SelectedSlot[playerid] != -1)
+//                {
+//                    if(SelectedType[playerid] == 0)
+//                        PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x00000000);
+//                    else
+//                        PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x00000000);
+//                }
+//
+//                SelectedSlot[playerid] = CurrContainerPage[playerid] * MAX_SLOTS_PER_PAGE + x;
+//                SelectedType[playerid] = 1;
+//            
+//                PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][x], 0xFFD70033);
+//                PlayerTextDrawShow(playerid, ContainerSlotPTD[playerid][x]);
+//                break;
+//            }
         }
     }
     return 1;

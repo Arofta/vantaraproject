@@ -25,9 +25,8 @@ function:LoadCharacterData(playerid)
 {
     if(!cache_num_rows())
     {
-        Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Karakter tidak ditemukan", "Terjadi kesalahan, coba lagi nanti!", "Keluar", "");
-        KickEx(playerid);
-        return 1;
+        Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Account not found", "Terjadi kesalahan saat sedang memproses permintaan Anda.", "Keluar", "");
+        return KickEx(playerid);
     }
     else
     { // char_id	char_account_id	char_ucp	char_name	char_register_date	char_last_online	char_pos_x	char_pos_y	char_pos_z	char_pos_a	char_health	char_armour	char_level	char_money	char_bank_money	char_skin	char_dob	char_origin	char_gender	char_weight	char_height	char_hunger	char_thirst	char_stress

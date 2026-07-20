@@ -12,7 +12,7 @@ function:OnAccountCheck(playerid)
 {
     if(!cache_num_rows())
     {
-        Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Akun tidak ditemukan", "Akun Anda tidak ditemukan. Silahkan bergabung dengan server discord kami untuk membuat sebuah akun.\ndiscord.gg/vantara", "Keluar", "");
+        Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Account not found", sprintf("Akun dengan nama "F_COLOR_RED"%s"F_COLOR_WHITE" tidak ditemukan didalam database kami. Silahkan bergabung dengan server discord kami untuk membuat akun.\n"F_COLOR_YELLOW"discord.gg/vantara", pData[playerid][pUCP]), "Keluar", "");
         return KickEx(playerid);
     }
     
@@ -23,27 +23,25 @@ function:OnAccountCheck(playerid)
     cache_get_value_name(0, "account_last_online", pData[playerid][pAccountLastOnlineDate]);
 
     if(tempVerify[playerid] != -1)
-        return Dialog_Show(playerid, "Verification", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Verifikasi Akun", "Akun Anda belum terverifikasi. Silahkan masukkan kode verifikasi akun Anda.", "Input", "Keluar");
+        return Dialog_Show(playerid, "Verification", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Account Verification", "Akun Anda belum terverifikasi. Silahkan masukkan kode verifikasi akun Anda.", "Input", "Batal");
     
     if(tempRecovery[playerid] != -1)
-        return Dialog_Show(playerid, "Recovery", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Pemulihan Akun", "Your account is in recovery mode. Silahkan masukkan kode pemulihan akun Anda.", "Input", "Keluar");
+        return Dialog_Show(playerid, "Recovery", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Account Recovery", "Akun Anda dalam status pemulihan. Silahkan masukkan kode pemulihan akun Anda.", "Input", "Batal");
 
-    Dialog_Show(playerid, "Login", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", "Silahkan masukkan kata sandi akun Anda.", "Input", "Keluar");
+    Dialog_Show(playerid, "Login", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", sprintf("Silahkan masukkan kata sandi akun Anda.\nLast online: "F_COLOR_YELLOW"%s\n"F_COLOR_WHITE"Attempt(s): "F_COLOR_YELLOW"%dx", pData[playerid][pAccountLastOnlineDate], tempLoginAttempts[playerid]), "Input", "Batal");
     return 1;
 }
 
 function:OnPassworHashed(playerid)
 {
-    new hash[BCRYPT_HASH_LENGTH],
-        str[144];
+    new hash[BCRYPT_HASH_LENGTH];
     bcrypt_get_hash(hash);
 
     new query[256];
     mysql_format(SQL, query, sizeof(query), "UPDATE `player_accounts` SET `account_password` = '%e', `account_verify` = -1, `account_recovery` = -1 WHERE `account_id` = %d", hash, pData[playerid][pAccountID]);
     mysql_tquery(SQL, query);
 
-    format(str, sizeof(str), "Your password has been set, Please enter your password.\nAttempt: %dx", tempLoginAttempts[playerid]);
-    Dialog_Show(playerid, "Login", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", str, "Input", "Cancel");
+    Dialog_Show(playerid, "Login", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", sprintf("Kata sandi baru berhasil ditetapkan. Silahkan masukkan kata sandi akun Anda.\nLast online: "F_COLOR_YELLOW"%s\n"F_COLOR_WHITE"Attempt(s): "F_COLOR_YELLOW"%dx", pData[playerid][pAccountLastOnlineDate], tempLoginAttempts[playerid]), "Input", "Batal");
     return 1;
 }
 
@@ -51,7 +49,7 @@ function:OnPlayerInputPassword(playerid, const password[])
 {
     if(!cache_num_rows())
     {
-        Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Akun tidak ditemukan", "Terjadi kesalahan!\nSilahkan coba lagi nanti.", "Keluar", "");
+        Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Account not found", "Terjadi kesalahan saat sedang memproses permintaan Anda.", "Keluar", "");
         return KickEx(playerid);
     }
 
@@ -75,12 +73,10 @@ function:OnCheckingPassword(playerid, bool:match)
     {
         if(--tempLoginAttempts[playerid] <= 0)
         {
-            Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", "Terlalu banyak percobaan login. Anda telah ditendang dari server.", "Keluar", "");
+            Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", "Terlalu banyak Percobaan login.", "Keluar", "");
             return KickEx(playerid);
         }
-        new str[144];
-        format(str, sizeof(str), "Kata sandi yang Anda masukkan salah, Silahkan masukkan kata sandi akun anda.\nPercobaan Login: %dx", tempLoginAttempts[playerid]);
-        Dialog_Show(playerid, "Login", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", str, "Input", "Keluar");
+        Dialog_Show(playerid, "Login", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", sprintf("Kata sandi yang Anda masukkan salah. Silahkan masukkan kata sandi akun Anda.\nLast online: "F_COLOR_YELLOW"%s\n"F_COLOR_WHITE"Attempt(s): "F_COLOR_YELLOW"%dx", pData[playerid][pAccountLastOnlineDate], tempLoginAttempts[playerid]), "Input", "Keluar");
     }
     return 1;
 }
@@ -94,12 +90,11 @@ Dialog:Login(playerid, response, listitem, inputtext[])
     {
         if(--tempLoginAttempts[playerid] <= 0)
         {
-            Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", "Terlalu banyak percobaan login. Anda telah ditendang dari server.", "Quit", "");
+            Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", "Terlalu banyak percobaan login.", "Keluar", "");
             return KickEx(playerid);
         }
 
-        format(str, sizeof(str), "Kata sandi tidak dapat diisi kosong, Silahkan masukkan kata sandi anda.\nAttempt: %dx", tempLoginAttempts[playerid]);
-        return Dialog_Show(playerid, "Login", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", str, "Input", "Keluar");
+        return Dialog_Show(playerid, "Login", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Login", sprintf("Kata sandi tidak dapat diisi kosong. Silahkan masukkan kata sandi akun Anda.\nLast online: "F_COLOR_YELLOW"%s\n"F_COLOR_WHITE"Attempt(s): "F_COLOR_YELLOW"%dx", pData[playerid][pAccountLastOnlineDate], tempLoginAttempts[playerid]), "Input", "Keluar");
     }
 
     new query[256];
@@ -144,11 +139,11 @@ Dialog:Recovery(playerid, response, listitem, inputtext[])
     if(!response) return KickEx(playerid);
 
     if(!IsNumericEx(inputtext) || isnull(inputtext))
-        return Dialog_Show(playerid, "Recovery", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Account Recovery", "Kode pemulihan hanya dapat diisi angka. Silahkan masukkan kode pemulihan Anda", "Input", "Batal");
+        return Dialog_Show(playerid, "Recovery", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Account Recovery", "Kode pemulihan hanya dapat diisi dengan angka. Silahkan masukkan kode pemulihan Anda", "Input", "Batal");
 
     if(strval(inputtext) != tempRecovery[playerid])
         return Dialog_Show(playerid, "Recovery", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Account Recovery", "Kode pemulihan yang Anda masukkan salah. Silahkan coba lagi.", "Input", "Batal");
     
-    Dialog_Show(playerid, "NewPassword", DIALOG_STYLE_PASSWORD, "Vantara Roleplay - Create Password", "Akun Anda berhasil dipulihkan. Silahkan buat kata sandi baru untuk login", "Input", "Batal");
+    Dialog_Show(playerid, "NewPassword", DIALOG_STYLE_PASSWORD, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Password", "Akun Anda berhasil dipulihkan. Silahkan buat kata sandi baru untuk login", "Input", "Batal");
     return 1;
 }

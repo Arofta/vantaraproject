@@ -191,7 +191,7 @@ public OnGameModeInit()
     Create_HBETD();
     Create_InjuryTD();
     Create_InvTD();
-    Create_ContainerTD();
+    //Create_ContainerTD();
 
     SetGameModeText("VRP: v0.3.0 Alpha");
 
@@ -222,7 +222,7 @@ public OnPlayerConnect(playerid)
     Create_HBEPTD(playerid);
     Create_InjuryPTD(playerid);
     Create_InvPTD(playerid);
-    Create_ContainerPTD(playerid);
+    //Create_ContainerPTD(playerid);
 
     SetPlayerColor(playerid, 0x7F7F83FF);
     GetPlayerName(playerid, pData[playerid][pUCP], MAX_PLAYER_NAME);
@@ -248,7 +248,7 @@ public OnPlayerDisconnect(playerid, reason)
     Destroy_HBEPTD(playerid);
     Destroy_InjuryPTD(playerid);
     Destroy_InvPTD(playerid);
-    Destroy_ContainerPTD(playerid);
+    //Destroy_ContainerPTD(playerid);
 
     SaveCharacterData(playerid);
     ResetVariables(playerid);

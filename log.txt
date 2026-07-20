@@ -38788,3 +38788,897 @@ Loaded 22 component(s) from D:\Arofta\arofta-archives\VantaraRP\components
 [2026-07-16T15:00:15+0800] [Info]  ===============================
 [2026-07-16T15:00:15+0800] [Info] 
 [2026-07-16T15:00:15+0800] [Info] plugin.mysql: Unloading plugin...
+Starting open.mp server (1.5.8.3079) from commit c6759bd8d265171ae3d86598895a23d5a8d92a3b
+Loading component $CAPI.dll
+	Successfully loaded component C-API (1.5.8.3079) with UID 10467dd8d4c56fc6
+Loading component Actors.dll
+	Successfully loaded component Actors (1.5.8.3079) with UID c81ca021eae2ad5c
+Loading component Checkpoints.dll
+	Successfully loaded component Checkpoints (1.5.8.3079) with UID 44a937350d611dde
+Loading component Classes.dll
+	Successfully loaded component Classes (1.5.8.3079) with UID 8cfb3183976da208
+Loading component Console.dll
+	Successfully loaded component Console (1.5.8.3079) with UID bfa24e49d0c95ee4
+Loading component CustomModels.dll
+	Successfully loaded component CustomModels (1.5.8.3079) with UID 15e3cb1e7c77ffff
+Loading component Databases.dll
+	Successfully loaded component Databases (1.5.8.3079) with UID 80092e7eb5821a96
+Loading component Dialogs.dll
+	Successfully loaded component Dialogs (1.5.8.3079) with UID 44a111350d611dde
+Loading component GangZones.dll
+	Successfully loaded component GangZones (1.5.8.3079) with UID b3351d11ee8d8056
+Loading component LegacyConfig.dll
+	Successfully loaded component LegacyConfig (1.5.8.3079) with UID 24ef6216838f9ffc
+Loading component LegacyNetwork.dll
+	Successfully loaded component RakNetLegacyNetwork (1.5.8.3079) with UID ea9799fd79cf8442
+Loading component Menus.dll
+	Successfully loaded component Menus (1.5.8.3079) with UID 621e219eb97ee0b2
+Loading component NPCs.dll
+	Successfully loaded component NPCs (1.5.8.3079) with UID 3d0e59e87f4e90bc
+Loading component Objects.dll
+	Successfully loaded component Objects (1.5.8.3079) with UID 59f8415f72da6160
+Loading component Pawn.dll
+	Successfully loaded component Pawn (1.5.8.3079) with UID 78906cd9f19c36a6
+Loading component Pickups.dll
+	Successfully loaded component Pickups (1.5.8.3079) with UID cf304faa363dd971
+Loading component Recordings.dll
+	Successfully loaded component Recordings (1.5.8.3079) with UID 871144d399f5f613
+Loading component TextDraws.dll
+	Successfully loaded component TextDraws (1.5.8.3079) with UID 9b5dc2b1d15c992a
+Loading component TextLabels.dll
+	Successfully loaded component TextLabels (1.5.8.3079) with UID a0c57ea80a009742
+Loading component Timers.dll
+	Successfully loaded component Timers (1.5.8.3079) with UID 2ad8124c5ea257a3
+Loading component Variables.dll
+	Successfully loaded component Variables (1.5.8.3079) with UID 75e121848bc01fa2
+Loading component Vehicles.dll
+	Successfully loaded component Vehicles (1.5.8.3079) with UID 3f1f62ee9e22ab19
+Loaded 22 component(s) from D:\Arofta\arofta-archives\VantaraRP\components
+[2026-07-17T12:10:19+0800] [Info] Loading plugin: streamer
+[2026-07-17T12:10:19+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[2026-07-17T12:10:20+0800] [Info] Loading plugin: sscanf
+[2026-07-17T12:10:20+0800] [Info] 
+[2026-07-17T12:10:20+0800] [Info]  ===============================
+[2026-07-17T12:10:20+0800] [Info] 
+[2026-07-17T12:10:20+0800] [Info]       sscanf plugin loaded.     
+[2026-07-17T12:10:20+0800] [Info] 
+[2026-07-17T12:10:20+0800] [Info]          Version: 2.13.8
+[2026-07-17T12:10:20+0800] [Info] 
+[2026-07-17T12:10:20+0800] [Info]    (c) 2022 Alex "Y_Less" Cole  
+[2026-07-17T12:10:20+0800] [Info] 
+[2026-07-17T12:10:20+0800] [Info]  ===============================
+[2026-07-17T12:10:20+0800] [Info] 
+[2026-07-17T12:10:20+0800] [Info] Loading plugin: mysql
+[2026-07-17T12:10:20+0800] [Info]  >> plugin.mysql: R41-4 successfully loaded.
+[2026-07-17T12:10:20+0800] [Info] Loading plugin: samp_bcrypt
+[2026-07-17T12:10:20+0800] [Info] [SampBcrypt] [info]: Version: 0.4.1
+[2026-07-17T12:10:20+0800] [Info]  
+[2026-07-17T12:10:20+0800] [Info]  
+[2026-07-17T12:10:20+0800] [Info]          ==============================================================
+[2026-07-17T12:10:20+0800] [Info]          |                                                            |
+[2026-07-17T12:10:20+0800] [Info]          |                                                            |
+[2026-07-17T12:10:20+0800] [Info]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[2026-07-17T12:10:20+0800] [Info]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[2026-07-17T12:10:20+0800] [Info]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[2026-07-17T12:10:20+0800] [Info]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[2026-07-17T12:10:20+0800] [Info]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[2026-07-17T12:10:20+0800] [Info]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[2026-07-17T12:10:20+0800] [Info]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[2026-07-17T12:10:20+0800] [Info]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[2026-07-17T12:10:20+0800] [Info]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[2026-07-17T12:10:20+0800] [Info]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[2026-07-17T12:10:20+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-17T12:10:20+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-17T12:10:20+0800] [Info]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[2026-07-17T12:10:20+0800] [Info]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[2026-07-17T12:10:20+0800] [Info]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[2026-07-17T12:10:20+0800] [Info]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[2026-07-17T12:10:20+0800] [Info]          |                                                            |
+[2026-07-17T12:10:20+0800] [Info]          |                                                            |
+[2026-07-17T12:10:20+0800] [Info]          |                      (c) 2021 MPL v1.1                     |
+[2026-07-17T12:10:20+0800] [Info]          |            Alex "Y_Less" Cole and contributors.            |
+[2026-07-17T12:10:20+0800] [Info]          |                                                            |
+[2026-07-17T12:10:20+0800] [Info]          |                                                            |
+[2026-07-17T12:10:20+0800] [Info]          ==============================================================
+[2026-07-17T12:10:20+0800] [Info]  
+[2026-07-17T12:10:20+0800] [Info]  
+[2026-07-17T12:10:20+0800] [Info]  ========================================== 
+[2026-07-17T12:10:20+0800] [Info]  |                                        | 
+[2026-07-17T12:10:20+0800] [Info]  |   Generating code, this may take a     | 
+[2026-07-17T12:10:20+0800] [Info]  |  little bit of time.  Note that this   | 
+[2026-07-17T12:10:20+0800] [Info]  |  code generation works best with the   | 
+[2026-07-17T12:10:20+0800] [Info]  |     JIT plugin, which you are not      | 
+[2026-07-17T12:10:20+0800] [Info]  |     currently using.  Get it here:     | 
+[2026-07-17T12:10:20+0800] [Info]  |                                        | 
+[2026-07-17T12:10:20+0800] [Info]  |       https://git.io/jit-plugin        | 
+[2026-07-17T12:10:20+0800] [Info]  |                                        | 
+[2026-07-17T12:10:20+0800] [Info]  |             Please wait...             | 
+[2026-07-17T12:10:21+0800] [Info]  |                                        | 
+[2026-07-17T12:10:21+0800] [Info]  |             Done in 428ms!             | 
+[2026-07-17T12:10:21+0800] [Info]  |                                        | 
+[2026-07-17T12:10:21+0800] [Info]  ========================================== 
+[2026-07-17T12:10:21+0800] [Info] *** YSI Info: Script ID: 1
+[2026-07-17T12:10:22+0800] [Info]  |                                        | 
+[2026-07-17T12:10:22+0800] [Info]  | Server:      open.mp 1.5.8.3079 (W)    | 
+[2026-07-17T12:10:22+0800] [Info]  | Started:     17 Jul 2026 - 12:10:20    | 
+[2026-07-17T12:10:22+0800] [Info]  |                                        | 
+[2026-07-17T12:10:22+0800] [Info]  | Compiler:    3.10.11 (Windows)         | 
+[2026-07-17T12:10:22+0800] [Info]  | Includes:    open.mp v037030           | 
+[2026-07-17T12:10:22+0800] [Info]  | Codepage:    <none>                    | 
+[2026-07-17T12:10:22+0800] [Info]  | Built:       17 Jul 2026 - 12:08:35    | 
+[2026-07-17T12:10:22+0800] [Info]  |                                        | 
+[2026-07-17T12:10:22+0800] [Info]  | YSI:         v05.10.0006               | 
+[2026-07-17T12:10:22+0800] [Info]  | Master:      1                         | 
+[2026-07-17T12:10:22+0800] [Info]  |                                        | 
+[2026-07-17T12:10:22+0800] [Info]  | JIT:         <none>                    | 
+[2026-07-17T12:10:22+0800] [Info]  | Crashdetect: <none>                    | 
+[2026-07-17T12:10:22+0800] [Info]  |                                        | 
+[2026-07-17T12:10:22+0800] [Info]  ========================================== 
+[2026-07-17T12:10:22+0800] [Info]  
+[2026-07-17T12:10:22+0800] [Info]  
+[2026-07-17T12:10:22+0800] [Info] ===========================================================
+[2026-07-17T12:10:22+0800] [Info] | >>> Vantara Legacy Database Connected Successfully. <<< |
+[2026-07-17T12:10:22+0800] [Info] ===========================================================
+[2026-07-17T12:10:22+0800] [Info] ================================================
+[2026-07-17T12:10:22+0800] [Info] | >>> Vantara Legacy Main Gamemode Loaded. <<< |
+[2026-07-17T12:10:22+0800] [Info] ================================================
+[2026-07-17T12:10:22+0800] [Info] Legacy Network started on port 7777
+[2026-07-17T12:10:33+0800] [Warning] Couldn't announce legacy network to open.mp list.
+[2026-07-17T12:10:33+0800] [Warning] 	 Status: 406
+[2026-07-17T12:10:33+0800] [Warning] 	 Message: {"error":"failed to query server: socket read timed out"}
+[2026-07-17T12:10:33+0800] [Warning] This won't affect the server's behaviour.
+[2026-07-17T12:11:11+0800] [Info] [connection] incoming connection: 127.0.0.1:54445 id: 0
+[2026-07-17T12:11:11+0800] [Info] [join] TreetMe has joined the server (0:127.0.0.1)
+[2026-07-17T12:13:51+0800] [Info] [part] Rimuru_Tempest has left the server (0:1)
+[2026-07-17T13:22:57+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito unloaded ***
+
+[2026-07-17T13:22:57+0800] [Info] 
+[2026-07-17T13:22:57+0800] [Info]  ===============================
+[2026-07-17T13:22:57+0800] [Info] 
+[2026-07-17T13:22:57+0800] [Info]      sscanf plugin unloaded.    
+[2026-07-17T13:22:57+0800] [Info] 
+[2026-07-17T13:22:57+0800] [Info]  ===============================
+[2026-07-17T13:22:57+0800] [Info] 
+[2026-07-17T13:22:57+0800] [Info] plugin.mysql: Unloading plugin...
+[2026-07-17T13:22:57+0800] [Info] plugin.mysql: Plugin unloaded.
+Starting open.mp server (1.5.8.3079) from commit c6759bd8d265171ae3d86598895a23d5a8d92a3b
+Loading component $CAPI.dll
+	Successfully loaded component C-API (1.5.8.3079) with UID 10467dd8d4c56fc6
+Loading component Actors.dll
+	Successfully loaded component Actors (1.5.8.3079) with UID c81ca021eae2ad5c
+Loading component Checkpoints.dll
+	Successfully loaded component Checkpoints (1.5.8.3079) with UID 44a937350d611dde
+Loading component Classes.dll
+	Successfully loaded component Classes (1.5.8.3079) with UID 8cfb3183976da208
+Loading component Console.dll
+	Successfully loaded component Console (1.5.8.3079) with UID bfa24e49d0c95ee4
+Loading component CustomModels.dll
+	Successfully loaded component CustomModels (1.5.8.3079) with UID 15e3cb1e7c77ffff
+Loading component Databases.dll
+	Successfully loaded component Databases (1.5.8.3079) with UID 80092e7eb5821a96
+Loading component Dialogs.dll
+	Successfully loaded component Dialogs (1.5.8.3079) with UID 44a111350d611dde
+Loading component GangZones.dll
+	Successfully loaded component GangZones (1.5.8.3079) with UID b3351d11ee8d8056
+Loading component LegacyConfig.dll
+	Successfully loaded component LegacyConfig (1.5.8.3079) with UID 24ef6216838f9ffc
+Loading component LegacyNetwork.dll
+	Successfully loaded component RakNetLegacyNetwork (1.5.8.3079) with UID ea9799fd79cf8442
+Loading component Menus.dll
+	Successfully loaded component Menus (1.5.8.3079) with UID 621e219eb97ee0b2
+Loading component NPCs.dll
+	Successfully loaded component NPCs (1.5.8.3079) with UID 3d0e59e87f4e90bc
+Loading component Objects.dll
+	Successfully loaded component Objects (1.5.8.3079) with UID 59f8415f72da6160
+Loading component Pawn.dll
+	Successfully loaded component Pawn (1.5.8.3079) with UID 78906cd9f19c36a6
+Loading component Pickups.dll
+	Successfully loaded component Pickups (1.5.8.3079) with UID cf304faa363dd971
+Loading component Recordings.dll
+	Successfully loaded component Recordings (1.5.8.3079) with UID 871144d399f5f613
+Loading component TextDraws.dll
+	Successfully loaded component TextDraws (1.5.8.3079) with UID 9b5dc2b1d15c992a
+Loading component TextLabels.dll
+	Successfully loaded component TextLabels (1.5.8.3079) with UID a0c57ea80a009742
+Loading component Timers.dll
+	Successfully loaded component Timers (1.5.8.3079) with UID 2ad8124c5ea257a3
+Loading component Variables.dll
+	Successfully loaded component Variables (1.5.8.3079) with UID 75e121848bc01fa2
+Loading component Vehicles.dll
+	Successfully loaded component Vehicles (1.5.8.3079) with UID 3f1f62ee9e22ab19
+Loaded 22 component(s) from D:\Arofta\arofta-archives\VantaraRP\components
+[2026-07-18T16:46:49+0800] [Info] Loading plugin: streamer
+[2026-07-18T16:46:49+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[2026-07-18T16:46:49+0800] [Info] Loading plugin: sscanf
+[2026-07-18T16:46:49+0800] [Info] 
+[2026-07-18T16:46:49+0800] [Info]  ===============================
+[2026-07-18T16:46:49+0800] [Info] 
+[2026-07-18T16:46:49+0800] [Info]       sscanf plugin loaded.     
+[2026-07-18T16:46:49+0800] [Info] 
+[2026-07-18T16:46:49+0800] [Info]          Version: 2.13.8
+[2026-07-18T16:46:49+0800] [Info] 
+[2026-07-18T16:46:49+0800] [Info]    (c) 2022 Alex "Y_Less" Cole  
+[2026-07-18T16:46:49+0800] [Info] 
+[2026-07-18T16:46:49+0800] [Info]  ===============================
+[2026-07-18T16:46:49+0800] [Info] 
+[2026-07-18T16:46:49+0800] [Info] Loading plugin: mysql
+[2026-07-18T16:46:49+0800] [Info]  >> plugin.mysql: R41-4 successfully loaded.
+[2026-07-18T16:46:49+0800] [Info] Loading plugin: samp_bcrypt
+[2026-07-18T16:46:49+0800] [Info] [SampBcrypt] [info]: Version: 0.4.1
+[2026-07-18T16:46:49+0800] [Info] Could not find:
+
+	 gamemodes\vmain.amx 
+While attempting to load a PAWN script, a file-not-found error was
+encountered.  This could be caused by many things:
+
+ * The wrong filename was given.
+ * The wrong gamemodes path was given.
+ * The server was launched from a different directory, making relative paths
+   relative to the wrong place (and thus wrong).
+ * You didn't copy the file to the correct directory or server.
+ * The compilation failed, leading to no output file.
+ * `-l` or `-a` were used to compile, which output intermediate steps for
+   inspecting, rather than a full script.
+ * Anything else, really just check the file is at the path given.
+
+[2026-07-18T16:46:49+0800] [Info] Legacy Network started on port 7777
+[2026-07-18T16:47:00+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito unloaded ***
+
+[2026-07-18T16:47:00+0800] [Info] 
+[2026-07-18T16:47:00+0800] [Info]  ===============================
+[2026-07-18T16:47:00+0800] [Info] 
+[2026-07-18T16:47:00+0800] [Info]      sscanf plugin unloaded.    
+[2026-07-18T16:47:00+0800] [Info] 
+[2026-07-18T16:47:00+0800] [Info]  ===============================
+[2026-07-18T16:47:00+0800] [Info] 
+[2026-07-18T16:47:00+0800] [Info] plugin.mysql: Unloading plugin...
+Starting open.mp server (1.5.8.3079) from commit c6759bd8d265171ae3d86598895a23d5a8d92a3b
+Loading component $CAPI.dll
+	Successfully loaded component C-API (1.5.8.3079) with UID 10467dd8d4c56fc6
+Loading component Actors.dll
+	Successfully loaded component Actors (1.5.8.3079) with UID c81ca021eae2ad5c
+Loading component Checkpoints.dll
+	Successfully loaded component Checkpoints (1.5.8.3079) with UID 44a937350d611dde
+Loading component Classes.dll
+	Successfully loaded component Classes (1.5.8.3079) with UID 8cfb3183976da208
+Loading component Console.dll
+	Successfully loaded component Console (1.5.8.3079) with UID bfa24e49d0c95ee4
+Loading component CustomModels.dll
+	Successfully loaded component CustomModels (1.5.8.3079) with UID 15e3cb1e7c77ffff
+Loading component Databases.dll
+	Successfully loaded component Databases (1.5.8.3079) with UID 80092e7eb5821a96
+Loading component Dialogs.dll
+	Successfully loaded component Dialogs (1.5.8.3079) with UID 44a111350d611dde
+Loading component GangZones.dll
+	Successfully loaded component GangZones (1.5.8.3079) with UID b3351d11ee8d8056
+Loading component LegacyConfig.dll
+	Successfully loaded component LegacyConfig (1.5.8.3079) with UID 24ef6216838f9ffc
+Loading component LegacyNetwork.dll
+	Successfully loaded component RakNetLegacyNetwork (1.5.8.3079) with UID ea9799fd79cf8442
+Loading component Menus.dll
+	Successfully loaded component Menus (1.5.8.3079) with UID 621e219eb97ee0b2
+Loading component NPCs.dll
+	Successfully loaded component NPCs (1.5.8.3079) with UID 3d0e59e87f4e90bc
+Loading component Objects.dll
+	Successfully loaded component Objects (1.5.8.3079) with UID 59f8415f72da6160
+Loading component Pawn.dll
+	Successfully loaded component Pawn (1.5.8.3079) with UID 78906cd9f19c36a6
+Loading component Pickups.dll
+	Successfully loaded component Pickups (1.5.8.3079) with UID cf304faa363dd971
+Loading component Recordings.dll
+	Successfully loaded component Recordings (1.5.8.3079) with UID 871144d399f5f613
+Loading component TextDraws.dll
+	Successfully loaded component TextDraws (1.5.8.3079) with UID 9b5dc2b1d15c992a
+Loading component TextLabels.dll
+	Successfully loaded component TextLabels (1.5.8.3079) with UID a0c57ea80a009742
+Loading component Timers.dll
+	Successfully loaded component Timers (1.5.8.3079) with UID 2ad8124c5ea257a3
+Loading component Variables.dll
+	Successfully loaded component Variables (1.5.8.3079) with UID 75e121848bc01fa2
+Loading component Vehicles.dll
+	Successfully loaded component Vehicles (1.5.8.3079) with UID 3f1f62ee9e22ab19
+Loaded 22 component(s) from D:\Arofta\arofta-archives\VantaraRP\components
+[2026-07-19T02:12:07+0800] [Info] Loading plugin: streamer
+[2026-07-19T02:12:07+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[2026-07-19T02:12:07+0800] [Info] Loading plugin: sscanf
+[2026-07-19T02:12:07+0800] [Info] 
+[2026-07-19T02:12:07+0800] [Info]  ===============================
+[2026-07-19T02:12:07+0800] [Info] 
+[2026-07-19T02:12:07+0800] [Info]       sscanf plugin loaded.     
+[2026-07-19T02:12:07+0800] [Info] 
+[2026-07-19T02:12:07+0800] [Info]          Version: 2.13.8
+[2026-07-19T02:12:07+0800] [Info] 
+[2026-07-19T02:12:07+0800] [Info]    (c) 2022 Alex "Y_Less" Cole  
+[2026-07-19T02:12:07+0800] [Info] 
+[2026-07-19T02:12:07+0800] [Info]  ===============================
+[2026-07-19T02:12:07+0800] [Info] 
+[2026-07-19T02:12:07+0800] [Info] Loading plugin: mysql
+[2026-07-19T02:12:07+0800] [Info]  >> plugin.mysql: R41-4 successfully loaded.
+[2026-07-19T02:12:07+0800] [Info] Loading plugin: samp_bcrypt
+[2026-07-19T02:12:08+0800] [Info] [SampBcrypt] [info]: Version: 0.4.1
+[2026-07-19T02:12:08+0800] [Info]  
+[2026-07-19T02:12:08+0800] [Info]  
+[2026-07-19T02:12:08+0800] [Info]          ==============================================================
+[2026-07-19T02:12:08+0800] [Info]          |                                                            |
+[2026-07-19T02:12:08+0800] [Info]          |                                                            |
+[2026-07-19T02:12:08+0800] [Info]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[2026-07-19T02:12:08+0800] [Info]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[2026-07-19T02:12:08+0800] [Info]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[2026-07-19T02:12:08+0800] [Info]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[2026-07-19T02:12:08+0800] [Info]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[2026-07-19T02:12:08+0800] [Info]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[2026-07-19T02:12:08+0800] [Info]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[2026-07-19T02:12:08+0800] [Info]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[2026-07-19T02:12:08+0800] [Info]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[2026-07-19T02:12:08+0800] [Info]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[2026-07-19T02:12:08+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-19T02:12:08+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-19T02:12:08+0800] [Info]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[2026-07-19T02:12:08+0800] [Info]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[2026-07-19T02:12:08+0800] [Info]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[2026-07-19T02:12:08+0800] [Info]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[2026-07-19T02:12:08+0800] [Info]          |                                                            |
+[2026-07-19T02:12:08+0800] [Info]          |                                                            |
+[2026-07-19T02:12:08+0800] [Info]          |                      (c) 2021 MPL v1.1                     |
+[2026-07-19T02:12:08+0800] [Info]          |            Alex "Y_Less" Cole and contributors.            |
+[2026-07-19T02:12:08+0800] [Info]          |                                                            |
+[2026-07-19T02:12:08+0800] [Info]          |                                                            |
+[2026-07-19T02:12:08+0800] [Info]          ==============================================================
+[2026-07-19T02:12:08+0800] [Info]  
+[2026-07-19T02:12:08+0800] [Info]  
+[2026-07-19T02:12:08+0800] [Info]  ========================================== 
+[2026-07-19T02:12:08+0800] [Info]  |                                        | 
+[2026-07-19T02:12:08+0800] [Info]  |   Generating code, this may take a     | 
+[2026-07-19T02:12:08+0800] [Info]  |  little bit of time.  Note that this   | 
+[2026-07-19T02:12:08+0800] [Info]  |  code generation works best with the   | 
+[2026-07-19T02:12:08+0800] [Info]  |     JIT plugin, which you are not      | 
+[2026-07-19T02:12:08+0800] [Info]  |     currently using.  Get it here:     | 
+[2026-07-19T02:12:08+0800] [Info]  |                                        | 
+[2026-07-19T02:12:08+0800] [Info]  |       https://git.io/jit-plugin        | 
+[2026-07-19T02:12:08+0800] [Info]  |                                        | 
+[2026-07-19T02:12:08+0800] [Info]  |             Please wait...             | 
+[2026-07-19T02:12:08+0800] [Info]  |                                        | 
+[2026-07-19T02:12:08+0800] [Info]  |             Done in 323ms!             | 
+[2026-07-19T02:12:08+0800] [Info]  |                                        | 
+[2026-07-19T02:12:08+0800] [Info]  ========================================== 
+[2026-07-19T02:12:08+0800] [Info] *** YSI Info: Script ID: 1
+[2026-07-19T02:12:08+0800] [Info]  |                                        | 
+[2026-07-19T02:12:08+0800] [Info]  | Server:      open.mp 1.5.8.3079 (W)    | 
+[2026-07-19T02:12:08+0800] [Info]  | Started:     19 Jul 2026 - 02:12:08    | 
+[2026-07-19T02:12:08+0800] [Info]  |                                        | 
+[2026-07-19T02:12:08+0800] [Info]  | Compiler:    3.10.11 (Windows)         | 
+[2026-07-19T02:12:09+0800] [Info]  | Includes:    open.mp v037030           | 
+[2026-07-19T02:12:09+0800] [Info]  | Codepage:    <none>                    | 
+[2026-07-19T02:12:09+0800] [Info]  | Built:       19 Jul 2026 - 02:10:45    | 
+[2026-07-19T02:12:09+0800] [Info]  |                                        | 
+[2026-07-19T02:12:09+0800] [Info]  | YSI:         v05.10.0006               | 
+[2026-07-19T02:12:09+0800] [Info]  | Master:      1                         | 
+[2026-07-19T02:12:09+0800] [Info]  |                                        | 
+[2026-07-19T02:12:09+0800] [Info]  | JIT:         <none>                    | 
+[2026-07-19T02:12:09+0800] [Info]  | Crashdetect: <none>                    | 
+[2026-07-19T02:12:09+0800] [Info]  |                                        | 
+[2026-07-19T02:12:09+0800] [Info]  ========================================== 
+[2026-07-19T02:12:09+0800] [Info]  
+[2026-07-19T02:12:09+0800] [Info]  
+[2026-07-19T02:12:09+0800] [Info] ===========================================================
+[2026-07-19T02:12:09+0800] [Info] | >>> Vantara Legacy Database Connected Successfully. <<< |
+[2026-07-19T02:12:09+0800] [Info] ===========================================================
+[2026-07-19T02:12:09+0800] [Info] ================================================
+[2026-07-19T02:12:09+0800] [Info] | >>> Vantara Legacy Main Gamemode Loaded. <<< |
+[2026-07-19T02:12:09+0800] [Info] ================================================
+[2026-07-19T02:12:09+0800] [Info] Legacy Network started on port 7777
+[2026-07-19T02:12:20+0800] [Warning] Couldn't announce legacy network to open.mp list.
+[2026-07-19T02:12:20+0800] [Warning] 	 Status: 406
+[2026-07-19T02:12:20+0800] [Warning] 	 Message: {"error":"failed to query server: socket read timed out"}
+[2026-07-19T02:12:20+0800] [Warning] This won't affect the server's behaviour.
+[2026-07-19T02:12:37+0800] [Info] [connection] incoming connection: 127.0.0.1:51883 id: 0
+[2026-07-19T02:12:37+0800] [Info] [join] TreetMe has joined the server (0:127.0.0.1)
+[2026-07-19T02:16:17+0800] [Info] [part] Rimuru has left the server (0:1)
+[2026-07-19T02:16:22+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito unloaded ***
+
+[2026-07-19T02:16:22+0800] [Info] 
+[2026-07-19T02:16:22+0800] [Info]  ===============================
+[2026-07-19T02:16:22+0800] [Info] 
+[2026-07-19T02:16:22+0800] [Info]      sscanf plugin unloaded.    
+[2026-07-19T02:16:22+0800] [Info] 
+[2026-07-19T02:16:22+0800] [Info]  ===============================
+[2026-07-19T02:16:22+0800] [Info] 
+[2026-07-19T02:16:22+0800] [Info] plugin.mysql: Unloading plugin...
+[2026-07-19T02:16:22+0800] [Info] plugin.mysql: Plugin unloaded.
+Starting open.mp server (1.5.8.3079) from commit c6759bd8d265171ae3d86598895a23d5a8d92a3b
+Loading component $CAPI.dll
+	Successfully loaded component C-API (1.5.8.3079) with UID 10467dd8d4c56fc6
+Loading component Actors.dll
+	Successfully loaded component Actors (1.5.8.3079) with UID c81ca021eae2ad5c
+Loading component Checkpoints.dll
+	Successfully loaded component Checkpoints (1.5.8.3079) with UID 44a937350d611dde
+Loading component Classes.dll
+	Successfully loaded component Classes (1.5.8.3079) with UID 8cfb3183976da208
+Loading component Console.dll
+	Successfully loaded component Console (1.5.8.3079) with UID bfa24e49d0c95ee4
+Loading component CustomModels.dll
+	Successfully loaded component CustomModels (1.5.8.3079) with UID 15e3cb1e7c77ffff
+Loading component Databases.dll
+	Successfully loaded component Databases (1.5.8.3079) with UID 80092e7eb5821a96
+Loading component Dialogs.dll
+	Successfully loaded component Dialogs (1.5.8.3079) with UID 44a111350d611dde
+Loading component GangZones.dll
+	Successfully loaded component GangZones (1.5.8.3079) with UID b3351d11ee8d8056
+Loading component LegacyConfig.dll
+	Successfully loaded component LegacyConfig (1.5.8.3079) with UID 24ef6216838f9ffc
+Loading component LegacyNetwork.dll
+	Successfully loaded component RakNetLegacyNetwork (1.5.8.3079) with UID ea9799fd79cf8442
+Loading component Menus.dll
+	Successfully loaded component Menus (1.5.8.3079) with UID 621e219eb97ee0b2
+Loading component NPCs.dll
+	Successfully loaded component NPCs (1.5.8.3079) with UID 3d0e59e87f4e90bc
+Loading component Objects.dll
+	Successfully loaded component Objects (1.5.8.3079) with UID 59f8415f72da6160
+Loading component Pawn.dll
+	Successfully loaded component Pawn (1.5.8.3079) with UID 78906cd9f19c36a6
+Loading component Pickups.dll
+	Successfully loaded component Pickups (1.5.8.3079) with UID cf304faa363dd971
+Loading component Recordings.dll
+	Successfully loaded component Recordings (1.5.8.3079) with UID 871144d399f5f613
+Loading component TextDraws.dll
+	Successfully loaded component TextDraws (1.5.8.3079) with UID 9b5dc2b1d15c992a
+Loading component TextLabels.dll
+	Successfully loaded component TextLabels (1.5.8.3079) with UID a0c57ea80a009742
+Loading component Timers.dll
+	Successfully loaded component Timers (1.5.8.3079) with UID 2ad8124c5ea257a3
+Loading component Variables.dll
+	Successfully loaded component Variables (1.5.8.3079) with UID 75e121848bc01fa2
+Loading component Vehicles.dll
+	Successfully loaded component Vehicles (1.5.8.3079) with UID 3f1f62ee9e22ab19
+Loaded 22 component(s) from D:\Arofta\arofta-archives\VantaraRP\components
+[2026-07-19T02:16:28+0800] [Info] Loading plugin: streamer
+[2026-07-19T02:16:28+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[2026-07-19T02:16:28+0800] [Info] Loading plugin: sscanf
+[2026-07-19T02:16:28+0800] [Info] 
+[2026-07-19T02:16:28+0800] [Info]  ===============================
+[2026-07-19T02:16:28+0800] [Info] 
+[2026-07-19T02:16:28+0800] [Info]       sscanf plugin loaded.     
+[2026-07-19T02:16:28+0800] [Info] 
+[2026-07-19T02:16:28+0800] [Info]          Version: 2.13.8
+[2026-07-19T02:16:28+0800] [Info] 
+[2026-07-19T02:16:28+0800] [Info]    (c) 2022 Alex "Y_Less" Cole  
+[2026-07-19T02:16:28+0800] [Info] 
+[2026-07-19T02:16:28+0800] [Info]  ===============================
+[2026-07-19T02:16:28+0800] [Info] 
+[2026-07-19T02:16:28+0800] [Info] Loading plugin: mysql
+[2026-07-19T02:16:28+0800] [Info]  >> plugin.mysql: R41-4 successfully loaded.
+[2026-07-19T02:16:28+0800] [Info] Loading plugin: samp_bcrypt
+[2026-07-19T02:16:28+0800] [Info] [SampBcrypt] [info]: Version: 0.4.1
+[2026-07-19T02:16:28+0800] [Info]  
+[2026-07-19T02:16:28+0800] [Info]  
+[2026-07-19T02:16:28+0800] [Info]          ==============================================================
+[2026-07-19T02:16:28+0800] [Info]          |                                                            |
+[2026-07-19T02:16:28+0800] [Info]          |                                                            |
+[2026-07-19T02:16:28+0800] [Info]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[2026-07-19T02:16:28+0800] [Info]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[2026-07-19T02:16:28+0800] [Info]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[2026-07-19T02:16:28+0800] [Info]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[2026-07-19T02:16:28+0800] [Info]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[2026-07-19T02:16:28+0800] [Info]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[2026-07-19T02:16:28+0800] [Info]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[2026-07-19T02:16:28+0800] [Info]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[2026-07-19T02:16:28+0800] [Info]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[2026-07-19T02:16:28+0800] [Info]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[2026-07-19T02:16:28+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-19T02:16:28+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-19T02:16:28+0800] [Info]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[2026-07-19T02:16:28+0800] [Info]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[2026-07-19T02:16:28+0800] [Info]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[2026-07-19T02:16:28+0800] [Info]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[2026-07-19T02:16:28+0800] [Info]          |                                                            |
+[2026-07-19T02:16:28+0800] [Info]          |                                                            |
+[2026-07-19T02:16:28+0800] [Info]          |                      (c) 2021 MPL v1.1                     |
+[2026-07-19T02:16:28+0800] [Info]          |            Alex "Y_Less" Cole and contributors.            |
+[2026-07-19T02:16:28+0800] [Info]          |                                                            |
+[2026-07-19T02:16:28+0800] [Info]          |                                                            |
+[2026-07-19T02:16:28+0800] [Info]          ==============================================================
+[2026-07-19T02:16:28+0800] [Info]  
+[2026-07-19T02:16:28+0800] [Info]  
+[2026-07-19T02:16:28+0800] [Info]  ========================================== 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  |   Generating code, this may take a     | 
+[2026-07-19T02:16:29+0800] [Info]  |  little bit of time.  Note that this   | 
+[2026-07-19T02:16:29+0800] [Info]  |  code generation works best with the   | 
+[2026-07-19T02:16:29+0800] [Info]  |     JIT plugin, which you are not      | 
+[2026-07-19T02:16:29+0800] [Info]  |     currently using.  Get it here:     | 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  |       https://git.io/jit-plugin        | 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  |             Please wait...             | 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  |             Done in 188ms!             | 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  ========================================== 
+[2026-07-19T02:16:29+0800] [Info] *** YSI Info: Script ID: 1
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  | Server:      open.mp 1.5.8.3079 (W)    | 
+[2026-07-19T02:16:29+0800] [Info]  | Started:     19 Jul 2026 - 02:16:28    | 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  | Compiler:    3.10.11 (Windows)         | 
+[2026-07-19T02:16:29+0800] [Info]  | Includes:    open.mp v037030           | 
+[2026-07-19T02:16:29+0800] [Info]  | Codepage:    <none>                    | 
+[2026-07-19T02:16:29+0800] [Info]  | Built:       19 Jul 2026 - 02:16:06    | 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  | YSI:         v05.10.0006               | 
+[2026-07-19T02:16:29+0800] [Info]  | Master:      1                         | 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  | JIT:         <none>                    | 
+[2026-07-19T02:16:29+0800] [Info]  | Crashdetect: <none>                    | 
+[2026-07-19T02:16:29+0800] [Info]  |                                        | 
+[2026-07-19T02:16:29+0800] [Info]  ========================================== 
+[2026-07-19T02:16:29+0800] [Info]  
+[2026-07-19T02:16:29+0800] [Info]  
+[2026-07-19T02:16:29+0800] [Info] ===========================================================
+[2026-07-19T02:16:29+0800] [Info] | >>> Vantara Legacy Database Connected Successfully. <<< |
+[2026-07-19T02:16:29+0800] [Info] ===========================================================
+[2026-07-19T02:16:29+0800] [Info] ================================================
+[2026-07-19T02:16:29+0800] [Info] | >>> Vantara Legacy Main Gamemode Loaded. <<< |
+[2026-07-19T02:16:29+0800] [Info] ================================================
+[2026-07-19T02:16:29+0800] [Info] Legacy Network started on port 7777
+[2026-07-19T02:16:39+0800] [Warning] Couldn't announce legacy network to open.mp list.
+[2026-07-19T02:16:39+0800] [Warning] 	 Status: 406
+[2026-07-19T02:16:39+0800] [Warning] 	 Message: {"error":"failed to query server: socket read timed out"}
+[2026-07-19T02:16:39+0800] [Warning] This won't affect the server's behaviour.
+[2026-07-19T02:17:11+0800] [Info] [connection] incoming connection: 127.0.0.1:50535 id: 0
+[2026-07-19T02:17:11+0800] [Info] [join] TreetMe has joined the server (0:127.0.0.1)
+[2026-07-19T02:29:02+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito unloaded ***
+
+[2026-07-19T02:29:02+0800] [Info] 
+[2026-07-19T02:29:02+0800] [Info]  ===============================
+[2026-07-19T02:29:02+0800] [Info] 
+[2026-07-19T02:29:02+0800] [Info]      sscanf plugin unloaded.    
+[2026-07-19T02:29:02+0800] [Info] 
+[2026-07-19T02:29:02+0800] [Info]  ===============================
+[2026-07-19T02:29:02+0800] [Info] 
+[2026-07-19T02:29:02+0800] [Info] plugin.mysql: Unloading plugin...
+Starting open.mp server (1.5.8.3079) from commit c6759bd8d265171ae3d86598895a23d5a8d92a3b
+Loading component $CAPI.dll
+	Successfully loaded component C-API (1.5.8.3079) with UID 10467dd8d4c56fc6
+Loading component Actors.dll
+	Successfully loaded component Actors (1.5.8.3079) with UID c81ca021eae2ad5c
+Loading component Checkpoints.dll
+	Successfully loaded component Checkpoints (1.5.8.3079) with UID 44a937350d611dde
+Loading component Classes.dll
+	Successfully loaded component Classes (1.5.8.3079) with UID 8cfb3183976da208
+Loading component Console.dll
+	Successfully loaded component Console (1.5.8.3079) with UID bfa24e49d0c95ee4
+Loading component CustomModels.dll
+	Successfully loaded component CustomModels (1.5.8.3079) with UID 15e3cb1e7c77ffff
+Loading component Databases.dll
+	Successfully loaded component Databases (1.5.8.3079) with UID 80092e7eb5821a96
+Loading component Dialogs.dll
+	Successfully loaded component Dialogs (1.5.8.3079) with UID 44a111350d611dde
+Loading component GangZones.dll
+	Successfully loaded component GangZones (1.5.8.3079) with UID b3351d11ee8d8056
+Loading component LegacyConfig.dll
+	Successfully loaded component LegacyConfig (1.5.8.3079) with UID 24ef6216838f9ffc
+Loading component LegacyNetwork.dll
+	Successfully loaded component RakNetLegacyNetwork (1.5.8.3079) with UID ea9799fd79cf8442
+Loading component Menus.dll
+	Successfully loaded component Menus (1.5.8.3079) with UID 621e219eb97ee0b2
+Loading component NPCs.dll
+	Successfully loaded component NPCs (1.5.8.3079) with UID 3d0e59e87f4e90bc
+Loading component Objects.dll
+	Successfully loaded component Objects (1.5.8.3079) with UID 59f8415f72da6160
+Loading component Pawn.dll
+	Successfully loaded component Pawn (1.5.8.3079) with UID 78906cd9f19c36a6
+Loading component Pickups.dll
+	Successfully loaded component Pickups (1.5.8.3079) with UID cf304faa363dd971
+Loading component Recordings.dll
+	Successfully loaded component Recordings (1.5.8.3079) with UID 871144d399f5f613
+Loading component TextDraws.dll
+	Successfully loaded component TextDraws (1.5.8.3079) with UID 9b5dc2b1d15c992a
+Loading component TextLabels.dll
+	Successfully loaded component TextLabels (1.5.8.3079) with UID a0c57ea80a009742
+Loading component Timers.dll
+	Successfully loaded component Timers (1.5.8.3079) with UID 2ad8124c5ea257a3
+Loading component Variables.dll
+	Successfully loaded component Variables (1.5.8.3079) with UID 75e121848bc01fa2
+Loading component Vehicles.dll
+	Successfully loaded component Vehicles (1.5.8.3079) with UID 3f1f62ee9e22ab19
+Loaded 22 component(s) from D:\Arofta\arofta-archives\VantaraRP\components
+[2026-07-19T02:29:09+0800] [Info] Loading plugin: streamer
+[2026-07-19T02:29:09+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[2026-07-19T02:29:09+0800] [Info] Loading plugin: sscanf
+[2026-07-19T02:29:09+0800] [Info] 
+[2026-07-19T02:29:09+0800] [Info]  ===============================
+[2026-07-19T02:29:09+0800] [Info] 
+[2026-07-19T02:29:09+0800] [Info]       sscanf plugin loaded.     
+[2026-07-19T02:29:09+0800] [Info] 
+[2026-07-19T02:29:09+0800] [Info]          Version: 2.13.8
+[2026-07-19T02:29:09+0800] [Info] 
+[2026-07-19T02:29:09+0800] [Info]    (c) 2022 Alex "Y_Less" Cole  
+[2026-07-19T02:29:09+0800] [Info] 
+[2026-07-19T02:29:09+0800] [Info]  ===============================
+[2026-07-19T02:29:09+0800] [Info] 
+[2026-07-19T02:29:09+0800] [Info] Loading plugin: mysql
+[2026-07-19T02:29:10+0800] [Info]  >> plugin.mysql: R41-4 successfully loaded.
+[2026-07-19T02:29:10+0800] [Info] Loading plugin: samp_bcrypt
+[2026-07-19T02:29:10+0800] [Info] [SampBcrypt] [info]: Version: 0.4.1
+[2026-07-19T02:29:10+0800] [Info]  
+[2026-07-19T02:29:10+0800] [Info]  
+[2026-07-19T02:29:10+0800] [Info]          ==============================================================
+[2026-07-19T02:29:10+0800] [Info]          |                                                            |
+[2026-07-19T02:29:10+0800] [Info]          |                                                            |
+[2026-07-19T02:29:10+0800] [Info]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[2026-07-19T02:29:10+0800] [Info]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[2026-07-19T02:29:10+0800] [Info]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[2026-07-19T02:29:10+0800] [Info]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[2026-07-19T02:29:10+0800] [Info]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[2026-07-19T02:29:10+0800] [Info]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[2026-07-19T02:29:10+0800] [Info]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[2026-07-19T02:29:10+0800] [Info]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[2026-07-19T02:29:10+0800] [Info]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[2026-07-19T02:29:10+0800] [Info]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[2026-07-19T02:29:10+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-19T02:29:10+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-19T02:29:10+0800] [Info]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[2026-07-19T02:29:10+0800] [Info]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[2026-07-19T02:29:10+0800] [Info]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[2026-07-19T02:29:10+0800] [Info]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[2026-07-19T02:29:10+0800] [Info]          |                                                            |
+[2026-07-19T02:29:10+0800] [Info]          |                                                            |
+[2026-07-19T02:29:10+0800] [Info]          |                      (c) 2021 MPL v1.1                     |
+[2026-07-19T02:29:10+0800] [Info]          |            Alex "Y_Less" Cole and contributors.            |
+[2026-07-19T02:29:10+0800] [Info]          |                                                            |
+[2026-07-19T02:29:10+0800] [Info]          |                                                            |
+[2026-07-19T02:29:10+0800] [Info]          ==============================================================
+[2026-07-19T02:29:10+0800] [Info]  
+[2026-07-19T02:29:10+0800] [Info]  
+[2026-07-19T02:29:10+0800] [Info]  ========================================== 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  |   Generating code, this may take a     | 
+[2026-07-19T02:29:10+0800] [Info]  |  little bit of time.  Note that this   | 
+[2026-07-19T02:29:10+0800] [Info]  |  code generation works best with the   | 
+[2026-07-19T02:29:10+0800] [Info]  |     JIT plugin, which you are not      | 
+[2026-07-19T02:29:10+0800] [Info]  |     currently using.  Get it here:     | 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  |       https://git.io/jit-plugin        | 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  |             Please wait...             | 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  |             Done in 289ms!             | 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  ========================================== 
+[2026-07-19T02:29:10+0800] [Info] *** YSI Info: Script ID: 1
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  | Server:      open.mp 1.5.8.3079 (W)    | 
+[2026-07-19T02:29:10+0800] [Info]  | Started:     19 Jul 2026 - 02:29:10    | 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  | Compiler:    3.10.11 (Windows)         | 
+[2026-07-19T02:29:10+0800] [Info]  | Includes:    open.mp v037030           | 
+[2026-07-19T02:29:10+0800] [Info]  | Codepage:    <none>                    | 
+[2026-07-19T02:29:10+0800] [Info]  | Built:       19 Jul 2026 - 02:16:06    | 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  | YSI:         v05.10.0006               | 
+[2026-07-19T02:29:10+0800] [Info]  | Master:      1                         | 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  | JIT:         <none>                    | 
+[2026-07-19T02:29:10+0800] [Info]  | Crashdetect: <none>                    | 
+[2026-07-19T02:29:10+0800] [Info]  |                                        | 
+[2026-07-19T02:29:10+0800] [Info]  ========================================== 
+[2026-07-19T02:29:10+0800] [Info]  
+[2026-07-19T02:29:10+0800] [Info]  
+[2026-07-19T02:29:27+0800] [Info] ======================================================
+[2026-07-19T02:29:27+0800] [Info] | >>> Vantara Legacy Database Connection Failed. <<< |
+[2026-07-19T02:29:27+0800] [Info] ======================================================
+[2026-07-19T02:29:27+0800] [Info] Gamemode Automatically Shutdown in..
+[2026-07-19T02:29:27+0800] [Info] Legacy Network started on port 7777
+[2026-07-19T02:29:28+0800] [Info] > 14..
+[2026-07-19T02:29:29+0800] [Info] > 13..
+[2026-07-19T02:29:30+0800] [Info] > 12..
+[2026-07-19T02:29:31+0800] [Info] > 11..
+[2026-07-19T02:29:32+0800] [Info] > 10..
+[2026-07-19T02:29:33+0800] [Info] > 9..
+[2026-07-19T02:29:34+0800] [Info] > 8..
+[2026-07-19T02:29:35+0800] [Info] > 7..
+[2026-07-19T02:29:36+0800] [Info] > 6..
+[2026-07-19T02:29:37+0800] [Info] > 5..
+[2026-07-19T02:29:37+0800] [Warning] Couldn't announce legacy network to open.mp list.
+[2026-07-19T02:29:37+0800] [Warning] 	 Status: 406
+[2026-07-19T02:29:37+0800] [Warning] 	 Message: {"error":"failed to query server: socket read timed out"}
+[2026-07-19T02:29:37+0800] [Warning] This won't affect the server's behaviour.
+[2026-07-19T02:29:37+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito unloaded ***
+
+[2026-07-19T02:29:37+0800] [Info] 
+[2026-07-19T02:29:37+0800] [Info]  ===============================
+[2026-07-19T02:29:37+0800] [Info] 
+[2026-07-19T02:29:37+0800] [Info]      sscanf plugin unloaded.    
+[2026-07-19T02:29:37+0800] [Info] 
+[2026-07-19T02:29:37+0800] [Info]  ===============================
+[2026-07-19T02:29:37+0800] [Info] 
+[2026-07-19T02:29:37+0800] [Info] plugin.mysql: Unloading plugin...
+[2026-07-19T02:29:37+0800] [Info] plugin.mysql: Plugin unloaded.
+Starting open.mp server (1.5.8.3079) from commit c6759bd8d265171ae3d86598895a23d5a8d92a3b
+Loading component $CAPI.dll
+	Successfully loaded component C-API (1.5.8.3079) with UID 10467dd8d4c56fc6
+Loading component Actors.dll
+	Successfully loaded component Actors (1.5.8.3079) with UID c81ca021eae2ad5c
+Loading component Checkpoints.dll
+	Successfully loaded component Checkpoints (1.5.8.3079) with UID 44a937350d611dde
+Loading component Classes.dll
+	Successfully loaded component Classes (1.5.8.3079) with UID 8cfb3183976da208
+Loading component Console.dll
+	Successfully loaded component Console (1.5.8.3079) with UID bfa24e49d0c95ee4
+Loading component CustomModels.dll
+	Successfully loaded component CustomModels (1.5.8.3079) with UID 15e3cb1e7c77ffff
+Loading component Databases.dll
+	Successfully loaded component Databases (1.5.8.3079) with UID 80092e7eb5821a96
+Loading component Dialogs.dll
+	Successfully loaded component Dialogs (1.5.8.3079) with UID 44a111350d611dde
+Loading component GangZones.dll
+	Successfully loaded component GangZones (1.5.8.3079) with UID b3351d11ee8d8056
+Loading component LegacyConfig.dll
+	Successfully loaded component LegacyConfig (1.5.8.3079) with UID 24ef6216838f9ffc
+Loading component LegacyNetwork.dll
+	Successfully loaded component RakNetLegacyNetwork (1.5.8.3079) with UID ea9799fd79cf8442
+Loading component Menus.dll
+	Successfully loaded component Menus (1.5.8.3079) with UID 621e219eb97ee0b2
+Loading component NPCs.dll
+	Successfully loaded component NPCs (1.5.8.3079) with UID 3d0e59e87f4e90bc
+Loading component Objects.dll
+	Successfully loaded component Objects (1.5.8.3079) with UID 59f8415f72da6160
+Loading component Pawn.dll
+	Successfully loaded component Pawn (1.5.8.3079) with UID 78906cd9f19c36a6
+Loading component Pickups.dll
+	Successfully loaded component Pickups (1.5.8.3079) with UID cf304faa363dd971
+Loading component Recordings.dll
+	Successfully loaded component Recordings (1.5.8.3079) with UID 871144d399f5f613
+Loading component TextDraws.dll
+	Successfully loaded component TextDraws (1.5.8.3079) with UID 9b5dc2b1d15c992a
+Loading component TextLabels.dll
+	Successfully loaded component TextLabels (1.5.8.3079) with UID a0c57ea80a009742
+Loading component Timers.dll
+	Successfully loaded component Timers (1.5.8.3079) with UID 2ad8124c5ea257a3
+Loading component Variables.dll
+	Successfully loaded component Variables (1.5.8.3079) with UID 75e121848bc01fa2
+Loading component Vehicles.dll
+	Successfully loaded component Vehicles (1.5.8.3079) with UID 3f1f62ee9e22ab19
+Loaded 22 component(s) from D:\Arofta\arofta-archives\VantaraRP\components
+[2026-07-19T16:50:41+0800] [Info] Loading plugin: streamer
+[2026-07-19T16:50:41+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[2026-07-19T16:50:41+0800] [Info] Loading plugin: sscanf
+[2026-07-19T16:50:41+0800] [Info] 
+[2026-07-19T16:50:41+0800] [Info]  ===============================
+[2026-07-19T16:50:41+0800] [Info] 
+[2026-07-19T16:50:41+0800] [Info]       sscanf plugin loaded.     
+[2026-07-19T16:50:41+0800] [Info] 
+[2026-07-19T16:50:41+0800] [Info]          Version: 2.13.8
+[2026-07-19T16:50:41+0800] [Info] 
+[2026-07-19T16:50:41+0800] [Info]    (c) 2022 Alex "Y_Less" Cole  
+[2026-07-19T16:50:41+0800] [Info] 
+[2026-07-19T16:50:41+0800] [Info]  ===============================
+[2026-07-19T16:50:41+0800] [Info] 
+[2026-07-19T16:50:41+0800] [Info] Loading plugin: mysql
+[2026-07-19T16:50:41+0800] [Info]  >> plugin.mysql: R41-4 successfully loaded.
+[2026-07-19T16:50:41+0800] [Info] Loading plugin: samp_bcrypt
+[2026-07-19T16:50:41+0800] [Info] [SampBcrypt] [info]: Version: 0.4.1
+[2026-07-19T16:50:41+0800] [Info]  
+[2026-07-19T16:50:41+0800] [Info]  
+[2026-07-19T16:50:41+0800] [Info]          ==============================================================
+[2026-07-19T16:50:41+0800] [Info]          |                                                            |
+[2026-07-19T16:50:41+0800] [Info]          |                                                            |
+[2026-07-19T16:50:41+0800] [Info]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[2026-07-19T16:50:41+0800] [Info]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[2026-07-19T16:50:41+0800] [Info]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[2026-07-19T16:50:41+0800] [Info]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[2026-07-19T16:50:41+0800] [Info]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[2026-07-19T16:50:41+0800] [Info]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[2026-07-19T16:50:41+0800] [Info]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[2026-07-19T16:50:41+0800] [Info]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[2026-07-19T16:50:41+0800] [Info]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[2026-07-19T16:50:41+0800] [Info]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[2026-07-19T16:50:41+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-19T16:50:42+0800] [Info]          |           Y:::::Y                    S:::::S   I::::I      |
+[2026-07-19T16:50:42+0800] [Info]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[2026-07-19T16:50:42+0800] [Info]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[2026-07-19T16:50:42+0800] [Info]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[2026-07-19T16:50:42+0800] [Info]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[2026-07-19T16:50:42+0800] [Info]          |                                                            |
+[2026-07-19T16:50:42+0800] [Info]          |                                                            |
+[2026-07-19T16:50:42+0800] [Info]          |                      (c) 2021 MPL v1.1                     |
+[2026-07-19T16:50:42+0800] [Info]          |            Alex "Y_Less" Cole and contributors.            |
+[2026-07-19T16:50:42+0800] [Info]          |                                                            |
+[2026-07-19T16:50:42+0800] [Info]          |                                                            |
+[2026-07-19T16:50:42+0800] [Info]          ==============================================================
+[2026-07-19T16:50:42+0800] [Info]  
+[2026-07-19T16:50:42+0800] [Info]  
+[2026-07-19T16:50:42+0800] [Info]  ========================================== 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  |   Generating code, this may take a     | 
+[2026-07-19T16:50:42+0800] [Info]  |  little bit of time.  Note that this   | 
+[2026-07-19T16:50:42+0800] [Info]  |  code generation works best with the   | 
+[2026-07-19T16:50:42+0800] [Info]  |     JIT plugin, which you are not      | 
+[2026-07-19T16:50:42+0800] [Info]  |     currently using.  Get it here:     | 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  |       https://git.io/jit-plugin        | 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  |             Please wait...             | 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  |             Done in 272ms!             | 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  ========================================== 
+[2026-07-19T16:50:42+0800] [Info] *** YSI Info: Script ID: 1
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  | Server:      open.mp 1.5.8.3079 (W)    | 
+[2026-07-19T16:50:42+0800] [Info]  | Started:     19 Jul 2026 - 16:50:41    | 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  | Compiler:    3.10.11 (Windows)         | 
+[2026-07-19T16:50:42+0800] [Info]  | Includes:    open.mp v037030           | 
+[2026-07-19T16:50:42+0800] [Info]  | Codepage:    <none>                    | 
+[2026-07-19T16:50:42+0800] [Info]  | Built:       19 Jul 2026 - 16:49:16    | 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  | YSI:         v05.10.0006               | 
+[2026-07-19T16:50:42+0800] [Info]  | Master:      1                         | 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  | JIT:         <none>                    | 
+[2026-07-19T16:50:42+0800] [Info]  | Crashdetect: <none>                    | 
+[2026-07-19T16:50:42+0800] [Info]  |                                        | 
+[2026-07-19T16:50:42+0800] [Info]  ========================================== 
+[2026-07-19T16:50:42+0800] [Info]  
+[2026-07-19T16:50:42+0800] [Info]  
+[2026-07-19T16:50:42+0800] [Info] ===========================================================
+[2026-07-19T16:50:42+0800] [Info] | >>> Vantara Legacy Database Connected Successfully. <<< |
+[2026-07-19T16:50:42+0800] [Info] ===========================================================
+[2026-07-19T16:50:42+0800] [Info] ================================================
+[2026-07-19T16:50:42+0800] [Info] | >>> Vantara Legacy Main Gamemode Loaded. <<< |
+[2026-07-19T16:50:43+0800] [Info] ================================================
+[2026-07-19T16:50:43+0800] [Info] Legacy Network started on port 7777
+[2026-07-19T16:50:53+0800] [Warning] Couldn't announce legacy network to open.mp list.
+[2026-07-19T16:50:53+0800] [Warning] 	 Status: 406
+[2026-07-19T16:50:53+0800] [Warning] 	 Message: {"error":"failed to query server: socket read timed out"}
+[2026-07-19T16:50:53+0800] [Warning] This won't affect the server's behaviour.
+[2026-07-19T16:51:05+0800] [Info] [connection] incoming connection: 127.0.0.1:54529 id: 0
+[2026-07-19T16:51:05+0800] [Info] [join] TreetMe has joined the server (0:127.0.0.1)
+[2026-07-19T16:51:28+0800] [Info] [part] Rimuru_Tempest has left the server (0:1)
+[2026-07-19T16:52:49+0800] [Info] [connection] incoming connection: 127.0.0.1:62831 id: 0
+[2026-07-19T16:52:49+0800] [Info] [join] TreetMe has joined the server (0:127.0.0.1)
+[2026-07-19T16:53:11+0800] [Warning] Insufficient specifiers given to `format`: "Your password has been set, Please enter your password.
+Attempt: %dx" < 31
+[2026-07-19T17:34:38+0800] [Info] [death] Rimuru_Tempest died 255
+[2026-07-19T17:35:18+0800] [Info] [part] Rimuru_Tempest has left the server (0:1)
+[2026-07-19T19:01:12+0800] [Info] 
+
+*** Streamer Plugin v2.9.6 by Incognito unloaded ***
+
+[2026-07-19T19:01:12+0800] [Info] 
+[2026-07-19T19:01:12+0800] [Info]  ===============================
+[2026-07-19T19:01:12+0800] [Info] 
+[2026-07-19T19:01:12+0800] [Info]      sscanf plugin unloaded.    
+[2026-07-19T19:01:12+0800] [Info] 
+[2026-07-19T19:01:12+0800] [Info]  ===============================
+[2026-07-19T19:01:12+0800] [Info] 
+[2026-07-19T19:01:12+0800] [Info] plugin.mysql: Unloading plugin...

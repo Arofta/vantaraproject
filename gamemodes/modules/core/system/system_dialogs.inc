@@ -6,7 +6,7 @@ Dialog:CharacterList(playerid, response, listitem, inputtext[])
 
     if(listitem < 0 || listitem >= MAX_CHARACTERS)
     {
-        SendClientMessage(playerid, -1, "Invalid character selection. Please try again.");
+        SendClientMessage(playerid, COLOR_RED, "Invalid character, try again!");
         ShowCharacterList(playerid);
         return 1;
     }
@@ -34,10 +34,10 @@ Dialog:CreateCharName(playerid, response, listitem, inputtext[])
     }
 
     if(strlen(inputtext) < 3 || strlen(inputtext) > MAX_PLAYER_NAME)
-        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Nama karakter harus memiliki setidaknya 3 sampai dengan 24 karakter.\nContoh: Ucok_Soelaiman, Herlambang_Kurniawan\nSilahkan masukkan nama karakter Anda:", "Input", "Kembali");
+        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Nama karakter harus memiliki setidaknya 3 hingga 24 karakter. Silahkan masukkan nama karakter Anda.\nContoh: Ucok_Soelaiman, Herlambang_Kurniawan", "Input", "Kembali");
     
     if(!IsRoleplayName(inputtext))
-        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Nama karakter yang anda masukkan tidak valid. Silahkan gunakan format Firstname_Lastname.\nContoh: Ucok_Soelaiman, Herlambang_Kurniawan\nSilahkan masukkan nama karakter Anda:", "Input", "Kembali");
+        return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Nama karakter harus menggunakan format Firstname_Lastname. Silahkan masukkan nama karakter Anda.\nContoh: Ucok_Soelaiman, Herlambang_Kurniawan", "Input", "Kembali");
 
     new query[256];
     mysql_format(SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_name` = '%e'", inputtext);
@@ -45,22 +45,21 @@ Dialog:CreateCharName(playerid, response, listitem, inputtext[])
     return 1;
 }
 
-// nama, tgl lahir, tinggi badan, berat badan, jenis kelamin, asal negara
 Dialog:CreateCharDOB(playerid, response, listitem, inputtext[])
 {
     if(!response)
     {
         tempCharDOB[playerid][0] = EOS;
-        Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan nama karakter anda.", "Input", "Kembali");
+        Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan nama karakter Anda.", "Input", "Kembali");
         return 1;
     }
 
     if(IsNull(inputtext) || !IsValidDOB(inputtext))
-        return Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Format tanggal lahir yang anda masukkan tidak valid.\nSilahkan masukkan tanggal lahir karakter Anda dengan format DD-MM-YYYY.\nContoh: 03-08-2001", "Input", "Kembali");
+        return Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Tanggal lahir karakter harus menggunakan format DD-MM-YYYY. Silahkan masukkan tanggal lahir karakter Anda (DD-MM-YYYY).\nContoh: 03-08-2001", "Input", "Kembali");
     
     strcopy(tempCharDOB[playerid], inputtext);
 
-    Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan berat badan karakter Anda (kg)", "Input", "Kembali");
+    Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan berat badan karakter Anda (kg).", "Input", "Kembali");
     return 1;
 }
 
@@ -69,21 +68,21 @@ Dialog:CreateCharWeight(playerid, response, listitem, inputtext[])
     if(!response)
     {
         tempCharWeight[playerid] = 0;
-        Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan tanggan lahir karakter Anda (DD-MM-YYYY)", "Input", "Kembali");
+        Dialog_Show(playerid, "CreateCharDOB", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan tanggal lahir karakter Anda (DD-MM-YYYY).", "Input", "Kembali");
         return 1;
     }
 
     if(!IsNumericEx(inputtext))
-        return Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Berat badan tidak valid. Berat badan hanya dapat diisi dengan angka dalam satuan kilogram.", "Input", "Kembali");
+        return Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Berat badan karakter harus diisi dengan angka dalam satuan kilogram. Silahkan masukkan berat badan karakter Anda (kg).", "Input", "Kembali");
     
     new weight = strval(inputtext);
 
     if(weight < 40 || weight > 110)
-        return Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Berat badan tidak valid. Berat badan minimal adalah 40 hingga 110 kilogram.", "Input", "Kembali");
+        return Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Berat badan karakter harus berada antara 40 hingga 110 kilogram. Silahkan masukkan berat badan karakter Anda (kg).", "Input", "Kembali");
     
     tempCharWeight[playerid] = weight;
 
-    Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan tinggi badan karakter Anda (cm)", "Input", "Kembali");
+    Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan tinggi badan karakter Anda (cm).", "Input", "Kembali");
     return 1;
 }
 
@@ -92,21 +91,21 @@ Dialog:CreateCharHeight(playerid, response, listitem, inputtext[])
     if(!response)
     {
         tempCharHeight[playerid] = 0;
-        Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Please enter your character's weight (kg)", "Input", "Back");
+        Dialog_Show(playerid, "CreateCharWeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan berat badan karakter Anda (kg).", "Input", "Kembali");
         return 1;
     }
 
     if(!IsNumericEx(inputtext))
-        return Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Invalid height. Please enter a numeric value in centimeters.", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Tinggi badan karakter harus diisi dengan angka dalam satuan centimeter. Silahkan masukkan tinggi badan karakter Anda (cm).", "Input", "Kembali");
 
     new height = strval(inputtext);
 
     if(height < 150 || height > 198)
-        return Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Invalid height. Please enter a height between 150 and 198 centimeters.", "Input", "Back");
+        return Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Tinggi badan karakter harus berada antara 150 hingga 198 centimeter. Silahkan masukkan tinggi badan karakter Anda (cm).", "Input", "Kembali");
 
     tempCharHeight[playerid] = height;
 
-    Dialog_Show(playerid, "CreateCharGender", DIALOG_STYLE_LIST, "Vantara Roleplay - Create Character", "Male\nFemale", "Select", "Back");
+    Dialog_Show(playerid, "CreateCharGender", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan pilih jenis kelamin karakter Anda.\nLaki-Laki\nPerempuan", "Pilih", "Kembali");
     return 1;
 }
 
@@ -115,7 +114,14 @@ Dialog:CreateCharGender(playerid, response, listitem, inputtext[])
     if(!response)
     {
         tempCharGender[playerid] = -1;
-        Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, "Vantara Roleplay - Create Character", "Please enter your character's height (cm)", "Input", "Back");
+        Dialog_Show(playerid, "CreateCharHeight", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan masukkan tinggi badan karakter Anda (cm).", "Input", "Kembali");
+        return 1;
+    }
+
+    if(listitem < 0 || listitem > 1)
+    {
+        SendClientMessage(playerid, COLOR_RED, "Invalid gender, try again!");
+        Dialog_Show(playerid, "CreateCharGender", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan pilih jenis kelamin karakter Anda.\nLaki-Laki\nPerempuan", "Pilih", "Kembali");
         return 1;
     }
 
@@ -128,7 +134,7 @@ Dialog:CreateCharGender(playerid, response, listitem, inputtext[])
         format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
     }
 
-    Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_LIST, "Vantara Roleplay - Create Character", str, "Select", "Back");
+    Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", sprintf("Silahkan pilih asal karakter Anda\n%s", str), "Pilih", "Kembali");
     return 1;
 }
 
@@ -137,24 +143,26 @@ Dialog:CreateCharOrigin(playerid, response, listitem, inputtext[])
     if(!response)
     {
         tempCharOrigin[playerid] = -1;
-        Dialog_Show(playerid, "CreateCharGender", DIALOG_STYLE_LIST, "Vantara Roleplay - Create Character", "Male\nFemale", "Select", "Back");
+        Dialog_Show(playerid, "CreateCharGender", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan pilih jenis kelamin karakter Anda.\nLaki-Laki\nPerempuan", "Pilih", "Kembali");
         return 1;
     }
 
     if(listitem < 0 || listitem >= sizeof(CountryNames))
     {
         static str[3528 + 1];
+        str[0] = EOS;
         for(new i = 0; i < sizeof(CountryNames); i++)
         {
             format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
         }
-        Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_LIST, "Vantara Roleplay - Create Character", str, "Select", "Back");
+        SendClientMessage(playerid, COLOR_RED, "Invalid origin, try again!");
+        Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", sprintf("Silahkan pilih asal karakter Anda\n%s", str), "Pilih", "Kembali");
         return 1;
     }
 
     tempCharOrigin[playerid] = listitem;
 
-    Dialog_Show(playerid, "CreateCharDomicile", DIALOG_STYLE_TABLIST_HEADERS, "Vantara Roleplay - Create Character", "Select your character domicile\nLos Santos\nSan Fierro\nLas Venturas", "Select", "Back");
+    Dialog_Show(playerid, "CreateCharDomicile", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Silahkan pilih domisili karakter Anda.\nLos Santos\tHanya dapat spawn di Los Santos\nSan Fierro\tHanya dapat spawn di San Fierro\nLas Venturas\tHanya dapat spawn di Las Venturas", "Pilih", "Kembali");
     return 1;
 }
 
@@ -170,14 +178,14 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
             format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
         }
 
-        Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_LIST, "Vantara Roleplay - Create Character", str, "Select", "Back");
+        Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", sprintf("Silahkan pilih asal karakter Anda\n%s", str), "Pilih", "Kembali");
         return 1;
     }
 
     if(listitem < 0  || listitem > 2)
     {
-        SendClientMessage(playerid, -1, "Invalid domicile, try again!");
-        Dialog_Show(playerid, "CreateCharDomicile", DIALOG_STYLE_TABLIST_HEADERS, "Vantara Roleplay - Create Character", "Select your character domicile\nLos Santos\nSan Fierro\nLas Venturas", "Select", "Back");
+        SendClientMessage(playerid, COLOR_RED, "Invalid domicile, try again!");
+        Dialog_Show(playerid, "CreateCharDomicile", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Select your character domicile\nLos Santos\nSan Fierro\nLas Venturas", "Select", "Back");
         return 1;
     }
 
@@ -223,7 +231,7 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
 Dialog:LSSpawn(playerid, response, listitem, inputtext[])
 {
     if(!response)
-        return Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Los Santos International Airport\nOcean Docks", "Select", "");
+        return ShowSpawnSelection(playerid);
     
     new const Float:LsCoordSpawn[][] = {
         {1681.9485, -2245.8613, -2.6819, 178.6635},
@@ -275,7 +283,7 @@ Dialog:LSSpawn(playerid, response, listitem, inputtext[])
 
         default:
         {
-            return Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Los Santos International Airport\nOcean Docks", "Select", "");
+            return ShowSpawnSelection(playerid);
         }
     }
     return 1;
@@ -284,7 +292,7 @@ Dialog:LSSpawn(playerid, response, listitem, inputtext[])
 Dialog:SFSpawn(playerid, response, listitem, inputtext[])
 {
     if(!response)
-        return Dialog_Show(playerid, "SFSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "San Fierro Airport\nEsplande North", "Select", "");
+        return ShowSpawnSelection(playerid);
     
     new const Float:SfCoordSpawn[][] = {
         {-1420.0392, -293.3337, 14.1484, 141.0071},
@@ -334,7 +342,7 @@ Dialog:SFSpawn(playerid, response, listitem, inputtext[])
 
         default:
         {
-            return Dialog_Show(playerid, "SFSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "San Fierro Airport\nEsplande North", "Select", "");
+            return ShowSpawnSelection(playerid);
         }
     }
     return 1;
@@ -343,7 +351,7 @@ Dialog:SFSpawn(playerid, response, listitem, inputtext[])
 Dialog:LVSpawn(playerid, response, listitem, inputtext[])
 {
     if(!response)
-        return Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Las Venturas Airport\nLinden Station", "Select", "");
+        return ShowSpawnSelection(playerid);
 
     new const Float:LvCoordSpawn[][] = {
         {1674.3302, 1447.8229, 10.7907, 268.8487},
@@ -393,7 +401,7 @@ Dialog:LVSpawn(playerid, response, listitem, inputtext[])
 
         default:
         {
-            return Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Las Venturas Airport\nLinden Station", "Select", "");
+            return ShowSpawnSelection(playerid);
         }
     }
     return 1;

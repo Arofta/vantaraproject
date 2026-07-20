@@ -9,15 +9,23 @@ ShowCharacterList(playerid)
     {
         if(!isnull(PlayerChar[playerid][i][CharName]))
         {
-            format(cstrl, sizeof(cstrl), "%s%s\t%d\t{00ff00}%s\t{00ff00}%s\n", cstrl, PlayerChar[playerid][i][CharName], PlayerChar[playerid][i][CharLevel], FormatRupiah(PlayerChar[playerid][i][CharMoney]), FormatRupiah(PlayerChar[playerid][i][CharBankMoney]));
+            format(cstrl, sizeof(cstrl), "%s%s\t%d\t"F_COLOR_DARKGREEN"%s\t"F_COLOR_DARKGREEN"%s\n", cstrl, PlayerChar[playerid][i][CharName], PlayerChar[playerid][i][CharLevel], FormatRupiah(PlayerChar[playerid][i][CharMoney]), FormatRupiah(PlayerChar[playerid][i][CharBankMoney]));
             count++;
         }
     }
     if(count < MAX_CHARACTERS) 
-        format(cstrl, sizeof(cstrl), "%s{00FF00}Create New Character", cstrl);
+        format(cstrl, sizeof(cstrl), "%s"F_COLOR_GREEN"+ Buat Karakter Baru", cstrl);
     
-    Dialog_Show(playerid, "CharacterList", DIALOG_STYLE_TABLIST_HEADERS, "Vantara Roleplay - Character Selection", cstrl, "Select", "Cancel");
+    Dialog_Show(playerid, "CharacterList", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Character Selection", cstrl, "Select", "Cancel");
     return 1;
+}
+
+bool:Flood_Check(&minTime, maxTime)
+{
+    if(gettime() < minTime + maxTime)
+        return true;
+    minTime = gettime();
+    return false;
 }
 
 ShowSpawnSelection(playerid)
@@ -27,30 +35,30 @@ ShowSpawnSelection(playerid)
         case 0:
         {
             if(pData[playerid][pLastExit] > 0) 
-                return Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Los Santos International Airport\nOcean Docks\nLast Exit", "Select", "");
-            Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Los Santos International Airport\nOcean Docks", "Select", "");
+                return Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Spawn Selection", "Los Santos International Airport\nOcean Docks\nLast Exit", "Pilih", "");
+            Dialog_Show(playerid, "LSSpawn", DIALOG_STYLE_LIST, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Spawn Selection", "Los Santos International Airport\nOcean Docks", "Pilih", "");
             return 1;
         }
         
         case 1:
         {
             if(pData[playerid][pLastExit] > 0) 
-                return Dialog_Show(playerid, "SFSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "San Fierro Airport\nEsplande North\nLast Exit", "Select", "");
-            Dialog_Show(playerid, "SFSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "San Fierro Airport\nEsplande North", "Select", "");
+                return Dialog_Show(playerid, "SFSpawn", DIALOG_STYLE_LIST, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Spawn Selection", "San Fierro Airport\nEsplande North\nLast Exit", "Pilih", "");
+            Dialog_Show(playerid, "SFSpawn", DIALOG_STYLE_LIST, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Spawn Selection", "San Fierro Airport\nEsplande North", "Pilih", "");
             return 1;
         }
 
         case 2:
         {
             if(pData[playerid][pLastExit] > 0) 
-                return Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Las Venturas Airport\nLinden Station\nLast Exit", "Select", "");
-            Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, "Vantara Roleplay - Spawn Selection", "Las Venturas Airport\nLinden Station", "Select", "");
+                return Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Spawn Selection", "Las Venturas Airport\nLinden Station\nLast Exit", "Pilih", "");
+            Dialog_Show(playerid, "LVSpawn", DIALOG_STYLE_LIST, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Spawn Selection", "Las Venturas Airport\nLinden Station", "Pilih", "");
             return 1;
         }
 
         default:
         {
-            Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, "Vantara Roleplay - Character's Domicile not found", "Something went wrong, please try later.", "Quit", "");
+            Dialog_Show(playerid, "Message", DIALOG_STYLE_MSGBOX, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Character's Domicile not found", "Terjadi kesalahan saat sedang memproses permintaan Anda.", "Keluar", "");
             KickEx(playerid);
             return 1;
         }
@@ -63,11 +71,9 @@ stock ShowPlayerStats(playerid, targetid)
 {
     new 
         str[64],
-        str1[128],
         str2[1024];
 
     format(str, sizeof(str), ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - %s's Stats", pData[targetid][pName]);
-    strcopy(str1, "N/A");
     format(str2, sizeof(str2), "Category\tDetails\n\
     "F_COLOR_YELLOW"Account Section:"F_COLOR_WHITE"\n\
     ID:\t%d\n\
