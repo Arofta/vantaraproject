@@ -16,7 +16,7 @@ ShowCharacterList(playerid)
     if(count < MAX_CHARACTERS) 
         format(cstrl, sizeof(cstrl), "%s"F_COLOR_GREEN"+ Buat Karakter Baru", cstrl);
     
-    Dialog_Show(playerid, "CharacterList", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Character Selection", cstrl, "Select", "Cancel");
+    Dialog_Show(playerid, "CharacterList", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Character Selection", cstrl, "Pilih", "Batal");
     return 1;
 }
 

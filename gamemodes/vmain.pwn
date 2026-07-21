@@ -161,9 +161,16 @@ main()
 {
     if(mysql_errno(SQL) == 0)
     {
-        printf("================================================");
-        printf("| >>> Vantara Legacy Main Gamemode Loaded. <<< |");
-        printf("================================================");
+        printf("    |      Vantara Legacy Main Gamemode     |");
+        printf("    |                                       |");
+        printf("    |              by Arofta                |");
+        printf("    |                                       |");
+        printf("    |              Funded by                |");
+        printf("    |               .PhiBi                  |");
+        printf("    |                                       |");
+        printf("    |   Est. 23 Jun 2026          Loaded.   |");
+        printf("    =========================================");
+        printf(" ");
     }
 }
 
@@ -175,15 +182,19 @@ public OnGameModeInit()
     SQL = mysql_connect_file("mysql.ini"); // Connect to server Database using mysql.ini file for credentials. Alternative:
     if(mysql_errno(SQL) == 0)
     {
-        printf("===========================================================");
-        printf("| >>> Vantara Legacy Database Connected Successfully. <<< |");
-        printf("===========================================================");
+        printf("    =========================================");
+        printf("    |        Vantara Legacy Database        |");
+        printf("    |                                       |");
+        printf("    |                          Connected.   |");
+        printf("    =========================================");
     }
     else
     {
-        printf("======================================================");
-        printf("| >>> Vantara Legacy Database Connection Failed. <<< |");
-        printf("======================================================");
+        printf("    =========================================");
+        printf("    |        Vantara Legacy Database        |");
+        printf("    |                                       |");
+        printf("    |                  Connection Failed.   |");
+        printf("    =========================================");
         printf("Gamemode Automatically Shutdown in..");
         return SetTimerEx("ExitCommandProcessed", 1000, false, "d", 15);
     }

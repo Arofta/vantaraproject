@@ -255,30 +255,71 @@ hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 
 hook OnPlayerClickTextDraw(playerid, Text:clickedid)
 {
+    if(clickedid == InvButtonTD[4])
+    {
+        Hide_InvTD(playerid);
+    }
     return 1;
 }
 
 hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 {
-    if(playertextid == InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE])
+    //printf("Clicked TD ID: %d", _:playertextid);
+    if(SelectedSlot[playerid] != -1 && (SelectedSlot[playerid] / MAX_SLOTS_PER_PAGE) == CurrInvPage[playerid] && playertextid == InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE])
     {
-        PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x66000000);
+        PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 66);
         PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE]);
         SelectedSlot[playerid] = -1;
         SelectedType[playerid] = -1;
+    }
+    else if(playertextid == InvPagePTD[playerid][0])
+    {
+        if(CurrInvPage[playerid] == 0)
+            return 1;
+        CurrInvPage[playerid] = 0;
+        Inventory_RefreshPage(playerid);
+    }
+    else if(playertextid == InvPagePTD[playerid][1])
+    {
+        if(CurrInvPage[playerid] == 1)
+            return 1;
+        CurrInvPage[playerid] = 1;
+        Inventory_RefreshPage(playerid);
     }
     else
     {
         for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++)
         {
+            //printf("%d -> %d", x, _:InvSlotPTD[playerid][x]);
             if(playertextid == InvSlotPTD[playerid][x])
             {
                 if(SelectedSlot[playerid] != -1)
                 {
-                    if(SelectedType[playerid] == 0)
+                    new slot = CurrInvPage[playerid] * MAX_SLOTS_PER_PAGE + x,
+                        SelectedIndex = SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE;
+
+                    if(InvData[playerid][SelectedSlot[playerid]][invExist] && !InvData[playerid][slot][invExist])
                     {
-                        PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x66000000);
-                        PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE]);
+                        InvData[playerid][slot][invExist] = true;
+                        InvData[playerid][slot][invItemID] = InvData[playerid][SelectedSlot[playerid]][invItemID];
+                        InvData[playerid][slot][invQuantity] = InvData[playerid][SelectedSlot[playerid]][invQuantity];
+
+                        InvData[playerid][SelectedSlot[playerid]][invExist] = false;
+                        InvData[playerid][SelectedSlot[playerid]][invItemID] = -1;
+                        InvData[playerid][SelectedSlot[playerid]][invQuantity] = 0;
+                        
+                        new oldSlot = SelectedSlot[playerid];
+                        SelectedSlot[playerid] = -1;
+                        SelectedType[playerid] = -1;
+
+                        Inventory_RefreshSlot(playerid, oldSlot);
+                        Inventory_RefreshSlot(playerid, slot);
+                        return 1;
+                    }
+                    else if(SelectedType[playerid] == 0)
+                    {
+                        PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedIndex], 66);
+                        PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedIndex]);
                     }
                     //else
                         //PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x00000000);
@@ -287,7 +328,7 @@ hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
                 SelectedSlot[playerid] = CurrInvPage[playerid] * MAX_SLOTS_PER_PAGE + x;
                 SelectedType[playerid] = 0;
 
-                PlayerTextDrawColour(playerid, InvSlotPTD[playerid][x], 0xFFD70033);
+                PlayerTextDrawColour(playerid, InvSlotPTD[playerid][x], 0xFFD70066);
                 PlayerTextDrawShow(playerid, InvSlotPTD[playerid][x]);
                 break;
             }

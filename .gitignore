@@ -21,6 +21,6 @@ mysql.ini
 Thumbs.db
 Desktop.ini
 
-/discord-bot/
+/node_modules/
 
 .env

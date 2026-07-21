@@ -275,3 +275,27 @@
 [19/07/2026 02:29:23] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
 [19/07/2026 02:29:27] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
 [19/07/2026 16:50:42] [WARNING] mysql_connect_file: no password specified
+[20/07/2026 19:47:40] [WARNING] mysql_connect_file: no password specified
+[20/07/2026 19:53:27] [WARNING] mysql_connect_file: no password specified
+[20/07/2026 23:53:40] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 00:08:43] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 00:17:10] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 13:01:12] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 13:07:41] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 13:13:28] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 15:21:36] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 16:15:57] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 16:17:50] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 16:26:14] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 16:39:16] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 16:43:25] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 17:42:57] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:20:00] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:27:11] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:33:11] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:37:29] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:42:38] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:46:31] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:51:01] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:58:04] [WARNING] mysql_connect_file: no password specified
+[21/07/2026 21:58:11] [WARNING] mysql_connect_file: no password specified

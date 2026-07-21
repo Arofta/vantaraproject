@@ -129,12 +129,13 @@ Dialog:CreateCharGender(playerid, response, listitem, inputtext[])
 
     static str[3528 + 1];
     str[0] = EOS;
+    strcopy(str, "Silahkan pilih asal karakter Anda\n");
     for(new i = 0; i < sizeof(CountryNames); i++)
     {
         format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
     }
 
-    Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", sprintf("Silahkan pilih asal karakter Anda\n%s", str), "Pilih", "Kembali");
+    Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", str, "Pilih", "Kembali");
     return 1;
 }
 
@@ -151,12 +152,13 @@ Dialog:CreateCharOrigin(playerid, response, listitem, inputtext[])
     {
         static str[3528 + 1];
         str[0] = EOS;
+        strcopy(str, "Silahkan pilih asal karakter Anda\n");
         for(new i = 0; i < sizeof(CountryNames); i++)
         {
             format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
         }
         SendClientMessage(playerid, COLOR_RED, "Invalid origin, try again!");
-        Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", sprintf("Silahkan pilih asal karakter Anda\n%s", str), "Pilih", "Kembali");
+        Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", str, "Pilih", "Kembali");
         return 1;
     }
 
@@ -173,12 +175,13 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
         tempCharDomicile[playerid] = -1;
         static str[3528 + 1];
         str[0] = EOS;
+        strcopy(str, "Silahkan pilih asal karakter Anda\n");
         for(new i = 0; i < sizeof(CountryNames); i++)
         {
             format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
         }
 
-        Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", sprintf("Silahkan pilih asal karakter Anda\n%s", str), "Pilih", "Kembali");
+        Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", str, "Pilih", "Kembali");
         return 1;
     }
 

@@ -16,6 +16,6 @@
 #endif
 #define MAX_CHARACTERS      3
 
-#define INVALID_VALUE       -255
+#define INVALID_VALUE       0xFFFF
 
 //#define isnull(%0) ((!(%0[0])) ? (true) : (false))

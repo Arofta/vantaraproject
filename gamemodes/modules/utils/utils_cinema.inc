@@ -18,7 +18,7 @@ SetPlayerCinemaScene(playerid, e_CinemaList:cinema)
             InterpolateCameraPos(playerid, 1462.1173, -866.3331, 54.9074, 1424.6195, -867.0735, 49.5979, 50000, CAMERA_MOVE);
             return 1;
         }
-        case CINEMA_SUCCESS_LOGIN: // Yang ini bbelum
+        case CINEMA_SUCCESS_LOGIN: // Yang ini belum
         {
             TogglePlayerSpectating(playerid, true);
             SetPlayerCameraPos(playerid, 1462.1173, -866.3331, 54.9074);

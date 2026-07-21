@@ -164,8 +164,6 @@ stock Inventory_Add(playerid, const itemID, quantity = 1) // catatan, item stack
 
     if(Inventory_IsItemStackable(itemID) == 0) // Jika item unstackable, maka quantity akan di set menjadi 1
         quantity = 1;
-
-    printf("quantity: %d", quantity);
     
     if(slotID > -1)
     {
@@ -239,8 +237,108 @@ stock Inventory_Clear(playerid)
 	return mysql_pquery(SQL, iQuery);
 }
 
+stock Inventory_RefreshPage(playerid) // gunakan dengan bijak agar script tetap eefisien
+{
+    new offset = CurrInvPage[playerid] * MAX_SLOTS_PER_PAGE,
+        slot = 0,
+        itemid = -1;
+
+    if(CurrInvPage[playerid] == 0)
+    {
+        PlayerTextDrawColour(playerid, InvPagePTD[playerid][0], 0xFFD700FF);
+        PlayerTextDrawColour(playerid, InvPagePTD[playerid][1], 66);
+    }
+    else
+    {
+        PlayerTextDrawColour(playerid, InvPagePTD[playerid][0], 66);
+        PlayerTextDrawColour(playerid, InvPagePTD[playerid][1], 0xFFD700FF);
+    }
+    PlayerTextDrawShow(playerid, InvPagePTD[playerid][0]);
+    PlayerTextDrawShow(playerid, InvPagePTD[playerid][1]);
+
+    for(new x; x < MAX_SLOTS_PER_PAGE; x++)
+    {
+        slot = offset + x;
+        itemid = InvData[playerid][slot][invItemID];
+
+        if(SelectedSlot[playerid] != -1 && (SelectedSlot[playerid] / MAX_SLOTS_PER_PAGE) == CurrInvPage[playerid])
+        {
+            PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0xFFD70066);
+            PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE]);
+        }
+        else
+        {
+            PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 66);
+            PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE]);
+        }
+
+        if(InvData[playerid][slot][invExist])
+        {
+            PlayerTextDrawSetPreviewModel(playerid, InvModelPTD[playerid][x], Items[itemid][Model]);
+            PlayerTextDrawSetPreviewRot(playerid, InvModelPTD[playerid][x], Items[itemid][RotX], Items[itemid][RotY], Items[itemid][RotZ], Items[itemid][Zoom]);
+            PlayerTextDrawShow(playerid, InvModelPTD[playerid][x]);
+            
+            PlayerTextDrawSetString(playerid, InvNamePTD[playerid][x], "%s", Items[itemid][Name]);
+            PlayerTextDrawShow(playerid, InvNamePTD[playerid][x]);
+            
+            PlayerTextDrawSetString(playerid, InvQuantityPTD[playerid][x], "%dx", InvData[playerid][slot][invQuantity]);
+            PlayerTextDrawShow(playerid, InvQuantityPTD[playerid][x]);
+        }
+        else
+        {
+            PlayerTextDrawHide(playerid, InvModelPTD[playerid][x]);
+            PlayerTextDrawHide(playerid, InvNamePTD[playerid][x]);
+            PlayerTextDrawHide(playerid, InvQuantityPTD[playerid][x]);
+        }
+    }
+    return 1;
+}
+
+stock Inventory_RefreshSlot(playerid, const slot) // Pakai kalau perlu refresh isi slot. Isi slot yang dimaksud meliputi, preview model, nama item, quantity.
+{
+    if(slot < 0 || slot >= MAX_INVENTORY_SLOTS)
+        return 0;
+    new index = slot % MAX_SLOTS_PER_PAGE,
+        itemid = InvData[playerid][slot][invItemID];
+    if((slot / MAX_SLOTS_PER_PAGE) == CurrInvPage[playerid])
+    {
+        if(InvData[playerid][slot][invExist])
+        {
+            PlayerTextDrawSetPreviewModel(playerid, InvModelPTD[playerid][index], Items[itemid][Model]);
+            PlayerTextDrawSetPreviewRot(playerid, InvModelPTD[playerid][index], Items[itemid][RotX], Items[itemid][RotY], Items[itemid][RotZ], Items[itemid][Zoom]);
+            PlayerTextDrawShow(playerid, InvModelPTD[playerid][index]);
+            
+            PlayerTextDrawSetString(playerid, InvNamePTD[playerid][index], "%s", Items[itemid][Name]);
+            PlayerTextDrawShow(playerid, InvNamePTD[playerid][index]);
+            
+            PlayerTextDrawSetString(playerid, InvQuantityPTD[playerid][index], "%dx", InvData[playerid][slot][invQuantity]);
+            PlayerTextDrawShow(playerid, InvQuantityPTD[playerid][index]);
+        }
+        else
+        {
+            PlayerTextDrawHide(playerid, InvModelPTD[playerid][index]);
+            PlayerTextDrawHide(playerid, InvNamePTD[playerid][index]);
+            PlayerTextDrawHide(playerid, InvQuantityPTD[playerid][index]);
+        }
+
+        if(SelectedSlot[playerid] != -1 && SelectedSlot[playerid] == slot)
+        {
+            PlayerTextDrawColour(playerid, InvSlotPTD[playerid][index], 0xFFD70066);
+            PlayerTextDrawShow(playerid, InvSlotPTD[playerid][index]);
+        }
+        else
+        {
+            PlayerTextDrawColour(playerid, InvSlotPTD[playerid][index], 66);
+            PlayerTextDrawShow(playerid, InvSlotPTD[playerid][index]);
+        }
+    }
+    return 1;
+}
+
 stock Show_InvTD(playerid)
 {
+    PlayerTextDrawColour(playerid, InvPagePTD[playerid][0], 0xFFD700FF);
+    PlayerTextDrawSetString(playerid, InvTextPTD[playerid][0], pData[playerid][pName]);
     for(new x = 0; x < 20; x++)
     {
         if(x < 2) PlayerTextDrawShow(playerid, InvPagePTD[playerid][x]);
@@ -297,6 +395,14 @@ stock Hide_InvTD(playerid)
     }
     PlayerTextDrawHide(playerid, InvWeightBarPTD[playerid]);
 
+    PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 66);
+
+    if(CurrInvPage[playerid] == 1)
+    {
+        PlayerTextDrawColour(playerid, InvPagePTD[playerid][0], 0xFFD700FF);
+        PlayerTextDrawColour(playerid, InvPagePTD[playerid][1], 66);
+    }
+
     TDInfo[playerid][InvTDShown] = false;
     CurrContainerPage[playerid] = 0;
     CurrInvPage[playerid] = 0;
@@ -307,138 +413,15 @@ stock Hide_InvTD(playerid)
 }
 
 /*
-stock Show_InvTD(playerid)
+stock Show_ItemBox(playerid, interval, modelid, const title[], const itemName[])
 {
-    for(new i = 0; i < 35; i++)
-    {
-        if(i < 2)
-        {
-            PlayerTextDrawShow(playerid, InvPage[playerid][i]);
-            PlayerTextDrawShow(playerid, ContainerPage[playerid][i]);
-        }
-
-        if(i < 3)
-            PlayerTextDrawShow(playerid, ContainerModeText[playerid][i]);
-
-        if(i < 4)
-            TextDrawShowForPlayer(playerid, ExtraButton[i]);
-
-        if(i < 5)
-            TextDrawShowForPlayer(playerid, Button[i]);
-
-        if(i < 20)
-        {
-            TextDrawShowForPlayer(playerid, InvSlot[i]);
-            TextDrawShowForPlayer(playerid, ContainerSlot[i]);
-
-            if(InvData[playerid][i][invExist])
-            {
-                PlayerTextDrawSetPreviewModel(playerid, InvPrevModel[playerid][i], Items[InvData[playerid][i][invItemID]][Model]);
-                PlayerTextDrawShow(playerid, InvPrevModel[playerid][i]);
-
-                PlayerTextDrawSetString(playerid, InvItemName[playerid][i], "%s", Items[InvData[playerid][i][invItemID]][Name]);
-                PlayerTextDrawShow(playerid, InvItemName[playerid][i]);
-
-                PlayerTextDrawSetString(playerid, InvItemAmount[playerid][i], "%dx", InvData[playerid][i][invQuantity]);
-                PlayerTextDrawShow(playerid, InvItemAmount[playerid][i]);
-            }
-
-            //PlayerTextDrawShow(playerid, ContainerPrevModel[playerid][i]);
-            //PlayerTextDrawShow(playerid, ContainerItemName[playerid][i]);
-            //PlayerTextDrawShow(playerid, ContainerItemAmount[playerid][i]);
-        }
-        TextDrawShowForPlayer(playerid, BaseInvTD[i]);
-    }
-
-    PlayerTextDrawSetString(playerid, InvPlayerName[playerid], "%s", pData[playerid][pName]);
-    PlayerTextDrawShow(playerid, InvPlayerName[playerid]);
-
-    PlayerTextDrawShow(playerid, InvWeightBar[playerid]);
-    PlayerTextDrawShow(playerid, InvWeightText[playerid]);
-    PlayerTextDrawShow(playerid, InvPageText[playerid]);
-
-    PlayerTextDrawSetString(playerid, ContainerTitle[playerid], "On The Ground");
-    PlayerTextDrawShow(playerid, ContainerTitle[playerid]);
-
-    PlayerTextDrawShow(playerid, ContainerWeightBar[playerid]);
-    PlayerTextDrawShow(playerid, ContainerWeightText[playerid]);
-    PlayerTextDrawShow(playerid, ContainerPageText[playerid]);
-
-    PlayerTextDrawShow(playerid, AmountTD[playerid]);
-
-    TDInfo[playerid][InvTDShown] = true;
-    CurrContainerPage[playerid] = 0;
-    CurrInvPage[playerid] = 0;
-    SelectedSlot[playerid] = -1;
-    SelectedType[playerid] = -1;
-    SelectTextDraw(playerid, 0x00000066);
-    return 1;
+    if(!iBoxInfo[playerid][x][BoxUsed])
+    iBoxInfo[playerid][]
+    return 0;
 }
 
-stock Hide_InvTD(playerid)
+stock Hide_ItemBox(playerid, slot)
 {
-    for(new i = 0; i < 35; i++)
-    {
-        if(i < 2)
-        {
-            PlayerTextDrawHide(playerid, InvPage[playerid][i]);
-            PlayerTextDrawHide(playerid, ContainerPage[playerid][i]);
-        }
-
-        if(i < 3)
-            PlayerTextDrawHide(playerid, ContainerModeText[playerid][i]);
-
-        if(i < 4)
-            TextDrawHideForPlayer(playerid, ExtraButton[i]);
-
-        if(i < 5)
-            TextDrawHideForPlayer(playerid, Button[i]);
-
-        if(i < 20)
-        {
-            TextDrawHideForPlayer(playerid, InvSlot[i]);
-            TextDrawHideForPlayer(playerid, ContainerSlot[i]);
-
-            PlayerTextDrawHide(playerid, InvPrevModel[playerid][i]);
-            PlayerTextDrawHide(playerid, InvItemName[playerid][i]);
-            PlayerTextDrawHide(playerid, InvItemAmount[playerid][i]);
-
-            PlayerTextDrawHide(playerid, ContainerPrevModel[playerid][i]);
-            PlayerTextDrawHide(playerid, ContainerItemName[playerid][i]);
-            PlayerTextDrawHide(playerid, ContainerItemAmount[playerid][i]);
-        }
-        TextDrawHideForPlayer(playerid, BaseInvTD[i]);
-    }
-
-    PlayerTextDrawHide(playerid, InvPlayerName[playerid]);
-    PlayerTextDrawHide(playerid, InvWeightBar[playerid]);
-    PlayerTextDrawHide(playerid, InvWeightText[playerid]);
-    PlayerTextDrawHide(playerid, InvPageText[playerid]);
-
-    PlayerTextDrawHide(playerid, ContainerTitle[playerid]);
-    PlayerTextDrawHide(playerid, ContainerWeightBar[playerid]);
-    PlayerTextDrawHide(playerid, ContainerWeightText[playerid]);
-    PlayerTextDrawHide(playerid, ContainerPageText[playerid]);
-
-    PlayerTextDrawHide(playerid, AmountTD[playerid]);
-
-    TDInfo[playerid][InvTDShown] = false;
-    CurrContainerPage[playerid] = 0;
-    CurrInvPage[playerid] = 0;
-    SelectedSlot[playerid] = -1;
-    SelectedType[playerid] = -1;
-    CancelSelectTextDraw(playerid);
-    return 1;
-}*/
-
-// stock Show_ItemBox(playerid, interval, modelid, const title[], const itemName[])
-// {
-//     if(!iBoxInfo[playerid][x][BoxUsed])
-//     iBoxInfo[playerid][]
-//     return 0;
-// }
-// 
-// stock Hide_ItemBox(playerid, slot)
-// {
-//     
-// }
+    
+}
+*/
