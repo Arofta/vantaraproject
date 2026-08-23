@@ -19,8 +19,8 @@ Dialog:CharacterList(playerid, response, listitem, inputtext[])
     pData[playerid][pLevel] = PlayerChar[playerid][listitem][CharLevel];
 
     new query[256];
-    mysql_format(SQL, query, sizeof(query), "SELECT * FROM `player_characters` WHERE `char_id` = %d LIMIT 1", PlayerChar[playerid][listitem][CharID]);
-    mysql_pquery(SQL, query, "LoadCharacterData", "d", playerid);
+    mysql_format(g_SQL, query, sizeof(query), "SELECT * FROM `player_characters` WHERE `char_id` = %d LIMIT 1", PlayerChar[playerid][listitem][CharID]);
+    mysql_pquery(g_SQL, query, "LoadCharacterData", "d", playerid);
     return 1;
 }
 
@@ -40,8 +40,8 @@ Dialog:CreateCharName(playerid, response, listitem, inputtext[])
         return Dialog_Show(playerid, "CreateCharName", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", "Nama karakter harus menggunakan format Firstname_Lastname. Silahkan masukkan nama karakter Anda.\nContoh: Ucok_Soelaiman, Herlambang_Kurniawan", "Input", "Kembali");
 
     new query[256];
-    mysql_format(SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_name` = '%e'", inputtext);
-    mysql_pquery(SQL, query, "OnInsertCharacterName", "ds", playerid, inputtext);
+    mysql_format(g_SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_name` = '%e'", inputtext);
+    mysql_pquery(g_SQL, query, "OnInsertCharacterName", "ds", playerid, inputtext);
     return 1;
 }
 
@@ -130,9 +130,9 @@ Dialog:CreateCharGender(playerid, response, listitem, inputtext[])
     static str[3528 + 1];
     str[0] = EOS;
     strcopy(str, "Silahkan pilih asal karakter Anda\n");
-    for(new i = 0; i < sizeof(CountryNames); i++)
+    for(new i = 0; i < sizeof(g_CountryNames); i++)
     {
-        format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
+        format(str, sizeof(str), "%s%s\n", str, g_CountryNames[i]);
     }
 
     Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", str, "Pilih", "Kembali");
@@ -148,14 +148,14 @@ Dialog:CreateCharOrigin(playerid, response, listitem, inputtext[])
         return 1;
     }
 
-    if(listitem < 0 || listitem >= sizeof(CountryNames))
+    if(listitem < 0 || listitem >= sizeof(g_CountryNames))
     {
         static str[3528 + 1];
         str[0] = EOS;
         strcopy(str, "Silahkan pilih asal karakter Anda\n");
-        for(new i = 0; i < sizeof(CountryNames); i++)
+        for(new i = 0; i < sizeof(g_CountryNames); i++)
         {
-            format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
+            format(str, sizeof(str), "%s%s\n", str, g_CountryNames[i]);
         }
         SendClientMessage(playerid, COLOR_RED, "Invalid origin, try again!");
         Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", str, "Pilih", "Kembali");
@@ -176,9 +176,9 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
         static str[3528 + 1];
         str[0] = EOS;
         strcopy(str, "Silahkan pilih asal karakter Anda\n");
-        for(new i = 0; i < sizeof(CountryNames); i++)
+        for(new i = 0; i < sizeof(g_CountryNames); i++)
         {
-            format(str, sizeof(str), "%s%s\n", str, CountryNames[i]);
+            format(str, sizeof(str), "%s%s\n", str, g_CountryNames[i]);
         }
 
         Dialog_Show(playerid, "CreateCharOrigin", DIALOG_STYLE_TABLIST_HEADERS, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Create Character", str, "Pilih", "Kembali");
@@ -199,17 +199,17 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
     {
         case 1:
         {
-            randSkin = rand_MaleSkin[random(sizeof(rand_MaleSkin))];
+            randSkin = g_MaleSkin[random(sizeof(g_MaleSkin))];
         }
 
         case 2:
         {
-            randSkin = rand_FemaleSkin[random(sizeof(rand_FemaleSkin))];
+            randSkin = g_FemaleSkin[random(sizeof(g_FemaleSkin))];
         }
     }
 
     static query[2048];
-    mysql_format(SQL, query, sizeof(query),
+    mysql_format(g_SQL, query, sizeof(query),
         "INSERT INTO `player_characters` \
         (`char_id`, `char_account_id`, `char_ucp`, `char_name`, `char_register_date`, `char_last_online`, \
         `char_admin_name`, `char_skin`, `char_dob`, `char_origin`, `char_gender`, `char_weight`, `char_height`, `char_domicile`) \
@@ -227,7 +227,7 @@ Dialog:CreateCharDomicile(playerid, response, listitem, inputtext[])
         tempCharWeight[playerid],
         tempCharHeight[playerid],
         tempCharDomicile[playerid]);
-    mysql_tquery(SQL, query, "OnCharacterCreated", "d", playerid);
+    mysql_tquery(g_SQL, query, "OnCharacterCreated", "d", playerid);
     return 1;
 }
 

@@ -1,0 +1,243 @@
+enum _ptempvars
+{    
+    InTree,
+
+    CodeIPChange,
+    NewIP[16 + 1],
+    VerifyCode,
+    RecoveryCode,
+    IsAllowed,
+
+    bool:ac_IsS0beitDetected,
+    bool:ac_IsCleo1Detected,
+    bool:ac_IsCleo2Detected,
+    bool:ac_IsCleo3Detected,
+    bool:ac_IsCleoMoonloader1Detected,
+    bool:ac_IsCleoMoonloader2Detected,
+    bool:ac_IsCleo4Detected,
+    bool:ac_IsSilentPatchDetected,
+    bool:ac_IsSampFuncsDetected,
+    bool:ac_IsSampFuncs2Detected,
+    bool:ac_IsS0beit2Detected,
+    bool:ac_IsModedVorbisDetected,
+    bool:ac_IsUltraWhDetected,
+    bool:ac_IsSilentAimDetected,
+    bool:ac_IsImprovedDeagleDetected,
+    bool:ac_IsStealthRemasteredDetected,
+    bool:ac_IsSensfixDetected,
+    bool:ac_IsS0beit2orRAkNetAnomalyDetected
+};
+new ACVar[MAX_PLAYERS][_ptempvars];
+
+YCMD:checkacwarns(playerid, params[], help)
+{
+    new targetid;
+    
+    if(pData[playerid][pAdminLevel] < 1)
+        return 1;
+
+    if(sscanf(params, "u", targetid)) return SendClientMessage(playerid, -1, "SYNTAX: /checkacwarn <playerid>");
+
+    if(!IsPlayerConnected(targetid) || targetid == INVALID_PLAYER_ID) return SendClientMessage(playerid, -1, "> Pemain dengan id tersebut tidak dapat ditemukan didalam server.");
+
+    new str[666];
+
+    format(str, sizeof(str), "Cheat Category\tStatus\n");
+
+    format(str, sizeof(str),
+        "%s\
+     S0beit\t%s\n\
+     CLEO #1\t%s\n\
+     CLEO #2\t%s\n\
+     CLEO #3\t%s\n\
+     CLEO / MoonLoader #1\t%s\n\
+     CLEO / MoonLoader #2\t%s\n\
+     CLEO #4\t%s\n\
+     SilentPatch\t%s\n\
+     SAMPFUNCS\t%s\n\
+     SAMPFUNCS #2\t%s\n\
+     S0beit #2\t%s\n\
+     Modified Vorbis\t%s\n\
+     Ultra WH\t%s\n\
+     Silent Aim\t%s\n\
+     Improved Deagle\t%s\n\
+     Stealth Remastered\t%s\n\
+     Sensfix\t%s\n\
+     S0beit v2 / RakNet Anomaly\t%s",
+        str,
+
+        ACVar[playerid][ac_IsS0beitDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsCleo1Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsCleo2Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsCleo3Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsCleoMoonloader1Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsCleoMoonloader2Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsCleo4Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsSilentPatchDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsSampFuncsDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsSampFuncs2Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsS0beit2Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsModedVorbisDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsUltraWhDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsSilentAimDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsImprovedDeagleDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsStealthRemasteredDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsSensfixDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[playerid][ac_IsS0beit2orRAkNetAnomalyDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected")
+    );
+
+    Dialog_Show(playerid, "Message", DIALOG_STYLE_TABLIST_HEADERS, "Player AntiCheat Warning", str, "Close", "");
+    return 1;
+}
+
+public OnPlayerCheatDetected(playerid, cheatid, action)
+{   
+    switch(cheatid)
+    {
+        case 1: // S0beit
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}S0beit{FFFFFF} pada client mu (#%d). Kamu ditendang dari server.", cheatid);
+            ACVar[playerid][ac_IsS0beitDetected] = true;
+            return KickEx(playerid);
+        }
+
+        case 2: // CLEO #1
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}CLEO #1{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsCleo1Detected] = true;
+            return 0;
+        }
+
+        case 3: // CLEO #2
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}CLEO #2{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsCleo2Detected] = true;
+            return 0;
+        }
+
+        case 4: // CLEO #3
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}CLEO #3{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsCleo3Detected] = true;
+            return 0;
+        }
+
+        case 5: // CLEO / MoonLoader #1
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}CLEO / MoonLoader #1{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsCleoMoonloader1Detected] = true;
+            return 0;
+        }
+
+        case 6: // CLEO / MoonLoader #2
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}CLEO / MoonLoader #2{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsCleoMoonloader2Detected] = true;
+            return 0;
+        }
+
+        case 7: // CLEO #4
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}CLEO #4{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsCleo4Detected] = true;
+            return 0;
+        }
+
+        case 8: // SilentPatch
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}SilentPatch{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsSilentPatchDetected] = true;
+            return 0;
+        }
+
+        case 9: // SAMPFUNCS #1
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}SAMPFUNCS #1{FFFFFF} pada client mu (#%d). Kamu ditendang dari server.", cheatid);
+            ACVar[playerid][ac_IsSampFuncsDetected] = true;
+            return KickEx(playerid);
+        }
+
+        case 10: // SAMPFUNCS #2
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}SAMPFUNCS #2{FFFFFF} pada client mu (#%d). Kamu ditendang dari server.", cheatid);
+            ACVar[playerid][ac_IsSampFuncs2Detected] = true;
+            return KickEx(playerid);
+        }
+
+        case 11: // S0beit #2
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}S0beit #2{FFFFFF} pada client mu (#%d). Kamu ditendang dari server.", cheatid);
+            ACVar[playerid][ac_IsS0beit2Detected] = true;
+            return KickEx(playerid);
+        }
+
+        case 12: // Modified Vorbis File
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}Modified Vorbis File{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsModedVorbisDetected] = true;
+            return 0;
+        }
+
+        case 13: // UltraWH
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}UltraWH{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsUltraWhDetected] = true;
+            return 0;
+        }
+
+        case 14: // SilentAim
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}SilentAim{FFFFFF} pada client mu (#%d). Kamu ditendang dari server.", cheatid);
+            ACVar[playerid][ac_IsSilentAimDetected] = true;
+            return KickEx(playerid);
+        }
+
+        case 15: // Improved Deagle
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}Improved Deagle{FFFFFF} pada client mu (#%d). Kamu ditendang dari server.", cheatid);
+            ACVar[playerid][ac_IsImprovedDeagleDetected] = true;
+            return KickEx(playerid);
+        }
+
+        case 16: // Stealth Remastered
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}Stealth Remastered{FFFFFF} pada client mu (#%d). Kamu ditendang dari server.", cheatid);
+            ACVar[playerid][ac_IsStealthRemasteredDetected] = true;
+            return KickEx(playerid);
+        }
+
+        case 17: // SensFix
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}SensFix{FFFFFF} pada client mu (#%d). Pesan ini hanya sebuah peringatan.", cheatid);
+            ACVar[playerid][ac_IsSensfixDetected] = true;
+            return 0;
+        }
+
+        case 18: // S0beit v2 / RakNet Anomaly
+        {
+            SendClientMessage(playerid, -1, "{FF0000}[AntiCheat]{FFFFFF} Terdeteksi adanya {FFFF00}S0beit v2{FFFFFF} pada client mu (#%d). Kamu ditendang dari server.", cheatid);
+            ACVar[playerid][ac_IsS0beit2orRAkNetAnomalyDetected] = true;
+            return KickEx(playerid);
+        }
+    }
+    return 1;
+}
+
+ACVar[playerid][ac_IsS0beitDetected] = false;
+ACVar[playerid][ac_IsCleo1Detected] = false;
+ACVar[playerid][ac_IsCleo2Detected] = false;
+ACVar[playerid][ac_IsCleo3Detected] = false;
+ACVar[playerid][ac_IsCleoMoonloader1Detected] = false;
+ACVar[playerid][ac_IsCleoMoonloader2Detected] = false;
+ACVar[playerid][ac_IsCleo4Detected] = false;
+ACVar[playerid][ac_IsSilentPatchDetected] = false;
+ACVar[playerid][ac_IsSampFuncsDetected] = false;
+ACVar[playerid][ac_IsSampFuncs2Detected] = false;
+ACVar[playerid][ac_IsS0beit2Detected] = false;
+ACVar[playerid][ac_IsModedVorbisDetected] = false;
+ACVar[playerid][ac_IsUltraWhDetected] = false;
+ACVar[playerid][ac_IsSilentAimDetected] = false;
+ACVar[playerid][ac_IsImprovedDeagleDetected] = false;
+ACVar[playerid][ac_IsStealthRemasteredDetected] = false;
+ACVar[playerid][ac_IsSensfixDetected] = false;
+ACVar[playerid][ac_IsS0beit2orRAkNetAnomalyDetected] = false;

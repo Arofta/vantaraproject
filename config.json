@@ -106,7 +106,8 @@
             "streamer",
             "sscanf",
             "mysql",
-            "samp_bcrypt"
+            "samp_bcrypt",
+            "textdraw-streamer"
         ],
         "main_scripts": [
             "vmain"

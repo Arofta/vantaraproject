@@ -147,6 +147,11 @@ ptask UpdateInjuredTime[1000](playerid)
             pData[playerid][pThirst] = 50.0;
             pData[playerid][pStress] = 22.0;
             ClearAnimations(playerid);
+            Hide_InjuryTD(playerid);
+
+            new query[256];
+            mysql_format(g_SQL, query, sizeof(query), "UPDATE `player_characters` SET `char_injured` = 0, `char_injury_time` = 0 WHERE `char_id` = %d", pData[playerid][pID]);
+            mysql_pquery(g_SQL, query);
         }
     }
     return 1;

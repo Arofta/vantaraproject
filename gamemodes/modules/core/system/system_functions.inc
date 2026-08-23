@@ -8,6 +8,12 @@ function:OnInsertCharacterName(playerid, const char_name[])
     return 1;
 }
 
+function:__ResetBHOP(playerid, lastBHOP)
+{
+    if(lastBHOP == g_BHOP[playerid]) g_BHOP[playerid] = 0;
+    return 1;
+}
+
 function:__KickDelay(playerid)
 {
     return Kick(playerid);

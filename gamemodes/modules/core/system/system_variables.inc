@@ -33,7 +33,36 @@ enum e_JailData
 
 new OJailData[MAX_PLAYERS][e_JailData];
 
-new const GenderNames[][] = {
+enum e_DroppedData
+{
+	bool:droppedExist,
+
+    droppedItemID,
+    droppedItemQuantity,
+    e_MetaData:droppedItemMetaData,
+
+	droppedWeaponID,
+	Float:droppedWeaponCond,
+	droppedWeaponGrade,
+	droppedWeaponAmmo,
+	droppedWeaponSerial[16],
+
+	//droppedDNA[24],
+	Float:droppedPos[3],
+	droppedWorld,
+	droppedInt,
+	droppedExpiryTime,
+
+	STREAMER_TAG_OBJECT:droppedObject,
+	STREAMER_TAG_3D_TEXT_LABEL:droppedLabel
+};
+
+new DropData[MAX_DROPPED_ITEMS][e_DroppedData],
+    Iterator:Drops<MAX_DROPPED_ITEMS>;
+
+new NearestItems[MAX_PLAYERS][MAX_INVENTORY_SLOTS] = { -1, ... };
+
+new const g_GenderNames[][] = {
     "Tidak Diketahui",
     "Laki-Laki",
     "Perempuan"
@@ -45,7 +74,7 @@ enum e_JobList
     JOB_MINER,
 };
 
-new const JobNames[][] = {
+new const g_JobNames[][] = {
     "Pengangguran",
     "Penambang"
 };
@@ -58,14 +87,14 @@ enum e_FactionList
     FACTION_GOVERNMENT,
 };
 
-new const FactionNames[][] = {
+new const g_FactionNames[][] = {
     "N/A",
     "Kepolisian",
     "Paramedis",
     "Pemerintah"
 };
 
-new const FacPoliceRankNames[][] = {
+new const g_PoliceRankNames[][] = {
     "N/A",
 
     "BHARADA",
@@ -87,38 +116,40 @@ new const FacPoliceRankNames[][] = {
     "IRJENPOL"
 };
 
-new const AdminRankNames[][] = {
-    "N/A",
-    "Trial Admin",
-    "Admin Junior",
-    "Admin Senior",
-    "Head Admin",
-    "Management",
-    "Executive",
-    "Adipati"
+new const g_AdminRankNames[][] = {
+    "N/A", // 0
+
+    "Trial Admin", // 1
+    "Admin Junior", 
+    "Admin Senior", 
+    "Moderator", // 4
+    "Head Admin", 
+    "Management", 
+    "Executive", // 7
+    "Developer" // 8
 };
 
-new const VIPLevelNames[][] = {
+new const g_VIPRankNames[][] = {
     "N/A",
-    "{CD7F32}Bronze"F_COLOR_WHITE"",
+    "{CD7F32}Bronze"F_COLOR_WHITE"", // 14D: 28K | 30D: 50K | 60D: 90K
     "{C0C0C0}Silver"F_COLOR_WHITE"",
     "{FFD700}Gold"F_COLOR_WHITE"",
     "{E5E4E2}Platinum"F_COLOR_WHITE"",
     "{5A0F0F}Eternium"F_COLOR_WHITE""
 };
 
-new const rand_MaleSkin[] = {
+new const g_MaleSkin[] = {
     2, 3, 7, 20,
     59, 147, 186, 
     249
 };
 
-new const rand_FemaleSkin[] = {
+new const g_FemaleSkin[] = {
     56, 93, 169,
     193, 226, 233
 };
 
-new const CountryNames[][] = { // WAJIB BACA: Variabel ini tidak boleh dirubah, atau akan menyebabkan kesalahan pada origin player yang sudah daftar. (karena origin disimpan dalam bentuk index untuk meningkatkan performa)
+new const g_CountryNames[][] = { // WAJIB BACA: Variabel ini tidak boleh dirubah, atau akan menyebabkan kesalahan pada origin player yang sudah daftar. (karena origin disimpan dalam bentuk index untuk meningkatkan performa)
     "Indonesia",
     "United States of America",
     "United Kingdom",
@@ -316,7 +347,7 @@ new const CountryNames[][] = { // WAJIB BACA: Variabel ini tidak boleh dirubah, 
     "Zimbabwe"
 };
 
-new const VehicleNames[][] =
+new const g_VehicleNames[][] =
 {
 	"Landstalker", "Bravura", "Buffalo", "Linerunner", "Pereniel", "Sentinel", "Dumper", "Firetruck", "Trashmaster", 
 	"Stretch", "Manana", "Infernus", "Voodoo", "Pony", "Mule", "Cheetah", "Ambulance", "Leviathan", "Moonbeam", 

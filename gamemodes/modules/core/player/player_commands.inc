@@ -59,3 +59,12 @@ YCMD:i(playerid, params[], help)
         Show_InvTD(playerid);
     return 1;
 }
+
+YCMD:cc(playerid, params[], help)
+{
+    for(new i = 0; i < 50; i++)
+    {
+        SendClientMessage(playerid, -1, "\n");
+    }
+    return 1;
+}

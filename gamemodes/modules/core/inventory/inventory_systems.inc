@@ -1,301 +1,70 @@
-/* // Ini System v1
-hook OnPlayerClickTextDraw(playerid, Text:clickedid)
+hook OnClickDynamicTextDraw(playerid, Text:textid)
 {
-    // if(clickedid == SelectedSlot[playerid])
-    // {
-    //     if(SelectedType[playerid] == 0)
-    //         PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-    //     else if(SelectedType[playerid] == 1)
-    //         PlayerTextDrawBackgroundColour(playerid, ContainerPrevModel[playerid][SelectedSlot[playerid]], 0);
-    //     SelectedSlot[playerid] = -1;
-    //     SelectedType[playerid] = -1;
-    // }
-    for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++)
-    {
-        if(clickedid == InvSlot[x])
-        {
-            if(CurrInvPage[playerid] == 0)
-            {
-                if(SelectedSlot[playerid] != -1)
-                {
-                    if(SelectedType[playerid] == 0)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                    else if(SelectedType[playerid] == 1)
-                        PlayerTextDrawBackgroundColour(playerid, ContainerPrevModel[playerid][SelectedSlot[playerid]], 0);
-                }
-
-                SelectedSlot[playerid] = x;
-                SelectedType[playerid] = 0;
-                PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][x], 0xFFD70033);
-            }
-            else if(CurrInvPage[playerid] == 1)
-            {
-                if(SelectedSlot[playerid] != -1)
-                {
-                    if(SelectedType[playerid] == 0)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                    else if(SelectedType[playerid] == 1)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                }
-
-                SelectedSlot[playerid] = x + 20;
-                SelectedType[playerid] = 0;
-                PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0xFFD70033);
-            }
-            break;
-        }
-        else if(clickedid == ContainerSlot[x])
-        {
-            if(CurrContainerPage[playerid] == 0)
-            {
-                if(SelectedSlot[playerid] != -1)
-                {
-                    if(SelectedType[playerid] == 0)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                    else if(SelectedType[playerid] == 1)
-                        PlayerTextDrawBackgroundColour(playerid, ContainerPrevModel[playerid][SelectedSlot[playerid]], 0);
-                }
-
-                SelectedSlot[playerid] = x;
-                SelectedType[playerid] = 1;
-                PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][x], 0xFFD70033);
-            }
-            else if(CurrContainerPage[playerid] == 1)
-            {
-                if(SelectedSlot[playerid] != -1)
-                {
-                    if(SelectedType[playerid] == 0)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                    else if(SelectedType[playerid] == 1)
-                        PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                }
-
-                SelectedSlot[playerid] = x + 20;
-                SelectedType[playerid] = 1;
-                PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0xFFD70033);
-            }
-            break;
-        }
-    }
-    
-    return 1;
-}
-
-hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
-{
-    if(playertextid == InvPage[playerid][0]) // Jika player klik Page 1
-    {
-        debugmsg(playerid, "InvPage TD 1 (0) clicked");
-        if(CurrInvPage[playerid] == 1) // pastikan player saat ini sedang melihat page 2
-        {
-            debugmsg(playerid, "InvPage TD 1 (0) responeded");
-            for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++) // render isi inv page 1
-            {
-                if(!InvData[playerid][x][invExist])
-                {
-                    PlayerTextDrawHide(playerid, InvPrevModel[playerid][x]);
-                    PlayerTextDrawHide(playerid, InvItemName[playerid][x]);
-                    PlayerTextDrawHide(playerid, InvItemAmount[playerid][x]);
-                    continue;
-                }
-
-                PlayerTextDrawSetPreviewModel(playerid, InvPrevModel[playerid][x], Items[InvData[playerid][x][invItemID]][Model]);
-                PlayerTextDrawSetString(playerid, InvItemName[playerid][x], Items[InvData[playerid][x][invItemID]][Name]);
-                PlayerTextDrawSetString(playerid, InvItemAmount[playerid][x], "%dx", InvData[playerid][x][invQuantity]);
-            }
-
-            CurrInvPage[playerid] = 0;
-            PlayerTextDrawColour(playerid, InvPage[playerid][0], 0xFFD70066);
-            PlayerTextDrawColour(playerid, InvPage[playerid][1], 66);
-        }
-    }
-    else if(playertextid == InvPage[playerid][1]) // Jika player klik Page 2
-    {
-        debugmsg(playerid, "InvPage TD 2 (1) clicked");
-        if(CurrInvPage[playerid] == 0) // pastikan player saat ini sedang melihat page 1
-        {
-            debugmsg(playerid, "InvPage TD 2 (1) responeded");
-            for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++) // render isi inv page 2
-            {
-                if(!InvData[playerid][x + 20][invExist])
-                {
-                    PlayerTextDrawHide(playerid, InvPrevModel[playerid][x]);
-                    PlayerTextDrawHide(playerid, InvItemName[playerid][x]);
-                    PlayerTextDrawHide(playerid, InvItemAmount[playerid][x]);
-                    continue;
-                }
-
-                PlayerTextDrawSetPreviewModel(playerid, InvPrevModel[playerid][x], Items[InvData[playerid][x + 20][invItemID]][Model]);
-                PlayerTextDrawSetString(playerid, InvItemName[playerid][x], Items[InvData[playerid][x + 20][invItemID]][Name]);
-                PlayerTextDrawSetString(playerid, InvItemAmount[playerid][x], "%dx", InvData[playerid][x + 20][invQuantity]);
-            }
-
-            CurrInvPage[playerid] = 1;
-            PlayerTextDrawColour(playerid, InvPage[playerid][0], 66);
-            PlayerTextDrawColour(playerid, InvPage[playerid][1], 0xFFD70066);
-        }
-    }
-    else if(playertextid == ContainerPage[playerid][0]) // Jika player klik Container Page 1
-    {
-        debugmsg(playerid, "ContainerPage TD 1 (0) clicked");
-        if(CurrContainerPage[playerid] == 1) // pastikan player saat ini sedang melihat page 2
-        {
-            debugmsg(playerid, "ContainerPage TD 1 (0) responeded");
-            for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++) // render isi container page 1
-            {
-                if(!InvData[playerid][x][invExist])
-                {
-                    PlayerTextDrawHide(playerid, ContainerPrevModel[playerid][x]);
-                    PlayerTextDrawHide(playerid, ContainerItemName[playerid][x]);
-                    PlayerTextDrawHide(playerid, ContainerItemAmount[playerid][x]);
-                    continue;
-                }
-
-                PlayerTextDrawSetPreviewModel(playerid, ContainerPrevModel[playerid][x], Items[InvData[playerid][x][invItemID]][Model]);
-                PlayerTextDrawSetString(playerid, ContainerItemName[playerid][x], Items[InvData[playerid][x][invItemID]][Name]);
-                PlayerTextDrawSetString(playerid, ContainerItemAmount[playerid][x], "%dx", InvData[playerid][x][invQuantity]);
-            }
-
-            if(SelectedSlot[playerid] != -1)
-            {
-                if(SelectedType[playerid] == 0)
-                    PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                else if(SelectedType[playerid] == 1)
-                    PlayerTextDrawBackgroundColour(playerid, ContainerPrevModel[playerid][SelectedSlot[playerid]], 0);
-            }
-
-            CurrContainerPage[playerid] = 0;
-            PlayerTextDrawColour(playerid, ContainerPage[playerid][0], 0xFFD70066);
-            PlayerTextDrawColour(playerid, ContainerPage[playerid][1], 66);
-        }
-    }
-    else if(playertextid == ContainerPage[playerid][1]) // Jika player klik Container Page 2
-    {
-        debugmsg(playerid, "ContainerPage TD 2 (1) clicked");
-        if(CurrContainerPage[playerid] == 0) // pastikan player saat ini sedang melihat page 1
-        {
-            debugmsg(playerid, "ContainerPage TD 2 (1) responeded");
-            for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++) // render isi container page 2
-            {
-                if(!InvData[playerid][x + 20][invExist])
-                {
-                    PlayerTextDrawHide(playerid, ContainerPrevModel[playerid][x]);
-                    PlayerTextDrawHide(playerid, ContainerItemName[playerid][x]);
-                    PlayerTextDrawHide(playerid, ContainerItemAmount[playerid][x]);
-                    continue;
-                }
-
-                PlayerTextDrawSetPreviewModel(playerid, ContainerPrevModel[playerid][x], Items[InvData[playerid][x + 20][invItemID]][Model]);
-                PlayerTextDrawSetString(playerid, ContainerItemName[playerid][x], Items[InvData[playerid][x + 20][invItemID]][Name]);
-                PlayerTextDrawSetString(playerid, ContainerItemAmount[playerid][x], "%dx", InvData[playerid][x + 20][invQuantity]);
-            }
-
-            if(SelectedSlot[playerid] != -1)
-            {
-                if(SelectedType[playerid] == 0)
-                    PlayerTextDrawBackgroundColour(playerid, InvPrevModel[playerid][SelectedSlot[playerid]], 0);
-                else if(SelectedType[playerid] == 1)
-                    PlayerTextDrawBackgroundColour(playerid, ContainerPrevModel[playerid][SelectedSlot[playerid]], 0xFFD70033);
-            }
-
-            CurrContainerPage[playerid] = 1;
-            PlayerTextDrawColour(playerid, ContainerPage[playerid][0], 66);
-            PlayerTextDrawColour(playerid, ContainerPage[playerid][1], 0xFFD70066);
-        }
-    }
-    return 1;
-}
-*/
-/* // Ini System v2
-hook OnPlayerClickTextDraw(playerid, Text:clickedid)
-{
-    new clickedEx = clickedid;
-    debugmsg(playerid, sprintf("clickedid: %d", clickedEx));
-    for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++)
-    {
-        if(clickedid == InvSlot[x])
-        {
-            debugmsg(playerid, sprintf("InvSlotTD: %d", x));
-            break;
-        }
-        else if(clickedid == ContainerSlot[x])
-        {
-            debugmsg(playerid, sprintf("ContainerSlotTD: %d", x));
-            break;
-        }
-    }
-}
-
-hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
-{
-    new playertextEx = playertextid;
-    debugmsg(playerid, sprintf("playertextid: %d", playertextEx));
-    if(playertextid == InvPage[playerid][0])
-    {
-        debugmsg(playerid, "InvPage TD 1 (0) clicked");
-        printf("playertextid: %d", playertextid);
-    }
-    else if(playertextid == InvPage[playerid][1])
-    {
-        debugmsg(playerid, "InvPage TD 2 (1) clicked");
-        printf("playertextid: %d", playertextid);
-    }
-    else if(playertextid == ContainerPage[playerid][0])
-    {
-        debugmsg(playerid, "ContainerPage TD 1 (0) clicked");
-        printf("playertextid: %d", playertextid);
-    }
-    else if(playertextid == ContainerPage[playerid][1])
-    {
-        debugmsg(playerid, "ContainerPage TD 2 (1) clicked");
-        printf("playertextid: %d", playertextid);
-    }
-    return 1;
-}*/
-
-hook OnPlayerClickTextDraw(playerid, Text:clickedid)
-{
-    if(clickedid == InvButtonTD[4])
+    if(textid == InvButtonTD[4])
     {
         Hide_InvTD(playerid);
     }
+    else if(textid == InvButtonTD[0])
+    {
+        Dialog_Show(playerid, "InvInputAmount", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Inventorry Input Amount", "Silahkan masukkan jumlah item yang valid.", "Input", "Batal");
+    }
     return 1;
 }
 
-hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
+hook OnClickDynamicPlayerTextDraw(playerid, PlayerText:textid)
 {
-    //printf("Clicked TD ID: %d", _:playertextid);
-    if(SelectedSlot[playerid] != -1 && (SelectedSlot[playerid] / MAX_SLOTS_PER_PAGE) == CurrInvPage[playerid] && playertextid == InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE])
+    if(SelectedSlot[playerid] != -1 && (SelectedSlot[playerid] / MAX_SLOTS_PER_PAGE) == CurrInvPage[playerid] && textid == InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE])
     {
         PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 66);
         PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE]);
         SelectedSlot[playerid] = -1;
         SelectedType[playerid] = -1;
     }
-    else if(playertextid == InvPagePTD[playerid][0])
+    if(SelectedSlot[playerid] != -1 && (SelectedSlot[playerid] / MAX_SLOTS_PER_PAGE) == CurrContainerPage[playerid] && textid == ContainerSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE])
+    {
+        PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 66);
+        PlayerTextDrawShow(playerid, ContainerSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE]);
+        SelectedSlot[playerid] = -1;
+        SelectedType[playerid] = -1;
+    }
+    else if(textid == InvPagePTD[playerid][0])
     {
         if(CurrInvPage[playerid] == 0)
             return 1;
         CurrInvPage[playerid] = 0;
         Inventory_RefreshPage(playerid);
     }
-    else if(playertextid == InvPagePTD[playerid][1])
+    else if(textid == InvPagePTD[playerid][1])
     {
         if(CurrInvPage[playerid] == 1)
             return 1;
         CurrInvPage[playerid] = 1;
         Inventory_RefreshPage(playerid);
     }
+    else if(textid == ContainerPagePTD[playerid][0])
+    {
+        if(CurrInvPage[playerid] == 0)
+            return 1;
+        CurrContainerPage[playerid] = 0;
+        //Container_RefreshPage(playerid);
+    }
+    else if(textid == ContainerPagePTD[playerid][1])
+    {
+        if(CurrInvPage[playerid] == 1)
+            return 1;
+        CurrContainerPage[playerid] = 0; // nanti set 1
+        SendClientMessage(playerid, -1, "Coming Soon!");
+        //Container_RefreshPage(playerid);
+    }
     else
     {
-        for(new x = 0; x < MAX_SLOTS_PER_PAGE; x++)
+        for(new i = 0; i < MAX_SLOTS_PER_PAGE; i++)
         {
-            //printf("%d -> %d", x, _:InvSlotPTD[playerid][x]);
-            if(playertextid == InvSlotPTD[playerid][x])
+            if(textid == InvSlotPTD[playerid][i])
             {
                 if(SelectedSlot[playerid] != -1)
                 {
-                    new slot = CurrInvPage[playerid] * MAX_SLOTS_PER_PAGE + x,
+                    new slot = CurrInvPage[playerid] * MAX_SLOTS_PER_PAGE + i,
                         SelectedIndex = SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE;
 
                     if(InvData[playerid][SelectedSlot[playerid]][invExist] && !InvData[playerid][slot][invExist])
@@ -321,35 +90,93 @@ hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
                         PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedIndex], 66);
                         PlayerTextDrawShow(playerid, InvSlotPTD[playerid][SelectedIndex]);
                     }
-                    //else
-                        //PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x00000000);
+                    else if(SelectedType[playerid] == 1)
+                    {
+                        new dropid = NearestItems[playerid][SelectedSlot[playerid]];
+                        if(DropData[dropid][droppedExist] && dropid != -1 && !InvData[playerid][slot][invExist])
+                        {
+                            InvData[playerid][slot][invExist] = true;
+                            InvData[playerid][slot][invItemID] = DropData[dropid][droppedItemID];
+                            InvData[playerid][slot][invQuantity] = DropData[dropid][droppedItemQuantity];
+
+                            Item_Delete(dropid);
+
+                            ApplyAnimation(playerid, "CARRY", "liftup", 4.1, false, false, false, false, 0);
+                            PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][SelectedIndex], 66);
+                            PlayerTextDrawShow(playerid, ContainerSlotPTD[playerid][SelectedIndex]);
+                        }
+                    }
                 }
 
-                SelectedSlot[playerid] = CurrInvPage[playerid] * MAX_SLOTS_PER_PAGE + x;
+                SelectedSlot[playerid] = CurrInvPage[playerid] * MAX_SLOTS_PER_PAGE + i;
                 SelectedType[playerid] = 0;
 
-                PlayerTextDrawColour(playerid, InvSlotPTD[playerid][x], 0xFFD70066);
-                PlayerTextDrawShow(playerid, InvSlotPTD[playerid][x]);
+                PlayerTextDrawColour(playerid, InvSlotPTD[playerid][i], 0xFFD70066);
+                PlayerTextDrawShow(playerid, InvSlotPTD[playerid][i]);
                 break;
             }
-//            else if(playertextid == ContainerSlotPTD[playerid][x])
-//            {
-//                if(SelectedSlot[playerid] != -1)
-//                {
-//                    if(SelectedType[playerid] == 0)
-//                        PlayerTextDrawColour(playerid, InvSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x00000000);
-//                    else
-//                        PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE], 0x00000000);
-//                }
-//
-//                SelectedSlot[playerid] = CurrContainerPage[playerid] * MAX_SLOTS_PER_PAGE + x;
-//                SelectedType[playerid] = 1;
-//            
-//                PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][x], 0xFFD70033);
-//                PlayerTextDrawShow(playerid, ContainerSlotPTD[playerid][x]);
-//                break;
-//            }
+            else if(textid == ContainerSlotPTD[playerid][i])
+            {
+                if(SelectedSlot[playerid] != -1)
+                {
+                    new slot = CurrContainerPage[playerid] * MAX_SLOTS_PER_PAGE + i,
+                        SelectedIndex = SelectedSlot[playerid] % MAX_SLOTS_PER_PAGE;
+                        
+                    if(SelectedType[playerid] == 0)
+                    {
+                        if((AmountInput[playerid] < 1 || AmountInput[playerid] > 500) || AmountInput[playerid] > InvData[playerid][SelectedSlot[playerid]][invQuantity]) return SendClientMessage(playerid, -1, "Yang bener masukin jumlah itemnya kocak");
+
+                        new itemid = InvData[playerid][SelectedSlot[playerid]][invItemID];
+                        if(Inventory_Remove(playerid, itemid, AmountInput[playerid], SelectedSlot[playerid]))
+                        {
+                            new Float:x, Float:y, Float:z;
+                            GetPlayerPos(playerid, x, y, z);
+                            if(Item_Drop(itemid, AmountInput[playerid], x, y, z - 0.7, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid)))
+                            {
+                                ApplyAnimation(playerid, "CARRY", "putdwn", 4.1, false, false, false, false, 0);
+                            }
+                            else
+                            {
+                                Inventory_Add(playerid, itemid, AmountInput[playerid], SelectedSlot[playerid]);
+
+                                new oldSlot = SelectedSlot[playerid];
+                                SelectedSlot[playerid] = -1;
+                                SelectedType[playerid] = -1;
+                                Inventory_RefreshSlot(playerid, oldSlot);
+                            }
+                        }
+                    }
+                    else if(SelectedType[playerid] == 1)
+                    {
+                        PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][SelectedIndex], 66);
+                        PlayerTextDrawShow(playerid, ContainerSlotPTD[playerid][SelectedIndex]);
+                    }
+                }
+                SelectedSlot[playerid] = CurrContainerPage[playerid] * MAX_SLOTS_PER_PAGE + i;
+                SelectedType[playerid] = 1;
+                
+                PlayerTextDrawColour(playerid, ContainerSlotPTD[playerid][i], 0xFFD70066);
+                PlayerTextDrawShow(playerid, ContainerSlotPTD[playerid][i]);
+                break;
+            }
         }
     }
+    return 1;
+}
+
+Dialog:InvInputAmount(playerid, response, listitem, inputtext[])
+{
+    if(!response) return 1;
+
+    if(!IsNumericEx(inputtext))
+        return Dialog_Show(playerid, "InvInputAmount", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Inventory Input Amount", "Jumlah item hanya dapat diisi dengan angka. Silahkan masukkan jumlah item yang valid.", "Input", "Batal");
+
+    new amount = strval(inputtext);
+
+    if(amount < 1 || amount > 500)
+        return Dialog_Show(playerid, "InvInputAmount", DIALOG_STYLE_INPUT, ""VANTARA"Vantara Roleplay"F_COLOR_WHITE" - Inventory Input Amount", "Jumlah item yang dimasukkan minimal 1 dan maksimal 500 dalam 1 aksi. Silahkan masukkan jumlah item yang valid.", "Input", "Batal");
+
+    AmountInput[playerid] = amount;
+    PlayerTextDrawSetString(playerid, InvTextPTD[playerid][3], "%d", amount);
     return 1;
 }

@@ -3,15 +3,15 @@ YCMD:aduty(playerid, params[], help)
     if(pData[playerid][pAdminLevel] < 1)
         return SendClientMessage(playerid, COLOR_LIGHTBLUE, "ERROR: "F_COLOR_WHITE"Anda tidak memiliki izin untuk menggunakan perintah ini.");
     
-    Aduty[playerid] = !Aduty[playerid];
+    g_Aduty[playerid] = !g_Aduty[playerid];
 
     foreach(new i : Player)
     {
         if(pData[i][pAdminLevel] > 0)
-            SendClientMessage(i, COLOR_LIGHTRED, "AdmCmd: %s telah %s duty admin sebagai %s", pData[playerid][pName], Aduty[playerid] ? ("on") : ("off"), pData[playerid][pAdminName]);
+            SendClientMessage(i, COLOR_LIGHTRED, "AdmCmd: %s telah %s duty admin sebagai %s", pData[playerid][pName], g_Aduty[playerid] ? ("on") : ("off"), pData[playerid][pAdminName]);
     }
 
-    if(Aduty[playerid])
+    if(g_Aduty[playerid])
     {
         SetPlayerName(playerid, pData[playerid][pAdminName]);
         SetPlayerColor(playerid, 0xFF0000FF);
@@ -222,8 +222,8 @@ YCMD:arevive(playerid, params[], help)
 
     new query[128];
 
-    mysql_format(SQL, query, sizeof(query), "UPDATE `player_characters` SET `char_injured` = 0, `char_injury_time` = 0 WHERE `char_id` = %d", pData[targetid][pID]);
-    mysql_pquery(SQL, query);
+    mysql_format(g_SQL, query, sizeof(query), "UPDATE `player_characters` SET `char_injured` = 0, `char_injury_time` = 0 WHERE `char_id` = %d", pData[targetid][pID]);
+    mysql_pquery(g_SQL, query);
 
     pData[targetid][pInjured] = false;
     pData[targetid][pInjuryTime] = 0;
@@ -359,8 +359,8 @@ YCMD:setname(playerid, params[], help)
         return SendClientMessage(playerid, COLOR_LIGHTBLUE, "ERROR: "F_COLOR_WHITE"Nama karakter harus menggunakan format Firstname_Lastname.");
 
     static query[144];
-    mysql_format(SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_name` = '%e'", newName);
-    mysql_pquery(SQL, query, "OnAdminChangeCharName", "dds", playerid, targetid, newName);
+    mysql_format(g_SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_name` = '%e'", newName);
+    mysql_pquery(g_SQL, query, "OnAdminChangeCharName", "dds", playerid, targetid, newName);
     return 1;
 }
 
@@ -392,8 +392,8 @@ YCMD:setadminname(playerid, params[], help)
         return SendClientMessage(playerid, COLOR_LIGHTBLUE, "ERROR: "F_COLOR_WHITE"Nama admin tidak valid.");
 
     static query[144];
-    mysql_format(SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_admin_name` = '%e' AND `char_account_id` != %d", newName, pData[targetid][pAccountID]);
-    mysql_pquery(SQL, query, "OnAdminChangeAdminName", "dds", playerid, targetid, newName);
+    mysql_format(g_SQL, query, sizeof(query), "SELECT 1 FROM `player_characters` WHERE `char_admin_name` = '%e' AND `char_account_id` != %d", newName, pData[targetid][pAccountID]);
+    mysql_pquery(g_SQL, query, "OnAdminChangeAdminName", "dds", playerid, targetid, newName);
     return 1;
 }
 YCMD:setaname(playerid, params[], help) = setadminname;
@@ -417,11 +417,11 @@ YCMD:agiveitem(playerid, params[], help)
     if(quantity < 1)
         return SendClientMessage(playerid, COLOR_LIGHTBLUE, "ERROR: "F_COLOR_WHITE"Jumlah item tidak dapat kurang dari 1.");
 
-    new itemID = Inventory_GetItemID(itemName);
+    new itemid = Inventory_GetItemID(itemName);
 
-    if(itemID != -1)
+    if(itemid != -1)
     {
-        Inventory_Add(playerid, itemID, quantity);
+        Inventory_Add(playerid, itemid, quantity);
             
         foreach(new i : Player)
         {
@@ -436,4 +436,124 @@ YCMD:agiveitem(playerid, params[], help)
         SendClientMessage(playerid, COLOR_LIGHTBLUE, "ERROR: "F_COLOR_WHITE"Item dengan nama tersebut tidak ditemukan.");
     }
     return 0;
+}
+/*
+YCMD:getdcid(playerid, params[], help)
+{
+    new ucp[24];
+    if(pData[playerid][pAdminLevel] < 1)
+        return 1;
+
+    if(sscanf(params, "s", ucp)) return SendClientMessage(playerid, -1, "SYNTAX: /getdcid <ucp>");
+
+    new query[256];
+    mysql_format(g_SQL, query, "SELECT `discordid` FROM `whitelists` WHERE `ucp` = '%e' LIMIT 1", ucp);
+    mysql_pquery(g_SQL, query, "GetDiscordID", "is", playerid, ucp);
+    return 1;
+}
+
+forward GetDiscordID(playerid, ucp[]);
+public GetDiscordID(playerid, ucp[])
+{
+    new discordid[31+1];
+    if(!cache_num_rows()) return SendClientMessage(playerid, -1, "ERRORR: Ucp dengan nama tersebut tidak ditemukan.");
+
+    cache_get_value_name(0, "discordid", discordid);
+    SendClientMessage(playerid, -1, "UCP: %s | DCID: %s", ucp, discordid);
+    return 1;
+}
+
+YCMD:checkdcid(playerid, params[], help)
+{
+    new discordid[31+1];
+    if(pData[playerid][pAdminLevel] < 1)
+        return 1;
+
+    if(sscanf(params, "s", discordid)) return SendClientMessage(playerid, -1, "SYNTAX: /getdcid <discordid>");
+    
+    new query[256];
+    mysql_query(g_SQL, query, sizeof(query), "SELECT `ucp` FROM `whitelists` WHERE `discordid` = '%e'", discordid);
+    mysql_pquery(g_SQL, query, "CheckDiscordID", "is", playerid, discordid)
+    return 1;
+}
+
+forward CheckDiscordID(playerid, dcid[]);
+public CheckDiscordID(playerid, dcid[])
+{
+    new 
+        ucp[24],
+        rows = cache_num_rows();
+    if(rows)
+    {
+        SendClientMessage(playerid, -1, "Menemukan %d ucp yang terkait.", rows);
+        for(new i = 0; i < rows; i++)
+        {
+            cache_get_value_name(i, "ucp", ucp);
+            SendClientMessage(playerid, -1, "%s" ucp);
+        }
+        return 1;
+    }
+    SendClientMessage(playerid, -1, "ERROR: Tidak ada ucp dengan discordid tersebut.");
+    return 1;
+}*/
+
+YCMD:checkacwarns(playerid, params[], help)
+{
+    new targetid;
+    
+    if(pData[playerid][pAdminLevel] < 1)
+        return 1;
+
+    if(sscanf(params, "u", targetid)) return SendClientMessage(playerid, -1, "SYNTAX: /checkacwarns <playerid>");
+
+    if(!IsPlayerConnected(targetid) || targetid == INVALID_PLAYER_ID) return SendClientMessage(playerid, -1, "> Pemain dengan id tersebut tidak dapat ditemukan didalam server.");
+
+    new str[666];
+
+    format(str, sizeof(str), "Cheat Category\tStatus\n");
+
+    format(str, sizeof(str),
+        "%s\
+     S0beit\t%s\n\
+     CLEO #1\t%s\n\
+     CLEO #2\t%s\n\
+     CLEO #3\t%s\n\
+     CLEO / MoonLoader #1\t%s\n\
+     CLEO / MoonLoader #2\t%s\n\
+     CLEO #4\t%s\n\
+     SilentPatch\t%s\n\
+     SAMPFUNCS\t%s\n\
+     SAMPFUNCS #2\t%s\n\
+     S0beit #2\t%s\n\
+     Modified Vorbis\t%s\n\
+     Ultra WH\t%s\n\
+     Silent Aim\t%s\n\
+     Improved Deagle\t%s\n\
+     Stealth Remastered\t%s\n\
+     Sensfix\t%s\n\
+     S0beit v2 / RakNet Anomaly\t%s",
+        str,
+
+        ACVar[targetid][ac_IsS0beitDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsCleo1Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsCleo2Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsCleo3Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsCleoMoonloader1Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsCleoMoonloader2Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsCleo4Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsSilentPatchDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsSampFuncsDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsSampFuncs2Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsS0beit2Detected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsModedVorbisDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsUltraWhDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsSilentAimDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsImprovedDeagleDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsStealthRemasteredDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsSensfixDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected"),
+        ACVar[targetid][ac_IsS0beit2orRAkNetAnomalyDetected] ? ("{FF0000}Detected") : ("{00FF00}Not Detected")
+    );
+
+    Dialog_Show(playerid, "Message", DIALOG_STYLE_TABLIST_HEADERS, "Player AntiCheat Warning", str, "Close", "");
+    return 1;
 }

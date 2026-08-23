@@ -284,77 +284,77 @@ stock SaveCharacterData(playerid)
     static query[4096];
     new aQuery[256];
 
-    mysql_format(SQL, query, sizeof(query), "UPDATE `player_characters` SET ");
+    mysql_format(g_SQL, query, sizeof(query), "UPDATE `player_characters` SET ");
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_ucp` = '%e', ", query, pData[playerid][pUCP]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_name` = '%e', ", query, pData[playerid][pName]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_ucp` = '%e', ", query, pData[playerid][pUCP]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_name` = '%e', ", query, pData[playerid][pName]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_last_online` = CURRENT_TIMESTAMP, ", query);
-    mysql_format(SQL, query, sizeof(query), "%s`char_last_exit` = %d, ", query, gettime() + 3600);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_last_online` = CURRENT_TIMESTAMP, ", query);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_last_exit` = %d, ", query, gettime() + 3600);
 
     GetPlayerPos(playerid, pData[playerid][pPosX], pData[playerid][pPosY], pData[playerid][pPosZ]);
     GetPlayerFacingAngle(playerid, pData[playerid][pPosA]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_pos_x` = %.4f, ", query, pData[playerid][pPosX]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_pos_y` = %.4f, ", query, pData[playerid][pPosY]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_pos_z` = %.4f, ", query, pData[playerid][pPosZ]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_pos_a` = %.4f, ", query, pData[playerid][pPosA]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_x` = %.4f, ", query, pData[playerid][pPosX]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_y` = %.4f, ", query, pData[playerid][pPosY]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_z` = %.4f, ", query, pData[playerid][pPosZ]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_pos_a` = %.4f, ", query, pData[playerid][pPosA]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_health` = %.2f, ", query, pData[playerid][pHealth]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_armour` = %.2f, ", query, pData[playerid][pArmour]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_health` = %.2f, ", query, pData[playerid][pHealth]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_armour` = %.2f, ", query, pData[playerid][pArmour]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_admin_name` = '%e', ", query, pData[playerid][pAdminName]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_admin_level` = %d, ", query, pData[playerid][pAdminLevel]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_admin_name` = '%e', ", query, pData[playerid][pAdminName]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_admin_level` = %d, ", query, pData[playerid][pAdminLevel]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_level` = %d, ", query, pData[playerid][pLevel]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_level` = %d, ", query, pData[playerid][pLevel]);
     
-    mysql_format(SQL, query, sizeof(query), "%s`char_money` = %d, ", query, pData[playerid][pMoney]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_bank_money` = %d, ", query, pData[playerid][pBankMoney]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_money` = %d, ", query, pData[playerid][pMoney]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_bank_money` = %d, ", query, pData[playerid][pBankMoney]);
     
     pData[playerid][pSkin] = GetPlayerSkin(playerid);
-    mysql_format(SQL, query, sizeof(query), "%s`char_skin` = %d, ", query, pData[playerid][pSkin]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_skin` = %d, ", query, pData[playerid][pSkin]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_dob` = '%e', ", query, pData[playerid][pDOB]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_origin` = %d, ", query, pData[playerid][pOrigin]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_gender` = %d, ", query, pData[playerid][pGender]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_weight` = %d, ", query, pData[playerid][pWeight]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_height` = %d, ", query, pData[playerid][pHeight]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_domicile` = %d, ", query, pData[playerid][pDomicile]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_dob` = '%e', ", query, pData[playerid][pDOB]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_origin` = %d, ", query, pData[playerid][pOrigin]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_gender` = %d, ", query, pData[playerid][pGender]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_weight` = %d, ", query, pData[playerid][pWeight]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_height` = %d, ", query, pData[playerid][pHeight]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_domicile` = %d, ", query, pData[playerid][pDomicile]);
     
     pData[playerid][pVirtualWorld] = GetPlayerVirtualWorld(playerid);
     pData[playerid][pInterior] = GetPlayerInterior(playerid);
-    mysql_format(SQL, query, sizeof(query), "%s`char_virtual_world` = %d, ", query, pData[playerid][pVirtualWorld]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_interior` = %d, ", query, pData[playerid][pInterior]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_virtual_world` = %d, ", query, pData[playerid][pVirtualWorld]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_interior` = %d, ", query, pData[playerid][pInterior]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_job` = %d, ", query, pData[playerid][pJob]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_job` = %d, ", query, pData[playerid][pJob]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_faction` = %d, ", query, pData[playerid][pFaction]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_faction_rank` = %d, ", query, pData[playerid][pFactionRank]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_faction` = %d, ", query, pData[playerid][pFaction]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_faction_rank` = %d, ", query, pData[playerid][pFactionRank]);
     
-    mysql_format(SQL, query, sizeof(query), "%s`char_family` = %d, ", query, pData[playerid][pFamily]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_family_rank` = %d, ", query, pData[playerid][pFamilyRank]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_family` = %d, ", query, pData[playerid][pFamily]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_family_rank` = %d, ", query, pData[playerid][pFamilyRank]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_injured` = %d, ", query, pData[playerid][pInjured]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_injury_time` = %d, ", query, pData[playerid][pInjuryTime]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_injured` = %d, ", query, pData[playerid][pInjured]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_injury_time` = %d, ", query, pData[playerid][pInjuryTime]);
     
-    mysql_format(SQL, query, sizeof(query), "%s`char_hunger` = %.2f, ", query, pData[playerid][pHunger]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_thirst` = %.2f, ", query, pData[playerid][pThirst]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_stress` = %.2f, ", query, pData[playerid][pStress]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_hunger` = %.2f, ", query, pData[playerid][pHunger]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_thirst` = %.2f, ", query, pData[playerid][pThirst]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_stress` = %.2f, ", query, pData[playerid][pStress]);
     
-    mysql_format(SQL, query, sizeof(query), "%s`char_playtime` = %d, ", query, pData[playerid][pPlaytime]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_playtime` = %d, ", query, pData[playerid][pPlaytime]);
 
-    mysql_format(SQL, query, sizeof(query), "%s`char_vip` = %d, ", query, pData[playerid][pVIP]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_vip_expiry` = %d, ", query, pData[playerid][pVIPExpiry]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_vip` = %d, ", query, pData[playerid][pVIP]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_vip_expiry` = %d, ", query, pData[playerid][pVIPExpiry]);
     
-    mysql_format(SQL, query, sizeof(query), "%s`char_guardian` = %d, ", query, pData[playerid][pGuardian]);
-    mysql_format(SQL, query, sizeof(query), "%s`char_guardian_expiry` = %d, ", query, pData[playerid][pGuardianExpiry]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_guardian` = %d, ", query, pData[playerid][pGuardian]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_guardian_expiry` = %d, ", query, pData[playerid][pGuardianExpiry]);
     
-    mysql_format(SQL, query, sizeof(query), "%s`char_server_master` = %d ", query, pData[playerid][pSMaster]);
+    mysql_format(g_SQL, query, sizeof(query), "%s`char_server_master` = %d ", query, pData[playerid][pSMaster]);
 
-    mysql_format(SQL, query, sizeof(query), "%sWHERE `char_id` = %d", query, pData[playerid][pID]);
-    mysql_tquery(SQL, query);
+    mysql_format(g_SQL, query, sizeof(query), "%sWHERE `char_id` = %d", query, pData[playerid][pID]);
+    mysql_tquery(g_SQL, query);
 
-    mysql_format(SQL, aQuery, sizeof(aQuery), "UPDATE `player_accounts` SET `account_last_online` = CURRENT_TIMESTAMP WHERE `account_id` = %d", pData[playerid][pAccountID]);
-    mysql_tquery(SQL, aQuery);
+    mysql_format(g_SQL, aQuery, sizeof(aQuery), "UPDATE `player_accounts` SET `account_last_online` = CURRENT_TIMESTAMP WHERE `account_id` = %d", pData[playerid][pAccountID]);
+    mysql_tquery(g_SQL, aQuery);
     return 1;
 }
 
@@ -470,7 +470,11 @@ stock ResetVariables(playerid)
     pData[playerid][pLevel] = 0;
     pData[playerid][pDrunkLevel] = 0;
 
+    pData[playerid][pInvTotalWeight] = 0; 
+
     pData[playerid][InRelaxingArea] = -1;
+
+    g_BHOP[playerid] = 0;
 
     //Textdraw State Variable Reset
     TDInfo[playerid][HBETDShown] = false;
@@ -478,7 +482,7 @@ stock ResetVariables(playerid)
     TDInfo[playerid][DyingTDShown] = false;
     TDInfo[playerid][InvTDShown] = false;
 
-    Aduty[playerid] = false;
+    g_Aduty[playerid] = false;
     return 1;
 }
 
@@ -487,9 +491,9 @@ GetVehicleModelByName(const name[])
 	if(IsNumericEx(name) && (strval(name) >= 400 && strval(name) <= 611))
 		return strval(name);
 
-	for (new i = 0; i < sizeof(VehicleNames); i ++)
+	for (new i = 0; i < sizeof(g_VehicleNames); i ++)
 	{
-		if(strfind(VehicleNames[i], name, true) != -1)
+		if(strfind(g_VehicleNames[i], name, true) != -1)
 		{
 			return i + 400;
 		}
@@ -833,28 +837,28 @@ stock GetLevelName(level, smaster = false)
 stock GetPlayerJobName(playerid)
 {
     new str[24];
-    strcopy(str, JobNames[pData[playerid][pJob]]);
+    strcopy(str, g_JobNames[pData[playerid][pJob]]);
     return str;
 }
 
 stock GetPlayerVIPLevelName(playerid)
 {
     new str[32];
-    strcopy(str, VIPLevelNames[pData[playerid][pVIP]]);
+    strcopy(str, g_VIPRankNames[pData[playerid][pVIP]]);
     return str;
 }
 
 stock GetPlayerAdminRankName(playerid)
 {
     new str[24];
-    strcopy(str, AdminRankNames[pData[playerid][pAdminLevel]]);
+    strcopy(str, g_AdminRankNames[pData[playerid][pAdminLevel]]);
     return str;
 }
 
 stock GetPlayerFactionName(playerid)
 {
     new str[24];
-    strcopy(str, FactionNames[pData[playerid][pFaction]]);
+    strcopy(str, g_FactionNames[pData[playerid][pFaction]]);
     return str;
 }
 
@@ -865,7 +869,7 @@ stock GetPlayerFactionRankName(playerid)
     {
         case 1:
         {
-            strcopy(str, FacPoliceRankNames[pData[playerid][pFactionRank]]);
+            strcopy(str, g_PoliceRankNames[pData[playerid][pFactionRank]]);
         }
 
         default:
@@ -879,14 +883,14 @@ stock GetPlayerFactionRankName(playerid)
 stock GetPlayerOriginName(playerid)
 {
     new str[64];
-    strcopy(str, CountryNames[pData[playerid][pOrigin]]);
+    strcopy(str, g_CountryNames[pData[playerid][pOrigin]]);
     return str;
 }
 
 stock GetPlayerGenderName(playerid)
 {
     new str[16];
-    strcopy(str, GenderNames[pData[playerid][pGender]]);
+    strcopy(str, g_GenderNames[pData[playerid][pGender]]);
     return str;
 }
 
@@ -897,6 +901,66 @@ stock debugmsg(playerid, const msg[])
             SendClientMessage(playerid, 0xFFFFFFFF, ""F_COLOR_DARKRED"[DEBUG]"F_COLOR_WHITE" %s", msg);
     printf("[DEBUG] %s", msg);
     return 1;
+}
+
+stock GetWeaponModel(WEAPON:weaponid)
+{
+    switch(_:weaponid)
+    {
+        case 1:                     return 331;
+        case 2..8:                  return _:weaponid + 331;
+        case 9:                     return 341;
+        case 10..15:                return _:weaponid + 311;
+        case 16..18:                return _:weaponid + 326;
+        case 22..29, 33..45:        return _:weaponid + 324;
+        case 30..31:                return _:weaponid + 325;
+        case 32:                    return 372;
+        case 46:                    return 371;
+        default:                    return 0;
+    }
+}
+
+stock IsFirearmWeapon(WEAPON:weaponid)
+{
+    switch(_:weaponid)
+    {
+        case 22..34: return true;
+    }
+    return false;
+}
+
+stock bool:IsPlayerFalling(playerid)
+{
+    new
+        Float:vecX,
+        Float:vecY,
+        Float:vecZ,
+        anim = GetPlayerAnimationIndex(playerid);
+
+    GetPlayerVelocity(playerid, vecX, vecY, vecZ);
+
+    // Parachute
+    if(vecZ <= -0.03 && vecZ > -0.10)
+    {
+        switch(anim)
+        {
+            case 963..966, 971..972, 976..979: return true;
+        }
+    } // Non-Parachute
+    else if(vecZ <= -0.10) 
+    {
+        switch(anim)
+        {
+            case 958..959, 961..966, 971..972, 976..979, 1128, 1130..1132, 1134: return true;
+        }
+    }
+
+    return false;
+}
+
+stock bool:IsValidWeapon(WEAPON:weaponid)
+{
+    return ((_:weaponid >= 1 && _:weaponid <= 18) || (_:weaponid >= 22 && _:weaponid < 46));
 }
 
 stock SetPlayerHealthEx(playerid, Float:health)

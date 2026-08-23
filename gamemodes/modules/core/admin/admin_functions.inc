@@ -1,7 +1,7 @@
 
 hook OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
 {
-    if(pData[playerid][pAdminLevel] > 0 && Aduty[playerid])
+    if(pData[playerid][pAdminLevel] > 0 && g_Aduty[playerid])
     {
         if(!IsPlayerInAnyVehicle(playerid))
         {
@@ -22,8 +22,8 @@ function:OnAdminChangeCharName(playerid, targetid, const name[])
         return SendClientMessage(playerid, COLOR_LIGHTBLUE, "ERROR: "F_COLOR_WHITE"Nama tersebut sudah digunakan pemain lain.");
 
     new query[144];
-    mysql_format(SQL, query, sizeof(query), "UPDATE `player_characters` SET `char_name` = '%e' WHERE `char_id` = %d", name, pData[targetid][pID]);
-    mysql_pquery(SQL, query);
+    mysql_format(g_SQL, query, sizeof(query), "UPDATE `player_characters` SET `char_name` = '%e' WHERE `char_id` = %d", name, pData[targetid][pID]);
+    mysql_pquery(g_SQL, query);
 
     foreach(new i : Player)
     {
@@ -41,8 +41,8 @@ function:OnAdminChangeAdminName(playerid, targetid, const name[])
         return SendClientMessage(playerid, COLOR_LIGHTBLUE, "ERROR: "F_COLOR_WHITE"Nama tersebut sudah digunakan admin lain.");
 
     new query[144];
-    mysql_format(SQL, query, sizeof(query), "UPDATE `player_characters` SET `char_admin_name` = '%e' WHERE `char_id` = %d", name, pData[targetid][pID]);
-    mysql_pquery(SQL, query);
+    mysql_format(g_SQL, query, sizeof(query), "UPDATE `player_characters` SET `char_admin_name` = '%e' WHERE `char_id` = %d", name, pData[targetid][pID]);
+    mysql_pquery(g_SQL, query);
 
     foreach(new i : Player)
     {
@@ -52,6 +52,6 @@ function:OnAdminChangeAdminName(playerid, targetid, const name[])
     SendClientMessage(targetid, COLOR_LIGHTRED, "AdmCmd: %s telah mengganti nama admin anda menjadi %s.", pData[playerid][pAdminName], name);
     
     strcopy(pData[targetid][pAdminName], name);
-    if(Aduty[targetid]) SetPlayerName(playerid, name);
+    if(g_Aduty[targetid]) SetPlayerName(playerid, name);
     return 1;
 }

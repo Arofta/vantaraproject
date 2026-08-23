@@ -3,8 +3,8 @@
 AccountCheck(playerid)
 {
     new query[256];
-    mysql_format(SQL, query, sizeof(query), "SELECT * FROM `player_accounts` WHERE `account_name` = '%e' LIMIT 1", pData[playerid][pUCP]);
-    mysql_pquery(SQL, query, "OnAccountCheck", "d", playerid);
+    mysql_format(g_SQL, query, sizeof(query), "SELECT * FROM `player_accounts` WHERE `account_name` = '%e' LIMIT 1", pData[playerid][pUCP]);
+    mysql_pquery(g_SQL, query, "OnAccountCheck", "d", playerid);
     return 1;
 }
 
@@ -38,8 +38,8 @@ function:OnPassworHashed(playerid)
     bcrypt_get_hash(hash);
 
     new query[256];
-    mysql_format(SQL, query, sizeof(query), "UPDATE `player_accounts` SET `account_password` = '%e', `account_verify` = -1, `account_recovery` = -1 WHERE `account_id` = %d", hash, pData[playerid][pAccountID]);
-    mysql_tquery(SQL, query);
+    mysql_format(g_SQL, query, sizeof(query), "UPDATE `player_accounts` SET `account_password` = '%e', `account_verify` = -1, `account_recovery` = -1 WHERE `account_id` = %d", hash, pData[playerid][pAccountID]);
+    mysql_tquery(g_SQL, query);
 
     new str[211];
     format(str, sizeof(str), ""F_COLOR_WHITE"Kata sandi baru berhasil ditetapkan. Silahkan masukkan kata sandi akun Anda.\nLast online: "F_COLOR_YELLOW"%s\n"F_COLOR_WHITE"Attempt(s): "F_COLOR_YELLOW"%dx", pData[playerid][pAccountLastOnlineDate], tempLoginAttempts[playerid]);
@@ -67,8 +67,8 @@ function:OnCheckingPassword(playerid, bool:match)
     {
         pData[playerid][pLoggedIn] = true;
         new query[256];
-        mysql_format(SQL, query, sizeof(query), "SELECT `char_id`, `char_name`, `char_level`, `char_money`, `char_bank_money` FROM `player_characters` WHERE `char_account_id` = %d LIMIT %d", pData[playerid][pAccountID], MAX_CHARACTERS);
-        mysql_pquery(SQL, query, "LoadCharacter", "d", playerid);
+        mysql_format(g_SQL, query, sizeof(query), "SELECT `char_id`, `char_name`, `char_level`, `char_money`, `char_bank_money` FROM `player_characters` WHERE `char_account_id` = %d LIMIT %d", pData[playerid][pAccountID], MAX_CHARACTERS);
+        mysql_pquery(g_SQL, query, "LoadCharacter", "d", playerid);
         return 1;
     }
     else
@@ -102,8 +102,8 @@ Dialog:Login(playerid, response, listitem, inputtext[])
     }
 
     new query[256];
-    mysql_format(SQL, query, sizeof(query), "SELECT `account_password` FROM `player_accounts` WHERE `account_id` = %d", pData[playerid][pAccountID]);
-    mysql_pquery(SQL, query, "OnPlayerInputPassword", "ds", playerid, inputtext);
+    mysql_format(g_SQL, query, sizeof(query), "SELECT `account_password` FROM `player_accounts` WHERE `account_id` = %d", pData[playerid][pAccountID]);
+    mysql_pquery(g_SQL, query, "OnPlayerInputPassword", "ds", playerid, inputtext);
     return 1;
 }
 

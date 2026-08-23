@@ -1141,7 +1141,7 @@ Create_InvPTD(playerid)
     PlayerTextDrawFont(playerid, InvTextPTD[playerid][1], TEXT_DRAW_FONT_1);
     PlayerTextDrawSetProportional(playerid, InvTextPTD[playerid][1], true);
 
-    InvTextPTD[playerid][2] = CreatePlayerTextDraw(playerid, 261.000, 122.000, "25.0 / 25.0 kg");
+    InvTextPTD[playerid][2] = CreatePlayerTextDraw(playerid, 261.000, 122.000, "25.0 / 25 kg");
     PlayerTextDrawLetterSize(playerid, InvTextPTD[playerid][2], 0.209, 0.990);
     PlayerTextDrawAlignment(playerid, InvTextPTD[playerid][2], TEXT_DRAW_ALIGN_CENTER);
     PlayerTextDrawColour(playerid, InvTextPTD[playerid][2], -1);

@@ -299,3 +299,148 @@
 [21/07/2026 21:51:01] [WARNING] mysql_connect_file: no password specified
 [21/07/2026 21:58:04] [WARNING] mysql_connect_file: no password specified
 [21/07/2026 21:58:11] [WARNING] mysql_connect_file: no password specified
+[22/07/2026 19:28:19] [WARNING] mysql_connect_file: no password specified
+[23/07/2026 01:14:17] [WARNING] mysql_connect_file: no password specified
+[23/07/2026 14:03:06] [WARNING] mysql_connect_file: no password specified
+[24/07/2026 22:24:24] [WARNING] mysql_connect_file: no password specified
+[24/07/2026 22:28:45] [WARNING] mysql_connect_file: no password specified
+[24/07/2026 22:29:05] [WARNING] mysql_connect_file: no password specified
+[24/07/2026 22:33:23] [WARNING] mysql_connect_file: no password specified
+[25/07/2026 13:35:43] [WARNING] mysql_connect_file: no password specified
+[25/07/2026 13:35:47] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[25/07/2026 13:35:51] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[25/07/2026 13:35:55] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[25/07/2026 13:35:59] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[25/07/2026 17:24:59] [WARNING] mysql_connect_file: no password specified
+[25/07/2026 17:25:03] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[25/07/2026 17:25:07] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[25/07/2026 17:25:11] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[25/07/2026 17:25:15] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[25/07/2026 22:32:18] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 10:45:20] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 10:46:28] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 19:08:16] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 19:11:03] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 19:31:36] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 19:35:16] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 19:40:00] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 19:40:51] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 20:05:20] [WARNING] mysql_connect_file: no password specified
+[27/07/2026 20:22:23] [WARNING] mysql_connect_file: no password specified
+[29/07/2026 17:31:32] [WARNING] mysql_connect_file: no password specified
+[29/07/2026 20:25:24] [WARNING] mysql_connect_file: no password specified
+[29/07/2026 23:00:09] [WARNING] mysql_connect_file: no password specified
+[29/07/2026 23:00:13] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[29/07/2026 23:00:17] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[29/07/2026 23:00:21] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[29/07/2026 23:00:25] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[30/07/2026 19:41:19] [WARNING] mysql_connect_file: no password specified
+[30/07/2026 19:48:33] [WARNING] mysql_connect_file: no password specified
+[30/07/2026 20:24:33] [WARNING] mysql_connect_file: no password specified
+[30/07/2026 20:31:32] [WARNING] mysql_connect_file: no password specified
+[30/07/2026 21:41:14] [WARNING] mysql_connect_file: no password specified
+[30/07/2026 21:43:51] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 00:08:13] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 00:16:34] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 01:04:34] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 01:54:22] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 02:00:14] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 02:15:09] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 02:23:51] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 02:26:53] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 02:42:13] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 03:05:02] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 03:11:11] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 03:53:33] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 04:07:46] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 04:17:33] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 04:56:45] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 05:26:34] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 05:27:36] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 05:27:36] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 05:27:53] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 05:27:53] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 05:28:14] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 05:28:14] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 06:40:29] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 06:41:37] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 06:41:37] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 06:43:39] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 06:43:39] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:01:55] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 07:03:11] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:03:11] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:04:05] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:04:05] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:04:15] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:04:15] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:05:02] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:05:02] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:07:01] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 07:08:08] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:08:08] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:08:16] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:08:16] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:12:21] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 07:14:22] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:14:22] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:15:27] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:15:27] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:18:10] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 07:19:24] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:19:24] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:20:45] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 07:34:57] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 07:45:31] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 07:49:41] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 07:54:55] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:54:55] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 07:55:29] [ERROR] mysql_format: destination size '256' is too small
+[31/07/2026 07:55:29] [ERROR] error #1065 while executing query "": Query was empty
+[31/07/2026 19:00:16] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 19:00:20] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[31/07/2026 19:00:29] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 19:14:59] [WARNING] mysql_connect_file: no password specified
+[31/07/2026 22:51:25] [WARNING] mysql_connect_file: no password specified
+[01/08/2026 03:56:47] [WARNING] mysql_connect_file: no password specified
+[01/08/2026 03:56:51] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[01/08/2026 03:56:55] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[01/08/2026 03:56:59] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[01/08/2026 03:57:03] [ERROR] CConnection::CConnection - establishing connection to MySQL database failed: #2002 'Can't connect to MySQL server on 'localhost' (10061)'
+[01/08/2026 03:58:53] [WARNING] mysql_connect_file: no password specified
+[01/08/2026 14:35:23] [WARNING] mysql_connect_file: no password specified
+[01/08/2026 16:31:43] [WARNING] mysql_connect_file: no password specified
+[01/08/2026 23:16:22] [WARNING] mysql_connect_file: no password specified
+[01/08/2026 23:19:02] [WARNING] mysql_connect_file: no password specified
+[04/08/2026 19:52:53] [WARNING] mysql_connect_file: no password specified
+[04/08/2026 20:14:21] [WARNING] mysql_connect_file: no password specified
+[04/08/2026 20:36:52] [WARNING] mysql_connect_file: no password specified
+[04/08/2026 20:41:37] [WARNING] mysql_connect_file: no password specified
+[04/08/2026 20:47:25] [WARNING] mysql_connect_file: no password specified
+[04/08/2026 20:50:14] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 00:23:00] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 01:16:35] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 01:30:48] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 03:01:31] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 03:04:29] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 03:05:11] [ERROR] mysql_format: destination size '256' is too small
+[05/08/2026 03:05:11] [ERROR] error #1065 while executing query "": Query was empty
+[05/08/2026 03:47:07] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 03:54:59] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 04:44:18] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 04:45:21] [ERROR] mysql_format: destination size '256' is too small
+[05/08/2026 04:45:21] [ERROR] error #1065 while executing query "": Query was empty
+[05/08/2026 04:45:23] [ERROR] mysql_format: destination size '256' is too small
+[05/08/2026 04:45:23] [ERROR] error #1065 while executing query "": Query was empty
+[05/08/2026 04:45:41] [ERROR] mysql_format: destination size '256' is too small
+[05/08/2026 04:45:41] [ERROR] error #1065 while executing query "": Query was empty
+[05/08/2026 04:50:12] [WARNING] mysql_connect_file: no password specified
+[05/08/2026 04:50:53] [ERROR] mysql_format: destination size '256' is too small
+[05/08/2026 04:50:53] [ERROR] error #1065 while executing query "": Query was empty
+[05/08/2026 04:51:15] [ERROR] mysql_format: destination size '256' is too small
+[05/08/2026 04:51:15] [ERROR] error #1065 while executing query "": Query was empty
+[06/08/2026 02:18:51] [WARNING] mysql_connect_file: no password specified
+[17/08/2026 17:32:24] [WARNING] mysql_connect_file: no password specified
+[17/08/2026 17:48:07] [WARNING] mysql_connect_file: no password specified
+[20/08/2026 15:39:23] [WARNING] mysql_connect_file: no password specified
+[23/08/2026 09:35:16] [WARNING] mysql_connect_file: no password specified
